@@ -1,0 +1,21 @@
+module.exports = {
+  s3AccessKeyId: process.env.S3_PUBLIC_KEY,
+  s3SecretAccessKey: process.env.S3_SECRET_KEY,
+  s3Region: process.env.S3_REGION,
+  noReplyEmailAddress: process.env.NOREPLY_EMAIL_ADDRESS,
+  noReplyEmailPassword: process.env.NOREPLY_EMAIL_PASSWORD,
+  mongoConnectionString: process.env.MONGODB_CONNECTION_STRING,
+  secret: process.env.SECRET,
+  paypalPublicKey: process.env.PAYPAL_PUBLIC_KEY,
+  paypalSecretKey: process.env.PAYPAL_SECRET_KEY,
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+  clickatellKey: process.env.CLICKATELL_KEY,
+  stripeFee: process.env.STRIPE_FEE,
+  stripeFixed: process.env.STRIPE_FIXED,
+  microStripeFee: process.env.MICRO_STRIPE_FEE,
+  microStripeFixed: process.env.MICRO_STRIPE_FIXED,
+  iyokusFee: process.env.IYOKUS_FEE,
+  domain: process.env.DOMAIN,
+  VAT: process.env.VAT_RATE_ES,
+  invoiceEmail: process.env.INVOICE_EMAIL
+}

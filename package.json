@@ -1,0 +1,39 @@
+{
+  "name": "iyokus",
+  "version": "1.0.0",
+  "description": "Iyokus e-commerce platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.275.1",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "crypto-js": "^3.1.9-1",
+    "express": "*",
+    "express-handlebars": "^3.0.0",
+    "jsonwebtoken": "*",
+    "mongodb": "^3.0.6",
+    "mongoose": "*",
+    "multer": "^1.3.1",
+    "multer-s3": "^2.7.0",
+    "multer-sharp-s3": "^0.1.0",
+    "nodemailer": "^4.6.4",
+    "nodemailer-express-handlebars": "^3.0.0",
+    "passport": "*",
+    "passport-jwt": "*",
+    "paypal-rest-sdk": "^1.8.1",
+    "sharp": "^0.21.1",
+    "socket.io": "^2.1.1",
+    "stripe": "^6.0.0",
+    "uuid": "^3.3.2",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "author": "Kevin Chen",
+  "license": "MIT",
+  "devDependencies": {
+    "@angular/cli": "^1.7.3"
+  }
+}

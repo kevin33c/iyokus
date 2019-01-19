@@ -1,0 +1,30 @@
+<h3>Sale claim from {{user.type}}</h3>
+<h4>Please resolve the message within 24 hours</h4>
+<span>{{date}}</span>
+<hr>
+<label for="name"><b>Claim from:</b></label>
+<br>
+<p>
+  <b>User Name</b>: {{user.name}}
+</p>
+<p>
+  <b>Order</b>: {{claim.offerID}}
+</p>
+
+<label for="email"><b>Claimer Email:</b></label>
+<br>
+<p>
+  {{user.email}}
+</p>
+
+<label for="email"><b>Reason:</b></label>
+<br>
+<p>
+  {{claim.reason}}
+</p>
+
+<label for="message"><b>Message:</b></label>
+<br>
+<p>
+  {{claim.comment}}
+</p>
