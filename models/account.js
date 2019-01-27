@@ -48,9 +48,14 @@ const AccountSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  account: {
+    type: String,
+  },
+  sortCode: {
+    type: String,
+  },
   iban: {
     type: String,
-    required: true
   },
   date: {
     type: Date,

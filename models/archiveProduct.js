@@ -36,6 +36,12 @@ const ArchiveProductSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  variant1: { //color
+    type: [String]
+  },
+  variant2: { //size
+    type: [String]
+  },
   gender: {
     type: Number,
     enum: [0, 1, 2],

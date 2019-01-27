@@ -74,7 +74,7 @@ router.post('/register', (req, res, next) => {
         //add util recording
         utilRecording.addUtilRecording(newUtilRecording, (err, msg) => { });
 
-        var content = 'Tu código Iyokus: ' + newUser.mobileVerificationCode;
+        var content = 'Your Iyokus verification code: ' + newUser.mobileVerificationCode;
 
         var xhr = new XMLHttpRequest(),
           body = JSON.stringify({
@@ -132,7 +132,7 @@ router.post('/authenticate', (req, res, next) => {
                 expiresIn: "2h" //2 hour before expiring
               });
 
-              return res.json({ mobile: false, msg: 'Móvil no verificado', tempToken: token });
+              return res.json({ mobile: false, msg: 'Mobile phone not verified', tempToken: token });
             }
 
             const token = jwt.sign({ data: user }, config.secret, {
@@ -151,15 +151,15 @@ router.post('/authenticate', (req, res, next) => {
               }
             })
           } else {
-            return res.json({ success: false, msg: 'Contraseña o email incorrecta' });
+            return res.json({ success: false, msg: 'Incorrect email or password' });
           }
         });
 
       } else {
-        return res.json({ success: false, msg: 'Email no verificado' });
+        return res.json({ success: false, msg: 'Email not verified' });
       }
     } else {
-      return res.json({ success: false, msg: 'Usuario bloqueado' });
+      return res.json({ success: false, msg: 'User blocked' });
     }
   });
 });

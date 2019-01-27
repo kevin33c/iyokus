@@ -42,6 +42,8 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
 
   if (a != 'Unauthorized' && a.approved && a.verified && a.mobileVerified) {
 
+    var country = 'GB';
+
     let newProduct = new Product({
       productID: req.body.productID,
       sellerID: req.body.sellerID,
@@ -59,6 +61,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
       tags: req.body.tags,
       locked_period: req.body.locked_period,
       currency: req.body.currency,
+      country: country,
       location: req.body.location,
       deliveryMethod: req.body.deliveryMethod,
       deliveryCost: req.body.deliveryCost,
@@ -93,6 +96,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
           tags: req.body.tags,
           locked_period: req.body.locked_period,
           currency: req.body.currency,
+          country: country,
           location: req.body.location,
           deliveryMethod: req.body.deliveryMethod,
           deliveryCost: req.body.deliveryCost,
