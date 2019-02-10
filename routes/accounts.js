@@ -16,10 +16,9 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
 
     let newAccount = new Account({
       sellerID: a._id,
-      //id: req.body.id,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      birthDay: req.body.birthDay,
+      //birthDay: req.body.birthDay,
       country: req.body.country,
       postCode: req.body.postCode,
       address1: req.body.address1,
@@ -27,6 +26,8 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
       city: req.body.city,
       region: req.body.region,
       bankName: req.body.bankName,
+      sortCode: req.body.sortCode,
+      accountNumber: req.body.accountNumber,
       iban: req.body.iban,
     });
 

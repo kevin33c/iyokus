@@ -212,9 +212,11 @@ app.get('/sitemap.xml', (req, res) => {
 //= =======================================
 // formulario de desistimiento
 //= =======================================
+/*
 app.get('/files/formulario_de_desistimiento.docx', (req, res) => {
   res.sendFile(path.join(__dirname, 'formulario_de_desistimiento.docx'));
 });
+*/
 
 //= =======================================
 // get Dist (angular)

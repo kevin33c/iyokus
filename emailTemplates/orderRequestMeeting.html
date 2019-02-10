@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Iyokus - Solicitud de pedido</title>
+    <title>Iyokus - Order Request</title>
 
     <style type="text/css">
         /* Take care of image borders and formatting, client hacks */
@@ -305,9 +305,8 @@
         class="container-for-gmail-android" width="100%">
         <!-- Visually Hidden Preheader Text : BEGIN -->
         <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
-            ¡Has recibido un pedido! Por favor, póngase en contacto con el comprador y organize una entrega dentro de 3
-            días hábiles. Recuerde de obtener el código de pago del comprador una vez que se entrega el pedido y
-            utilice el botón de abajo para introducir el código y recibir el pago.
+            You have received an order! Please use Iyokus Messenger to schedule a meetup within 3 business day to hand in the item to the buyer.
+            Remember to get the verification code from the buyer upon the item delivery. Then, introduce the code using below link to trigger the order completion and payment.
         </div>
         <!-- Visually Hidden Preheader Text : END -->
         <tr>
@@ -333,10 +332,10 @@
                                                 <a href="https://www.facebook.com/Iyokus-1829148173798391" target="_blank"
                                                     style="margin-right: 10px;"><img width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Facebook.png"
                                                         alt="facebook" /></a>
-                                                <a href="https://twitter.com/Iyokus1" target="_blank" style="margin-right: 10px;"><img
+                                                <a href="https://twitter.com/IyokusC" target="_blank" style="margin-right: 10px;"><img
                                                         width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Twitter.png"
                                                         alt="twitter" /></a>
-                                                <a href="https://www.instagram.com/iyokus.official" target="_blank"
+                                                <a href="https://www.instagram.com/iyokus_uk/" target="_blank"
                                                     style="margin-right: 10px;"><img width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Instagram.png"
                                                         alt="instagram" /></a>
                                             </td>
@@ -356,25 +355,20 @@
                     <table cellspacing="0" cellpadding="0" width="600" class="w320">
                         <tr>
                             <td class="header-lg">
-                                ¡Has recibido un pedido!
+                                You have received an order!
                             </td>
                         </tr>
                         <tr>
                             <td class="free-text">
-                                Por favor, póngase en contacto con el comprador (usando el Messenger, cual puedes
-                                acceder con el botón de abajo) y organize una entrega dentro de <b>3
-                                    días
-                                    hábiles</b>. Recuerde de obtener el <b>código de pago</b> del comprador una vez que
-                                se
-                                entrega el
-                                pedido y utilice el botón de abajo para introducir el código y recibir el pago.
+                                    Please use Iyokus Messenger by clicking on below button to schedule a meetup with the buyer within 3 business day to hand in the item .<br> <br>
+                                       <b>Remember to get the verification code from the buyer upon the item delivery. Then, introduce the code using below button to trigger the order completion and payment.</b> 
+                               
                             </td>
                         </tr>
                         <tr>
                             <td class="button">
                                 <div>
-                                    <a href="{{href}}" style="background:linear-gradient(to right,#ff850b 0,#ff5945 100%);border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:800;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">Administrar
-                                        Pedido</a></div>
+                                    <a href="{{href}}" style="background:linear-gradient(to right,#ff850b 0,#ff5945 100%);border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:800;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">Manage Order</a></div>
                             </td>
                         </tr>
                         <tr>
@@ -388,10 +382,10 @@
                                                         <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                                                             <tr>
                                                                 <td class="mini-block">
-                                                                    <span class="header-sm">Fecha del pedido</span><br />
+                                                                    <span class="header-sm">Date</span><br />
                                                                     {{date}} <br />
                                                                     <br />
-                                                                    <span class="header-sm">Pedido</span> <br />
+                                                                    <span class="header-sm">Order</span> <br />
                                                                     <small>#{{order.offerID}}</small>
                                                                 </td>
                                                             </tr>
@@ -417,10 +411,10 @@
                                 <table cellspacing="0" cellpadding="0" width="100%">
                                     <tr>
                                         <td class="title-dark" width="300">
-                                            Producto
+                                            Item
                                         </td>
                                         <td class="title-dark" width="163">
-                                            Cantidad
+                                            Amount
                                         </td>
                                         <td class="title-dark" width="97">
                                             Total
@@ -460,29 +454,28 @@
                                         <td class="item-col item">
                                         </td>
                                         <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
-                                            <span class="total-space">Subtotal con IVA</span> <br />
-                                            <span class="total-space">Envío con IVA</span> <br />
+                                            <span class="total-space">Subtotal with VAT</span> <br />
+                                            <span class="total-space">Shipment with VAT</span> <br />
                                             <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total
-                                                recibido</span> <br />
+                                                received</span> <br />
 
-                                            <span class="total-space">Comisión Transacción</span> <br />
-                                            <span class="total-space">Comisión Iyokus</span> <br />
-                                            <span class="total-space">IVA comisiones (21%)</span> <br />
+                                            <span class="total-space">Payment Fee</span> <br />
+                                            <span class="total-space">Iyokus Fee</span> <br />
+                                            <span class="total-space">VAT (21%)</span> <br />
 
-                                            <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total a
-                                                su favor</span>
+                                            <span class="total-space" style="font-weight: bold; color: #4d4d4d">Balance in your favour</span>
                                         </td>
                                         <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
-                                            <span class="total-space">€{{subtotal}}</span> <br />
-                                            <span class="total-space">€{{order.deliveryFee}}</span> <br />
-                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">€{{order.totalPrice}}</span>
+                                            <span class="total-space">£{{subtotal}}</span> <br />
+                                            <span class="total-space">£{{order.deliveryFee}}</span> <br />
+                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">£{{order.totalPrice}}</span>
                                             <br />
 
-                                            <span class="total-space">-€{{order.transactionFee}}</span> <br />
-                                            <span class="total-space">-€{{order.iyokusFee}}</span> <br />
-                                            <span class="total-space">-€{{totalVAT}}</span> <br />
+                                            <span class="total-space">-£{{order.transactionFee}}</span> <br />
+                                            <span class="total-space">-£{{order.iyokusFee}}</span> <br />
+                                            <span class="total-space">-£{{totalVAT}}</span> <br />
 
-                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">€{{order.sellerPayout}}</span>
+                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">£{{order.sellerPayout}}</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -494,19 +487,17 @@
         </tr>
         <tr>
             <td align="center" valign="top" width="100%" style="background-color: #f7f7f7; height: 100px;">
-                <small style="text-align: left !important;">Este email no puede recibir respuestas. Para más
-                    información, contáctenos en <a href="mailto:client@iyokus.com">client@iyokus.com</a>
-                    <br>
-                    <small><sup>1</sup></small>Las comisiones incluyen la comisión de ventas de Iyokus y los gastos de
-                    transacción de pago.
+                    <small style="text-align: left !important;">This is an automated message - please do not reply to this email. If further information is required, please contact us <a href="mailto:client@iyokus.com">client@iyokus.com</a>
+                    </small><sup>1</sup></small>
+                    Fees includes both, payment transaction fees and Iyokus fees.
                 </small>
                 <center>
                     <table cellspacing="0" cellpadding="0" width="600" class="w320">
                         <tr>
                             <td style="padding: 25px 0 25px">
-                                <strong>Iyokus Online S.L.</strong><br />
-                                C/Gobernador Viejo 29<br />
-                                Valencia, España<br /><br />
+                                <strong>Iyokus Online</strong><br />
+                               <br />
+                                London, UK<br /><br />
                             </td>
                         </tr>
                     </table>

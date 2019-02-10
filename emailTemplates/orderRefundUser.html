@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Iyokus - Reembolso de Pedido</title>
+    <title>Iyokus - Order Refund</title>
 
     <style type="text/css">
         /* Take care of image borders and formatting, client hacks */
@@ -305,10 +305,8 @@
         class="container-for-gmail-android" width="100%">
         <!-- Visually Hidden Preheader Text : BEGIN -->
         <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
-            Ha solicitado un reembolso. Lamentamos que el artículo no sea de su satisfacción.
-            Recuerde que solo podremos reembolsarle la cantidad total (excluyendo los costos de
-            transacción) si el artículo es como fue entregado.
-        </div>
+            You have requested a refund. We regret that the item is not satisfactory.
+            Remember that we can only refund the money if the article is sent to the buyer in the same condition as it was sent to you. The refund will exclude the amount allocated to cover the payment fee.        </div>
         <!-- Visually Hidden Preheader Text : END -->
         <tr>
             <td align="left" valign="top" width="100%" style="background:repeat-x url(https://s3.eu-west-3.amazonaws.com/woolime/assets/emails/Email_Header_Button_Border.jpg) #ffffff;">
@@ -333,10 +331,10 @@
                                                 <a href="https://www.facebook.com/Iyokus-1829148173798391" target="_blank"
                                                     style="margin-right: 10px;"><img width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Facebook.png"
                                                         alt="facebook" /></a>
-                                                <a href="https://twitter.com/Iyokus1" target="_blank" style="margin-right: 10px;"><img
+                                                <a href="https://twitter.com/IyokusC" target="_blank" style="margin-right: 10px;"><img
                                                         width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Twitter.png"
                                                         alt="twitter" /></a>
-                                                <a href="https://www.instagram.com/iyokus.official" target="_blank"
+                                                <a href="https://www.instagram.com/iyokus_uk" target="_blank"
                                                     style="margin-right: 10px;"><img width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Instagram.png"
                                                         alt="instagram" /></a>
                                             </td>
@@ -356,24 +354,24 @@
                     <table cellspacing="0" cellpadding="0" width="600" class="w320">
                         <tr>
                             <td class="header-lg">
-                                Reembolso
+                                    Order Refund
                             </td>
                         </tr>
                         <tr>
                             <td class="free-text">
-                                Ha solicitado un reembolso. Lamentamos que el artículo no sea de su satisfacción.
-                                Recuerde que solo podremos reembolsarle la cantidad total (excluyendo los gastos de
-                                transacción y envío) si el artículo es devuelto en el mismo estado como fue entregado.
-                                <br>
-                                <b>Deberá gestionar y pagar los gastos de la devolución del artículo al vendedor; una
-                                    vez que el vendedor confirme el recibo, le reembolsaremos en un plazo de 3-5 días
-                                    hábiles.
+                                    You have requested a refund. We regret that the item is not fully satisfactory for you.
+                                    Remember that we can only refund the money if the article is sent to the buyer in the same condition as it was sent to you. <br> The refund will exclude the amount allocated to cover the payment fee.      
+                                <br><br>
+                                <b>
+                                    Please return the item back to the buyer. Once the buyer confirms the reception of the item, we will refund your money within 2 to 5 business days.
+                                    <br><br>
+                                    Remember that the shipping costs for returning the item is always bear by buyers.
+                                    
                                 </b>
                                 <br>
                                 <br>
                                 <small>
-                                    Si recibió el artículo por correo, puede encontrar la dirección de devolución en el
-                                    embalaje original.
+                                    If you received the item by post, you will find the return address inside the package.
                                 </small>
                             </td>
                         </tr>
@@ -389,10 +387,10 @@
                                                         <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                                                             <tr>
                                                                 <td class="mini-block">
-                                                                    <span class="header-sm">Fecha del pedido</span><br />
+                                                                    <span class="header-sm">Date</span><br />
                                                                     {{date}} <br />
                                                                     <br />
-                                                                    <span class="header-sm">Pedido</span> <br />
+                                                                    <span class="header-sm">Order</span> <br />
                                                                     <small>#{{order.offerID}}</small>
                                                                 </td>
                                                             </tr>
@@ -418,10 +416,10 @@
                                 <table cellspacing="0" cellpadding="0" width="100%">
                                     <tr>
                                         <td class="title-dark" width="300">
-                                            Producto
+                                            Item
                                         </td>
                                         <td class="title-dark" width="163">
-                                            Cantidad
+                                            Amount
                                         </td>
                                         <td class="title-dark" width="97">
                                             Total
@@ -447,7 +445,7 @@
                                             {{order.quantity}}
                                         </td>
                                         <td class="item-col">
-                                            €{{order.price}}
+                                            £{{order.price}}
                                         </td>
                                     </tr>
 
@@ -462,20 +460,20 @@
                                         <td class="item-col item">
                                         </td>
                                         <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
-                                            <span class="total-space">Subtotal con IVA</span> <br />
-                                            <span class="total-space">Envío con IVA</span> <br />
-                                            <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total pagado</span> <br />
-                                            <span class="total-space">Envío con IVA</span> <br/>
-                                            <span class="total-space">Comisión Transacción</span> <br />
-                                            <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total a devolver</span>
+                                            <span class="total-space">Subtotal including VAT</span> <br />
+                                            <span class="total-space">Shipment including VAT</span> <br />
+                                            <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total paid</span> <br />
+                                            <span class="total-space">Shipment including VAT</span> <br/>
+                                            <span class="total-space">Payment Fee</span> <br />
+                                            <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total Refund</span>
                                         </td>
                                         <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
-                                            <span class="total-space">€{{subtotal}}</span> <br />
-                                            <span class="total-space">€{{order.deliveryFee}}</span> <br />
-                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">€{{order.totalPrice}}</span> <br />
-                                            <span class="total-space">-€{{order.deliveryFee}}</span> <br />
-                                            <span class="total-space">-€{{transactionFeeWithVAT}}</span> <br />
-                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">€{{reburseTotal}}</span>
+                                            <span class="total-space">£{{subtotal}}</span> <br />
+                                            <span class="total-space">£{{order.deliveryFee}}</span> <br />
+                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">£{{order.totalPrice}}</span> <br />
+                                            <span class="total-space">-£{{order.deliveryFee}}</span> <br />
+                                            <span class="total-space">-£{{transactionFeeWithVAT}}</span> <br />
+                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">£{{reburseTotal}}</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -487,15 +485,15 @@
         </tr>
         <tr>
             <td align="center" valign="top" width="100%" style="background-color: #f7f7f7; height: 100px;">
-                <small style="text-align: left !important;">Este email no puede recibir respuestas. Para más
-                    información, contáctenos en <a href="mailto:client@iyokus.com">client@iyokus.com</a></small>
+                    <small style="text-align: left !important;">This is an automated message - please do not reply to this email. If further information is required, please contact us <a href="mailto:client@iyokus.com">client@iyokus.com</a>
+                    </small>
                 <center>
                     <table cellspacing="0" cellpadding="0" width="600" class="w320">
                         <tr>
                             <td style="padding: 25px 0 25px">
-                                <strong>Iyokus Online S.L.</strong><br />
-                                C/Gobernador Viejo 29<br />
-                                Valencia, España<br /><br />
+                                <strong>Iyokus Online</strong><br />
+                                <br />
+                                London, UK<br /><br />
                             </td>
                         </tr>
                     </table>

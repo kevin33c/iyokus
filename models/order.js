@@ -69,12 +69,16 @@ const OrderSchema = mongoose.Schema({
     type: String,
     required: true
   },
+
+                        //CHANGE!!!!!!!!
   variant1: { //color
     type: String
   },
   variant2: { //size
     type: String
   },
+
+
   currency: {
     type: String,
     required: true,

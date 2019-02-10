@@ -28,7 +28,7 @@ router.post('/execute', (req, res) => {
     .then(customer => stripe.charges.create({
       amount,
       description: offerID,
-      currency: 'eur',
+      currency: 'gbp',
       customer: customer.id,
       //send stripe receipt to user
       //receipt_email: email,

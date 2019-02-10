@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Iyokus - Confirmación del pedido</title>
+    <title>Iyokus - Order confirmation</title>
 
     <style type="text/css">
         /* Take care of image borders and formatting, client hacks */
@@ -305,9 +305,7 @@
         class="container-for-gmail-android" width="100%">
         <!-- Visually Hidden Preheader Text : BEGIN -->
         <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
-            ¡Gracias por su pedido! El vendedor del artículo se pondrá en contacto con usted en Messenger lo antes
-            posible para fijar una hora y lugar de entrega. Puede ver debajo su código de pago, recuerde de dar el
-            código al vendedor solo una vez que haya recibido y confirmado la entrega.
+            Thank you for your order! The seller of the item will contact you promptly through Iyokus Messenger to agree on the delivery place and time. Please see below the verification code. Remember to share the code with the seller only when you have received the item.
         </div>
         <!-- Visually Hidden Preheader Text : END -->
         <tr>
@@ -333,10 +331,10 @@
                                                 <a href="https://www.facebook.com/Iyokus-1829148173798391" target="_blank"
                                                     style="margin-right: 10px;"><img width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Facebook.png"
                                                         alt="facebook" /></a>
-                                                <a href="https://twitter.com/Iyokus1" target="_blank" style="margin-right: 10px;"><img
+                                                <a href="https://twitter.com/IyokusC" target="_blank" style="margin-right: 10px;"><img
                                                         width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Twitter.png"
                                                         alt="twitter" /></a>
-                                                <a href="https://www.instagram.com/iyokus.official" target="_blank"
+                                                <a href="https://www.instagram.com/iyokus_uk" target="_blank"
                                                     style="margin-right: 10px;"><img width="20" height="20" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Instagram.png"
                                                         alt="instagram" /></a>
                                             </td>
@@ -356,20 +354,18 @@
                     <table cellspacing="0" cellpadding="0" width="600" class="w320">
                         <tr>
                             <td class="header-lg">
-                                ¡Gracias por su pedido!
+                                Thank you for your order!
                             </td>
                         </tr>
                         <tr>
                             <td class="free-text">
-                                El vendedor del artículo se pondrá en contacto con usted en Messenger lo antes posible
-                                para fijar una hora y lugar de entrega. Puede ver debajo su código de pago, recuerde de
-                                dar el código al vendedor solo una vez que haya recibido y confirmado la entrega.
+                                    The seller of the item will contact you promptly through Iyokus Messenger to agree on the delivery place and time. Please see below the verification code. Remember to share the code with the seller only when you have received the item.
                             </td>
                         </tr>
                         <tr>
                             <td class="button">
                                 <div>
-                                    <a href="{{href}}" style="background:linear-gradient(to right,#ff850b 0,#ff5945 100%);border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:800;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">Mis Pedidos</a></div>
+                                    <a href="{{href}}" style="background:linear-gradient(to right,#ff850b 0,#ff5945 100%);border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:800;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">My Orders</a></div>
                             </td>
                         </tr>
                         <tr>
@@ -378,7 +374,7 @@
                                     cellpadding="8" width="180">
                                     <tr>
                                         <td style="border: 1px solid #a1a1a1; text-align:center;">
-                                            <b>Codigo de pago:</b><br><span style="font-family: Courier; font-weight: 800; color: #ff5945">{{order.verificationCode}}</span>
+                                            <b>Verification Code:</b><br><span style="font-family: Courier; font-weight: 800; color: #ff5945">{{order.verificationCode}}</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -392,10 +388,10 @@
                                                         <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                                                             <tr>
                                                                 <td class="mini-block">
-                                                                    <span class="header-sm">Fecha del pedido</span><br />
+                                                                    <span class="header-sm">Order date</span><br />
                                                                     {{date}} <br />
                                                                     <br />
-                                                                    <span class="header-sm">Pedido</span> <br />
+                                                                    <span class="header-sm">Order number</span> <br />
                                                                     <small>#{{order.offerID}}</small>
                                                                 </td>
                                                             </tr>
@@ -421,10 +417,10 @@
                                 <table cellspacing="0" cellpadding="0" width="100%">
                                     <tr>
                                         <td class="title-dark" width="300">
-                                            Producto
+                                            Product
                                         </td>
                                         <td class="title-dark" width="163">
-                                            Cantidad
+                                            Amount
                                         </td>
                                         <td class="title-dark" width="97">
                                             Total
@@ -450,7 +446,7 @@
                                             {{order.quantity}}
                                         </td>
                                         <td class="item-col">
-                                            €{{order.price}}
+                                            £{{order.price}}
                                         </td>
                                     </tr>
 
@@ -465,18 +461,18 @@
                                         <td class="item-col item">
                                         </td>
                                         <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
-                                            <span class="total-space">Subtotal</span> <br />
-                                            <span class="total-space">Envío</span> <br />
-                                            <span class="total-space">Total sin IVA</span> <br />
-                                            <span class="total-space">IVA (21%)</span> <br />
+                                            <span class="total-space">Item price</span> <br />
+                                            <span class="total-space">Shipping</span> <br />
+                                            <span class="total-space">Subtotal
+                                            <span class="total-space">VAT (21%)</span> <br />
                                             <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total</span>
                                         </td>
                                         <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
-                                            <span class="total-space">€{{priceBeforeVAT}}</span> <br />
-                                            <span class="total-space"><b style="color: green;">Gratis</b></span> <br />
-                                            <span class="total-space">€{{TotalBeforeVAT}}</span> <br />
-                                            <span class="total-space">€{{VAT}}</span> <br />
-                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">€{{order.totalPrice}}</span>
+                                            <span class="total-space">£{{priceBeforeVAT}}</span> <br />
+                                            <span class="total-space"><b style="color: green;">Free</b></span> <br />
+                                            <span class="total-space">£{{TotalBeforeVAT}}</span> <br />
+                                            <span class="total-space">£{{VAT}}</span> <br />
+                                            <span class="total-space" style="font-weight:bold; color: #4d4d4d">£{{order.totalPrice}}</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -488,14 +484,15 @@
         </tr>
         <tr>
             <td align="center" valign="top" width="100%" style="background-color: #f7f7f7; height: 100px;">
-                <small style="text-align: left !important;">Este email no puede recibir respuestas. Para más información, contáctenos en <a href="mailto:client@iyokus.com">client@iyokus.com</a></small>
+                    <small style="text-align: left !important;">This is an automated message - please do not reply to this email. If further information is required, please contact us <a href="mailto:client@iyokus.com">client@iyokus.com</a>
+                    </small>
                 <center>
                     <table cellspacing="0" cellpadding="0" width="600" class="w320">
                         <tr>
                             <td style="padding: 25px 0 25px">
-                                <strong>Iyokus Online S.L.</strong><br />
-                                C/Gobernador Viejo 29<br />
-                                Valencia, España<br /><br />
+                                <strong>Iyokus Online</strong><br />
+                                <br />
+                                London, UK<br /><br />
                             </td>
                         </tr>
                     </table>

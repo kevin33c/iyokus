@@ -36,6 +36,7 @@ const ArchiveProductSchema = mongoose.Schema({
     type: String,
     required: true
   },
+                          //CHANGE!!!!
   variant1: { //color
     type: [String]
   },

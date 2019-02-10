@@ -15,9 +15,11 @@ const AccountSchema = mongoose.Schema({
   lastName: {
     type: String
   },
+  /*
   birthDay: {
     type: String
   },
+  */
   country: {
     type: String,
     required: true
@@ -48,7 +50,7 @@ const AccountSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  account: {
+  accountNumber: {
     type: String,
   },
   sortCode: {
