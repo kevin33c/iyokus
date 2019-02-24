@@ -36,17 +36,20 @@ const ArchiveProductSchema = mongoose.Schema({
     type: String,
     required: true
   },
-                          //CHANGE!!!!
+  gender: {
+    type: Number,
+    enum: [0, 1, 2],
+    default: 2
+  },
+  isVariant: {
+    type: Boolean,
+    default: false
+  },
   variant1: { //color
     type: [String]
   },
   variant2: { //size
     type: [String]
-  },
-  gender: {
-    type: Number,
-    enum: [0, 1, 2],
-    default: 2
   },
   description: {
     type: String,
@@ -74,7 +77,10 @@ const ArchiveProductSchema = mongoose.Schema({
   },
   currency: {
     type: String,
-    default: 'eur',
+    required: true
+  },
+  country: { //ES, GB, US, etc.
+    type: String,
     required: true
   },
   location: {
@@ -83,7 +89,6 @@ const ArchiveProductSchema = mongoose.Schema({
   },
   deliveryMethod: {
     type: Number,
-    enum: [0, 1],
     default: 0,
     required: true
   },
@@ -91,6 +96,10 @@ const ArchiveProductSchema = mongoose.Schema({
     type: Number,
     default: 0,
     required: true
+  },
+  isFreeDelivery: {
+    type: Boolean,
+    default: false
   },
   return_policy: {
     type: Number,
@@ -112,6 +121,24 @@ const ArchiveProductSchema = mongoose.Schema({
   relevance: {
     type: Number,
     required: true
+  },
+  free: {
+    type: Boolean,
+    default: false
+  },
+  international: {
+    type: Boolean,
+    default: false
+  },
+  isReferenced: {
+    type: Boolean,
+    default: false
+  },
+  referenceURL: {
+    type: String
+  },
+  referenceID: {
+    type: String
   },
   reason: {
     type: String //new; update; delete

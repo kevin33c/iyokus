@@ -25,8 +25,15 @@ const FulfilmentSchema = mongoose.Schema({
   //************Product Information*************/
   deliveryMethod: {
     type: Number,
-    enum: [0, 1],
     required: true
+  },
+  deliveryCost: {
+    type: Number,
+    default: 0,
+    required: true
+  },
+  isFreeDelivery: {
+    type: Boolean,
   },
   location: {
     type: String

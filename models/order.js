@@ -22,7 +22,6 @@ const OrderSchema = mongoose.Schema({
   },
   deliveryMethod: {
     type: Number,
-    enum: [0, 1],
     required: true
   },
   ProductType: {
@@ -69,16 +68,24 @@ const OrderSchema = mongoose.Schema({
     type: String,
     required: true
   },
-
-                        //CHANGE!!!!!!!!
   variant1: { //color
     type: String
   },
   variant2: { //size
     type: String
   },
-
-
+  isInternational: {
+    type: Boolean,
+  },
+  isReferenced: {
+    type: Boolean,
+  },
+  referenceURL: {
+    type: String
+  },
+  referenceID: {
+    type: String
+  },
   currency: {
     type: String,
     required: true,
@@ -131,7 +138,7 @@ const OrderSchema = mongoose.Schema({
   },
   paymentStatus: {
     type: String,
-    default: "confirmed" //to be filled based on payment status!!!
+    required: true,
   },
   date: {
     type: Date,

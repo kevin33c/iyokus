@@ -37,16 +37,20 @@ const ProductSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  gender: {
+    type: Number,
+    enum: [0, 1, 2],
+    default: 2
+  },
+  isVariant: {
+    type: Boolean,
+    default: false
+  },
   variant1: { //color
     type: [String]
   },
   variant2: { //size
     type: [String]
-  },
-  gender: {
-    type: Number,
-    enum: [0, 1, 2],
-    default: 2
   },
   description: {
     type: String,
@@ -74,12 +78,10 @@ const ProductSchema = mongoose.Schema({
   },
   currency: {
     type: String,
-    default: 'eur',
     required: true
   },
   country: { //ES, GB, US, etc.
     type: String,
-    enum: ['ES', 'GB'],
     required: true
   },
   location: {
@@ -88,7 +90,6 @@ const ProductSchema = mongoose.Schema({
   },
   deliveryMethod: {
     type: Number,
-    enum: [0, 1],
     default: 0,
     required: true
   },
@@ -96,6 +97,10 @@ const ProductSchema = mongoose.Schema({
     type: Number,
     default: 0,
     required: true
+  },
+  isFreeDelivery: {
+    type: Boolean,
+    default: false
   },
   return_policy: {
     type: Number,
@@ -131,9 +136,23 @@ const ProductSchema = mongoose.Schema({
     type: Number,
     default: 0
   },
-  free: { //NEW!!!!!!!!!!
+  free: {
     type: Boolean,
     default: false
+  },
+  isInternational: {
+    type: Boolean,
+    default: false
+  },
+  isReferenced: {
+    type: Boolean,
+    default: false
+  },
+  referenceURL: {
+    type: String
+  },
+  referenceID: {
+    type: String
   },
   verified: {
     type: Boolean,
@@ -158,7 +177,7 @@ const ProductSchema = mongoose.Schema({
   processedAt: {
     type: Date,
     default: null
-  }
+  },
 }).index({ name: 'text', brand: 'text', description: 'text', tags: 'text' }, { name: 'Iyokus index', weights: { name: 10, brand: 8, description: 3, tags: 3 } })
 
 
@@ -211,6 +230,9 @@ module.exports.editProductByID = function (id, newProduct, callback) {
       "category": newProduct.category,
       "subcategory": newProduct.subcategory,
       "gender": newProduct.gender,
+      "isVariant": newProduct.isVariant,
+      "variant1": newProduct.variant1,
+      "variant2": newProduct.variant2,
       "description": newProduct.description,
       "listed_price": newProduct.listed_price,
       "reserve_price": newProduct.reserve_price,
@@ -218,15 +240,20 @@ module.exports.editProductByID = function (id, newProduct, callback) {
       "tags": newProduct.tags,
       "locked_period": newProduct.locked_period,
       "currency": newProduct.currency,
+      "country": newProduct.country,
       "location": newProduct.location,
       "deliveryMethod": newProduct.deliveryMethod,
       "deliveryCost": newProduct.deliveryCost,
+      "isFreeDelivery": newProduct.isFreeDelivery,
       "return_policy": newProduct.return_policy,
       "image_Main": newProduct.image_Main,
       "image_1": newProduct.image_1,
       "image_2": newProduct.image_2,
       "image_3": newProduct.image_3,
-      "relevance": newProduct.relevance,
+      "isInternational": newProduct.isInternational,
+      "isReferenced": newProduct.isReferenced,
+      "referenceURL": newProduct.referenceURL,
+      "referenceID": newProduct.referenceID,
       "lastEditDate": Date(),
       "processed": false //so admin can pick up the update for review
     }
@@ -261,13 +288,13 @@ module.exports.downProductByID = function (id, callback) {
 //select product by _id
 module.exports.getPublishedProductByID = function (id, callback) {
   const query = { $and: [{ _id: id }, { status: "published" }, { verified: true }] };
-  Product.findOne(query, callback).select('-reserve_price');
+  Product.findOne(query, callback).select('-reserve_price -sales_count -referenceURL');
 };
 
 //select product by _id
 module.exports.getPublishedProductExByID = function (id, callback) {
   const query = { $and: [{ _id: id }, { verified: true }] };
-  Product.findOne(query, callback).select('-reserve_price');
+  Product.findOne(query, callback).select('-reserve_price -sales_count -referenceURL');
 };
 
 //increase product view count
@@ -305,7 +332,7 @@ module.exports.searchProductByCategory = function (category, location, callback)
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price');
+  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
 };
 
 //search product by subcategory
@@ -325,7 +352,7 @@ module.exports.searchProductBySubcategory = function (subcategory, location, cal
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price');
+  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
 };
 
 //search product by gender ONLY for Fashion (300) and Sport (400)
@@ -345,7 +372,7 @@ module.exports.searchProductByGender = function (search, location, callback) {
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price');
+  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
 };
 
 //retrieve related products
@@ -365,7 +392,7 @@ module.exports.searchRelatedProducts = function (subcategory, location, callback
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(20).select('-reserve_price');
+  Product.find(query, callback).sort({ relevance: -1 }).limit(20).select('-reserve_price -sales_count -referenceURL');
 };
 
 
@@ -385,7 +412,7 @@ module.exports.searchOfferProduct = function (location, callback) {
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(50).select('-reserve_price');
+  Product.find(query, callback).sort({ relevance: -1 }).limit(50).select('-reserve_price -sales_count -referenceURL');
 };
 
 
@@ -405,7 +432,7 @@ module.exports.searchMostViewProduct = function (location, callback) {
     };
   };
 
-  Product.find(query, callback).sort({ view_count: -1 }).limit(50).select('-reserve_price');
+  Product.find(query, callback).sort({ view_count: -1 }).limit(50).select('-reserve_price -sales_count -referenceURL');
 };
 
 
@@ -426,7 +453,7 @@ module.exports.searchRecommendedProducts = function (key, location, callback) {
   };
 
   //indexed search fulltext search query
-  Product.find(query, { score: { $meta: "textScore" } }, callback).sort({ score: { $meta: "textScore" } }).limit(50).select('-reserve_price')
+  Product.find(query, { score: { $meta: "textScore" } }, callback).sort({ score: { $meta: "textScore" } }).limit(50).select('-reserve_price -sales_count -referenceURL')
 };
 
 
@@ -447,7 +474,7 @@ module.exports.searchProductByKeyword = function (key, location, callback) {
   };
 
   //indexed search fulltext search query
-  Product.find(query, { score: { $meta: "textScore" } }, callback).sort({ score: { $meta: "textScore" } }).limit(100).select('-reserve_price')
+  Product.find(query, { score: { $meta: "textScore" } }, callback).sort({ score: { $meta: "textScore" } }).limit(100).select('-reserve_price -sales_count -referenceURL')
 };
 
 //get product info for pricingEngine
@@ -459,7 +486,7 @@ module.exports.getByID = function (id, callback) {
 //get products of a seller for userview
 module.exports.getProductBySellerIDx = function (id, callback) {
   const query = { $and: [{ sellerID: id }, { quantity: { $gt: 0 } }, { status: "published" }, { verified: true }] };
-  Product.find(query, callback).select('-reserve_price -sales_count');
+  Product.find(query, callback).select('-reserve_price -sales_count -referenceURL');
 };
 
 

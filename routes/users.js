@@ -124,10 +124,8 @@ router.post('/authenticate', (req, res, next) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
           //if (err) throw err;
           if (isMatch) {
-
             //if is seller then also check whether mobile is verified
-            if ((type == 'seller' || type === 'business') && !user.mobileVerified) {
-
+            if ((type.includes('seller') || type.includes('business')) && !user.mobileVerified) {
               const token = jwt.sign({ data: user }, config.secret, {
                 expiresIn: "2h" //2 hour before expiring
               });

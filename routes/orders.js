@@ -84,7 +84,8 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
               totalPrice: stagingOrder.totalPrice.toFixed(2),
               sellerPayout: sellerPayout,
               //random 6 digits verification code
-              verificationCode: Math.floor(100000 + Math.random() * 900000)
+              verificationCode: Math.floor(100000 + Math.random() * 900000),
+              paymentStatus: 'Confirmed'
             });
 
             Order.addOrder(newOrder, (err, order) => {

@@ -42,7 +42,12 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
 
   if (a != 'Unauthorized' && a.approved && a.verified && a.mobileVerified) {
 
-    var country = 'GB';
+    if(req.body.isInternational == false){
+      var country = 'GB';
+    } else {
+      var country = 'CN';
+    }
+    
 
     let newProduct = new Product({
       productID: req.body.productID,
@@ -54,6 +59,9 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
       category: req.body.category,
       subcategory: req.body.subcategory,
       gender: req.body.gender,
+      isVariant: req.body.isVariant,
+      variant1: req.body.variant1,
+      variant2: req.body.variant2,
       description: req.body.description,
       listed_price: req.body.listed_price,
       reserve_price: req.body.reserve_price,
@@ -65,12 +73,17 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
       location: req.body.location,
       deliveryMethod: req.body.deliveryMethod,
       deliveryCost: req.body.deliveryCost,
+      isFreeDelivery: req.body.isFreeDelivery,
       return_policy: req.body.return_policy,
       image_Main: req.body.image_Main,
       image_1: req.body.image_1,
       image_2: req.body.image_2,
       image_3: req.body.image_3,
-      relevance: (req.body.listed_price - req.body.reserve_price) / req.body.listed_price
+      relevance: (req.body.listed_price - req.body.reserve_price) / req.body.listed_price,
+      isInternational: req.body.isInternational,
+      isReferenced: req.body.isReferenced,
+      referenceURL: req.body.referenceURL,
+      referenceID: req.body.referenceID,
     });
 
     Product.addProduct(newProduct, (err, product) => {
@@ -89,6 +102,9 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
           category: req.body.category,
           subcategory: req.body.subcategory,
           gender: req.body.gender,
+          isVariant: req.body.isVariant,
+          variant1: req.body.variant1,
+          variant2: req.body.variant2,
           description: req.body.description,
           listed_price: req.body.listed_price,
           reserve_price: req.body.reserve_price,
@@ -100,12 +116,17 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
           location: req.body.location,
           deliveryMethod: req.body.deliveryMethod,
           deliveryCost: req.body.deliveryCost,
+          isFreeDelivery: req.body.isFreeDelivery,
           return_policy: req.body.return_policy,
           image_Main: req.body.image_Main,
           image_1: req.body.image_1,
           image_2: req.body.image_2,
           image_3: req.body.image_3,
           relevance: (req.body.listed_price - req.body.reserve_price) / req.body.listed_price,
+          isInternational: req.body.isInternational,
+          isReferenced: req.body.isReferenced,
+          referenceURL: req.body.referenceURL,
+          referenceID: req.body.referenceID,
           reason: 'new',
         });
 
@@ -172,6 +193,12 @@ router.put('/edit/:_id', passport.authenticate('jwt', { session: false }), (req,
 
     const id = req.params._id;
 
+    if(req.body.isInternational == false){
+      var country = 'GB';
+    } else {
+      var country = 'CN';
+    }
+    
     let newProduct = new Product({
       name: req.body.name,
       type: req.body.type,
@@ -180,6 +207,9 @@ router.put('/edit/:_id', passport.authenticate('jwt', { session: false }), (req,
       category: req.body.category,
       subcategory: req.body.subcategory,
       gender: req.body.gender,
+      isVariant: req.body.isVariant,
+      variant1: req.body.variant1,
+      variant2: req.body.variant2,
       description: req.body.description,
       listed_price: req.body.listed_price,
       reserve_price: req.body.reserve_price,
@@ -187,15 +217,21 @@ router.put('/edit/:_id', passport.authenticate('jwt', { session: false }), (req,
       tags: req.body.tags,
       locked_period: req.body.locked_period,
       currency: req.body.currency,
+      country: country,
       location: req.body.location,
       deliveryMethod: req.body.deliveryMethod,
       deliveryCost: req.body.deliveryCost,
+      isFreeDelivery: req.body.isFreeDelivery,
       return_policy: req.body.return_policy,
       image_Main: req.body.image_Main,
       image_1: req.body.image_1,
       image_2: req.body.image_2,
       image_3: req.body.image_3,
-      relevance: (req.body.listed_price - req.body.reserve_price) / req.body.listed_price
+      relevance: (req.body.listed_price - req.body.reserve_price) / req.body.listed_price,
+      isInternational: req.body.isInternational,
+      isReferenced: req.body.isReferenced,
+      referenceURL: req.body.referenceURL,
+      referenceID: req.body.referenceID,
     });
 
     Product.editProductByID(id, newProduct, (err, product) => {
@@ -214,6 +250,9 @@ router.put('/edit/:_id', passport.authenticate('jwt', { session: false }), (req,
           category: req.body.category,
           subcategory: req.body.subcategory,
           gender: req.body.gender,
+          isVariant: req.body.isVariant,
+          variant1: req.body.variant1,
+          variant2: req.body.variant2,
           description: req.body.description,
           listed_price: req.body.listed_price,
           reserve_price: req.body.reserve_price,
@@ -221,15 +260,21 @@ router.put('/edit/:_id', passport.authenticate('jwt', { session: false }), (req,
           tags: req.body.tags,
           locked_period: req.body.locked_period,
           currency: req.body.currency,
+          country: country,
           location: req.body.location,
           deliveryMethod: req.body.deliveryMethod,
           deliveryCost: req.body.deliveryCost,
+          isFreeDelivery: req.body.isFreeDelivery,
           return_policy: req.body.return_policy,
           image_Main: req.body.image_Main,
           image_1: req.body.image_1,
           image_2: req.body.image_2,
           image_3: req.body.image_3,
           relevance: (req.body.listed_price - req.body.reserve_price) / req.body.listed_price,
+          isInternational: req.body.isInternational,
+          isReferenced: req.body.isReferenced,
+          referenceURL: req.body.referenceURL,
+          referenceID: req.body.referenceID,
           reason: 'update',
         });
 

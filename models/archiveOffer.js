@@ -20,7 +20,6 @@ const ArchiveOfferSchema = mongoose.Schema({
   },
   listed_price: {
     type: Number,
-    index: true,
     required: true
   },
   bid: {
