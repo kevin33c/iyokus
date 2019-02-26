@@ -22,6 +22,12 @@ const ArchiveOfferSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  variant1: { //color
+    type: String
+  },
+  variant2: { //size
+    type: String
+  },
   bid: {
     type: Number,
     required: true

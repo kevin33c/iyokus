@@ -19,6 +19,12 @@ const BidSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  variant1: { //color
+    type: String
+  },
+  variant2: { //size
+    type: String
+  },
   listed_price: {
     type: Number,
     index: true,
