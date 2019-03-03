@@ -53,6 +53,7 @@ const OrderSchema = mongoose.Schema({
   phone: {
     type: String
   },
+  //DELIVERY INFO
   delCompany: {
     type: String
   },
@@ -67,24 +68,6 @@ const OrderSchema = mongoose.Schema({
   image_Main: {
     type: String,
     required: true
-  },
-  variant1: { //color
-    type: String
-  },
-  variant2: { //size
-    type: String
-  },
-  isInternational: {
-    type: Boolean,
-  },
-  isReferenced: {
-    type: Boolean,
-  },
-  referenceURL: {
-    type: String
-  },
-  referenceID: {
-    type: String
   },
   currency: {
     type: String,
@@ -127,14 +110,34 @@ const OrderSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  variant1: { //color
+    type: String
+  },
+  variant2: { //size
+    type: String
+  },
+  /*
+  isInternational: {
+    type: Boolean,
+  },
+  isReferenced: {
+    type: Boolean,
+  },
+  referenceURL: {
+    type: String
+  },
+  referenceID: {
+    type: String
+  },
+  */
+  verificationCode: {
+    type: String,
+    required: true
+  },
   orderStatus: {
     type: Number,
     enum: [0, 1, 2, 3], //0 Order Received -> 1 Dispatched -> 2 Completed -> 3 cancelled/refunded
     default: 0
-  },
-  verificationCode: {
-    type: String,
-    required: true
   },
   paymentStatus: {
     type: String,

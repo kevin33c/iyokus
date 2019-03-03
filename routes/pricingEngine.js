@@ -57,6 +57,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), function (req
               quantity_available: product.quantity,
               bid: bid,
               bid_quantity: bid_quantity,
+              variant1: req.body.variant1,
+              variant2: req.body.variant2,
               expireDate: addDays(new Date(), calculateExpireDays(product.locked_period))
             });
 
@@ -70,6 +72,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), function (req
               quantity_available: product.quantity,
               bid: bid,
               bid_quantity: bid_quantity,
+              variant1: req.body.variant1,
+              variant2: req.body.variant2,
               expireDate: addDays(new Date(), calculateExpireDays(product.locked_period))
             });
 
@@ -109,6 +113,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), function (req
                   name: product.name,
                   image_Main: product.image_Main,
                   status: output.status,
+                  variant1: req.body.variant1,
+                  variant2: req.body.variant2,
                   expireDate: addDays(new Date(), 1)
                 });
 
@@ -126,6 +132,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), function (req
                   name: product.name,
                   image_Main: product.image_Main,
                   status: output.status,
+                  variant1: req.body.variant1,
+                  variant2: req.body.variant2,
                   expireDate: addDays(new Date(), 1)
                 });
 

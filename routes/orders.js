@@ -52,8 +52,10 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
             const transactionFee = payment.fee;
 
             const iyokusFee = subtotal * Number(config.iyokusFee);
-            const feeVAT = ((iyokusFee * (1 + 0.21)) - iyokusFee).toFixed(2);
-            const transactionVAT = ((transactionFee * (1 + 0.21)) - transactionFee).toFixed(2);
+            //VAT == 0%
+            const feeVAT = ((iyokusFee * (1 + 0)) - iyokusFee).toFixed(2);
+            //VAT == 0%
+            const transactionVAT = ((transactionFee * (1 + 0)) - transactionFee).toFixed(2);
             const sellerPayout = (stagingOrder.totalPrice - transactionFee - transactionVAT - iyokusFee - feeVAT).toFixed(2);
 
             let newOrder = new Order({
@@ -76,13 +78,21 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
               currency: stagingOrder.currency,
               price: stagingOrder.price,
               quantity: stagingOrder.quantity,
-              iyokusFee: iyokusFee,
-              feeVAT: feeVAT,
+              deliveryFee: stagingOrder.deliveryFee.toFixed(2),
               transactionFee: transactionFee,
               transactionVAT: transactionVAT,
-              deliveryFee: stagingOrder.deliveryFee.toFixed(2),
+              iyokusFee: iyokusFee,
+              feeVAT: feeVAT,
               totalPrice: stagingOrder.totalPrice.toFixed(2),
               sellerPayout: sellerPayout,
+              /*
+              isInternational: stagingOrder.isInternational,
+              isReferenced: stagingOrder.isReferenced,
+              referenceURL: stagingOrder.referenceURL,
+              referenceID: stagingOrder.referenceID,
+              */
+              variant1: stagingOrder.variant1,
+              variant2: stagingOrder.variant2,
               //random 6 digits verification code
               verificationCode: Math.floor(100000 + Math.random() * 900000),
               paymentStatus: 'Confirmed'

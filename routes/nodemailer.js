@@ -39,7 +39,7 @@ transporter.use('compile', hbs(options));
 module.exports.emailVerification = function (receiverEmail, token) {
 
   const href = domain + '/user/verify/' + token
-  const subject = 'Verificar Email'
+  const subject = 'Verify Email'
 
   // setup email data with unicode symbols
   let mailOptions = {
@@ -60,7 +60,7 @@ module.exports.emailVerification = function (receiverEmail, token) {
 
 module.exports.OnboardingBuyer = function (receiverEmail) {
 
-  const subject = 'Bienvenido a Iyokus'
+  const subject = 'Welcome to Iyokus'
 
   // setup email data with unicode symbols
   let mailOptions = {
@@ -80,7 +80,7 @@ module.exports.OnboardingBuyer = function (receiverEmail) {
 
 module.exports.OnboardingSeller = function (receiverEmail) {
 
-  const subject = 'Bienvenido a Iyokus'
+  const subject = 'Welcome to Iyokus'
 
   // setup email data with unicode symbols
   let mailOptions = {
@@ -103,7 +103,7 @@ module.exports.OnboardingSeller = function (receiverEmail) {
 module.exports.resetPW = function (receiverEmail, token) {
 
   const href = domain + '/user/changepw/' + token
-  const subject = 'Restablecer Contraseña'
+  const subject = 'Reset Password'
 
   // setup email data with unicode symbols
   let mailOptions = {
@@ -125,15 +125,15 @@ module.exports.resetPW = function (receiverEmail, token) {
 
 module.exports.orderConfirmation = function (userEmail, newOrder) {
 
-  const subject = 'Confirmación del Pedido #' + newOrder.offerID;
+  const subject = 'Order Confirmation #' + newOrder.offerID;
   const href = domain + '/user/yourorders';
   const subtotal = newOrder.quantity * newOrder.price.toFixed(2);
   const date = formatDate(newOrder.date);
 
-  const priceBeforeVAT = (subtotal / (1 + 0.21)).toFixed(2);
+  const priceBeforeVAT = (subtotal / (1 + 0)).toFixed(2);
 
   if (newOrder.deliveryFee > 0) {
-    var delBeforeVAT = (newOrder.deliveryFee / (1 + 0.21)).toFixed(2);
+    var delBeforeVAT = (newOrder.deliveryFee / (1 + 0)).toFixed(2);
   } else {
     var delBeforeVAT = 0;
   }
@@ -177,7 +177,7 @@ module.exports.orderConfirmation = function (userEmail, newOrder) {
 
 module.exports.requestConfirmation = function (sellerEmail, userEmail, newOrder) {
 
-  const subject = 'Solicitud de Pedido #' + newOrder.offerID;
+  const subject = 'Order Request #' + newOrder.offerID;
   const href = domain + '/business/order/' + newOrder.offerID;
   const subtotal = newOrder.price.toFixed(2) * newOrder.quantity;
   const date = formatDate(newOrder.date);
@@ -216,7 +216,7 @@ module.exports.requestConfirmation = function (sellerEmail, userEmail, newOrder)
 module.exports.refundUser = function (receiverEmail, order, reason) {
 
   const href = domain + '/purchase/review/' + order.offerID;
-  const subject = 'Reembolso de Pedido #' + order.offerID;
+  const subject = 'Refund Request Order #' + order.offerID;
   const subtotal = order.price.toFixed(2) * order.quantity;
   const date = formatDate(order.date);
   const transactionFeeWithVAT = (Number(order.transactionFee) + Number(order.transactionVAT)).toFixed(2);
@@ -249,7 +249,7 @@ module.exports.refundSeller = function (receiverEmail, order, reason) {
 
 
   const href = domain + '/business/order/' + order.offerID;
-  const subject = 'Reembolso de Pedido #' + order.offerID;
+  const subject = 'Refund Request Order #' + order.offerID;
   const subtotal = order.price.toFixed(2) * order.quantity;
   const totalVAT = (Number(order.transactionVAT) + Number(order.feeVAT)).toFixed(2);
   var remainPayout = (Number(order.sellerPayout) - Number(subtotal) + Number(order.iyokusFee) + Number(order.transactionFee) + Number(totalVAT)).toFixed(2);
@@ -288,12 +288,17 @@ module.exports.refundInvoiceSeller = function (receiverEmail, order) {
 
   InvoiceLog.getLaststInvoice((err, invoice) => {
 
-    const invoiceID = Number(invoice.invoiceID) + 1;
+    if(invoice == null || invoice == undefined){
+      var inviceID = 100000000;
+    } else {
+      var invoiceID = Number(invoice.invoiceID) + 1;
+    }
+
     const year = (new Date()).getFullYear();
 
     Account.getAccountBySellerID(order.sellerID, (err, account) => {
 
-      const subject = 'Factura Rectificativa Pedido #' + order.offerID;
+      const subject = 'Corrective Invoice Order #' + order.offerID;
 
       const totalVAT = (Number(order.transactionVAT) + Number(order.feeVAT)).toFixed(2);
       const total = (Number(order.transactionFee) + Number(order.iyokusFee) + Number(totalVAT)).toFixed(2);
@@ -339,14 +344,14 @@ module.exports.refundInvoiceSeller = function (receiverEmail, order) {
 module.exports.fulfilmentUser = function (receiverEmail, fulfilment) {
 
   const href = domain + '/purchase/review/' + fulfilment.offerID;
-  const subject = 'Pedido Completado #' + fulfilment.offerID;
+  const subject = 'Order Completed #' + fulfilment.offerID;
   const subtotal = fulfilment.price.toFixed(2) * fulfilment.quantity;
   const date = formatDate(fulfilment.date);
 
-  const priceBeforeVAT = (subtotal / (1 + 0.21)).toFixed(2);
+  const priceBeforeVAT = (subtotal / (1 + 0)).toFixed(2);
 
   if (fulfilment.deliveryFee > 0) {
-    var delBeforeVAT = (fulfilment.deliveryFee / (1 + 0.21)).toFixed(2);
+    var delBeforeVAT = (fulfilment.deliveryFee / (1 + 0)).toFixed(2);
   } else {
     var delBeforeVAT = 0;
   }
@@ -385,7 +390,7 @@ module.exports.fulfilmentUser = function (receiverEmail, fulfilment) {
 module.exports.fulfilmentSeller = function (receiverEmail, fulfilment) {
 
   const href = domain + '/business/order/' + fulfilment.offerID;
-  const subject = 'Pedido Completado #' + fulfilment.offerID;
+  const subject = 'Order Completed #' + fulfilment.offerID;
   const subtotal = fulfilment.price.toFixed(2) * fulfilment.quantity;
   const totalVAT = (Number(fulfilment.transactionVAT) + Number(fulfilment.feeVAT)).toFixed(2);
   const date = formatDate(fulfilment.date);
@@ -418,12 +423,17 @@ module.exports.fulfilmentInvoiceSeller = function (receiverEmail, fulfilment) {
 
   InvoiceLog.getLaststInvoice((err, invoice) => {
 
-    const invoiceID = Number(invoice.invoiceID) + 1;
+    if(invoice == null || invoice == undefined){
+      var inviceID = 100000000;
+    } else {
+      var invoiceID = Number(invoice.invoiceID) + 1;
+    }
+    
     const year = (new Date()).getFullYear();
 
     Account.getAccountBySellerID(fulfilment.sellerID, (err, account) => {
 
-      const subject = 'Factura Pedido #' + fulfilment.offerID;
+      const subject = 'Order Invoice #' + fulfilment.offerID;
 
       const totalVAT = (Number(fulfilment.transactionVAT) + Number(fulfilment.feeVAT)).toFixed(2);
       const total = (Number(fulfilment.transactionFee) + Number(fulfilment.iyokusFee) + Number(totalVAT)).toFixed(2);
@@ -468,15 +478,15 @@ module.exports.fulfilmentInvoiceSeller = function (receiverEmail, fulfilment) {
 
 module.exports.dispatchConfirmation = function (userEmail, order) {
 
-  const subject = 'Pedido Enviado #' + order.offerID;
+  const subject = 'Order Dispatched #' + order.offerID;
   const href = domain + '/user/yourorders';
   const subtotal = (order.quantity * order.price).toFixed(2);
   const date = formatDate(order.date);
 
-  const priceBeforeVAT = (subtotal / (1 + 0.21)).toFixed(2);
+  const priceBeforeVAT = (subtotal / (1 + 0)).toFixed(2);
 
   if (order.deliveryFee > 0) {
-    var delBeforeVAT = (order.deliveryFee / (1 + 0.21)).toFixed(2);
+    var delBeforeVAT = (order.deliveryFee / (1 + 0)).toFixed(2);
   } else {
     var delBeforeVAT = 0;
   }
@@ -511,7 +521,7 @@ module.exports.dispatchConfirmation = function (userEmail, order) {
 
 module.exports.profileChangeConfirmation = function (email, type) {
 
-  const subject = 'Perfil Actualizado';
+  const subject = 'Profile Updated';
 
   if (type === 'user') {
 
@@ -634,7 +644,7 @@ module.exports.raiseClaim = function (claim, user) {
 
 module.exports.newMessageNotification = function (user, offerID, recipientEmail) {
 
-  const subject = 'Has recibido un mensage nuevo ' + offerID
+  const subject = 'You have a new message for Order ' + offerID
   const href = domain + '/messenger/' + offerID;
   var t = new Date()
 
@@ -661,10 +671,10 @@ module.exports.newMessageNotification = function (user, offerID, recipientEmail)
 
 function formatDate(date) {
   var monthNames = [
-    "Enero", "Febrero", "Marzo",
-    "Abril", "Mayo", "Junio", "Julio",
-    "Agosto", "Septiembre", "Octubre",
-    "Noviembre", "Diciembre"
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
   ];
 
   var day = date.getDate();

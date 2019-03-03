@@ -34,6 +34,14 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
       quantity: req.body.quantity,
       deliveryFee: Number(req.body.deliveryFee).toFixed(2),
       totalPrice: Number(req.body.totalPrice).toFixed(2),
+      variant1: req.body.variant1,
+      variant2: req.body.variant2,
+      /*
+      isInternational: req.body.isInternational,
+      isReferenced: req.body.isReferenced,
+      referenceURL: req.body.referenceURL,
+      referenceID: req.body.referenceID,
+      */
     });
 
     StagingOrder.addStagingOrder(newStagingOrder, (err, order) => {

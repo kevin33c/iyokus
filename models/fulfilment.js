@@ -46,12 +46,14 @@ const FulfilmentSchema = mongoose.Schema({
     type: String,
     required: true
   },
+
   variant1: { //color
     type: String
   },
   variant2: { //size
     type: String
   },
+  
   type: {
     type: Number,
     enum: [1, 0],

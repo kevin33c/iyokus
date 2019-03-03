@@ -63,12 +63,6 @@ const StagingOrderSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  variant1: { //color
-    type: String
-  },
-  variant2: { //size
-    type: String
-  },
   currency: {
     type: String,
     required: true,
@@ -90,6 +84,26 @@ const StagingOrderSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  variant1: { //color
+    type: String
+  },
+  variant2: { //size
+    type: String
+  },
+  /*
+  isInternational: {
+    type: Boolean,
+  },
+  isReferenced: {
+    type: Boolean,
+  },
+  referenceURL: {
+    type: String
+  },
+  referenceID: {
+    type: String
+  },
+  */
   date: {
     type: Date,
     expires: 3600,

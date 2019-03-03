@@ -305,7 +305,8 @@
         class="container-for-gmail-android" width="100%">
         <!-- Visually Hidden Preheader Text : BEGIN -->
         <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
-            Thank you for your order! The seller of the item will contact you promptly through Iyokus Messenger to agree on the delivery place and time. Please see below the verification code. Remember to share the code with the seller only when you have received the item.
+            Thank you for your order! The seller of the item will contact you as soon as possible to arrange a delivery
+            date and location. You can below your payment code, remember to give the code to the seller only once you have received and confirmed the delivery.
         </div>
         <!-- Visually Hidden Preheader Text : END -->
         <tr>
@@ -359,7 +360,9 @@
                         </tr>
                         <tr>
                             <td class="free-text">
-                                    The seller of the item will contact you promptly through Iyokus Messenger to agree on the delivery place and time. Please see below the verification code. Remember to share the code with the seller only when you have received the item.
+                                The seller of the item will contact you as soon as possible to arrange a delivery date
+                                and location. You can below your payment code, remember to give the code to the seller
+                                only once you have received and confirmed the delivery.
                             </td>
                         </tr>
                         <tr>
@@ -374,7 +377,7 @@
                                     cellpadding="8" width="180">
                                     <tr>
                                         <td style="border: 1px solid #a1a1a1; text-align:center;">
-                                            <b>Verification Code:</b><br><span style="font-family: Courier; font-weight: 800; color: #ff5945">{{order.verificationCode}}</span>
+                                            <b>Payment Code:</b><br><span style="font-family: Courier; font-weight: 800; color: #ff5945">{{order.verificationCode}}</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -391,7 +394,7 @@
                                                                     <span class="header-sm">Order date</span><br />
                                                                     {{date}} <br />
                                                                     <br />
-                                                                    <span class="header-sm">Order number</span> <br />
+                                                                    <span class="header-sm">Order</span> <br />
                                                                     <small>#{{order.offerID}}</small>
                                                                 </td>
                                                             </tr>
@@ -420,7 +423,7 @@
                                             Product
                                         </td>
                                         <td class="title-dark" width="163">
-                                            Amount
+                                            Qty
                                         </td>
                                         <td class="title-dark" width="97">
                                             Total
@@ -463,15 +466,15 @@
                                         <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
                                             <span class="total-space">Item price</span> <br />
                                             <span class="total-space">Shipping</span> <br />
-                                            <span class="total-space">Subtotal
-                                            <span class="total-space">VAT (21%)</span> <br />
+                                            <span class="total-space">Subtotal                                      
+                                            <!--<span class="total-space">VAT (21%)</span> <br />--> 
                                             <span class="total-space" style="font-weight: bold; color: #4d4d4d">Total</span>
                                         </td>
                                         <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
                                             <span class="total-space">£{{priceBeforeVAT}}</span> <br />
                                             <span class="total-space"><b style="color: green;">Free</b></span> <br />
                                             <span class="total-space">£{{TotalBeforeVAT}}</span> <br />
-                                            <span class="total-space">£{{VAT}}</span> <br />
+                                            <!--<span class="total-space">£{{VAT}}</span> <br />-->
                                             <span class="total-space" style="font-weight:bold; color: #4d4d4d">£{{order.totalPrice}}</span>
                                         </td>
                                     </tr>
@@ -484,15 +487,14 @@
         </tr>
         <tr>
             <td align="center" valign="top" width="100%" style="background-color: #f7f7f7; height: 100px;">
-                    <small style="text-align: left !important;">This is an automated message - please do not reply to this email. If further information is required, please contact us <a href="mailto:client@iyokus.com">client@iyokus.com</a>
-                    </small>
+                <small style="text-align: left !important;">This email can't receive replies. For more information,
+                    please contact us at <a href="mailto:client@iyokus.com">client@iyokus.com</a></small>
                 <center>
                     <table cellspacing="0" cellpadding="0" width="600" class="w320">
                         <tr>
                             <td style="padding: 25px 0 25px">
-                                <strong>Iyokus Online</strong><br />
-                                <br />
-                                London, UK<br /><br />
+                                <strong>Iyokus Limited</strong><br />
+                                London<br /><br />
                             </td>
                         </tr>
                     </table>
