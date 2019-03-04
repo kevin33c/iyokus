@@ -221,7 +221,7 @@ module.exports.refundUser = function (receiverEmail, order, reason) {
   const date = formatDate(order.date);
   const transactionFeeWithVAT = (Number(order.transactionFee) + Number(order.transactionVAT)).toFixed(2);
   const reburseTotal = (Number(order.totalPrice) - Number(order.deliveryFee) - transactionFeeWithVAT).toFixed(2);
-  
+
   // setup email data with unicode symbols
   let mailOptions = {
     from: '"Noreply" <' + config.noReplyEmailAddress + '>', // sender address
@@ -288,8 +288,8 @@ module.exports.refundInvoiceSeller = function (receiverEmail, order) {
 
   InvoiceLog.getLaststInvoice((err, invoice) => {
 
-    if(invoice == null || invoice == undefined){
-      var inviceID = 100000000;
+    if (invoice == null || invoice == undefined) {
+      var invoiceID = 100000000;
     } else {
       var invoiceID = Number(invoice.invoiceID) + 1;
     }
@@ -423,12 +423,12 @@ module.exports.fulfilmentInvoiceSeller = function (receiverEmail, fulfilment) {
 
   InvoiceLog.getLaststInvoice((err, invoice) => {
 
-    if(invoice == null || invoice == undefined){
-      var inviceID = 100000000;
+    if (invoice == null || invoice == undefined) {
+      var invoiceID = 100000000;
     } else {
       var invoiceID = Number(invoice.invoiceID) + 1;
     }
-    
+
     const year = (new Date()).getFullYear();
 
     Account.getAccountBySellerID(fulfilment.sellerID, (err, account) => {
@@ -485,6 +485,16 @@ module.exports.dispatchConfirmation = function (userEmail, order) {
 
   const priceBeforeVAT = (subtotal / (1 + 0)).toFixed(2);
 
+  if (order.isInternational == false) {
+    var expectedDeliveryTime = '3-5 working days';
+  } else if (order.isInternational == true && order.deliveryFee > 0) {
+    var expectedDeliveryTime = '3-4 weeks';
+  } else if (order.isInternational == true && order.deliveryFee == 0) {
+    var expectedDeliveryTime = '4-5 weeks';
+  } else {
+    var expectedDeliveryTime = '4-5 weeks';
+  }
+
   if (order.deliveryFee > 0) {
     var delBeforeVAT = (order.deliveryFee / (1 + 0)).toFixed(2);
   } else {
@@ -509,7 +519,8 @@ module.exports.dispatchConfirmation = function (userEmail, order) {
       delBeforeVAT: delBeforeVAT,
       TotalBeforeVAT: TotalBeforeVAT,
       VAT: VAT,
-      date: date
+      date: date,
+      expectedDeliveryTime: expectedDeliveryTime,
     }
   };
 

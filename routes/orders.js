@@ -85,8 +85,9 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
               feeVAT: feeVAT,
               totalPrice: stagingOrder.totalPrice.toFixed(2),
               sellerPayout: sellerPayout,
-              /*
+              
               isInternational: stagingOrder.isInternational,
+              /*
               isReferenced: stagingOrder.isReferenced,
               referenceURL: stagingOrder.referenceURL,
               referenceID: stagingOrder.referenceID,

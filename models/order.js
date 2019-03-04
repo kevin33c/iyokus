@@ -116,10 +116,11 @@ const OrderSchema = mongoose.Schema({
   variant2: { //size
     type: String
   },
-  /*
+  
   isInternational: {
     type: Boolean,
   },
+  /*
   isReferenced: {
     type: Boolean,
   },

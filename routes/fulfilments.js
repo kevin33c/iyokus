@@ -110,6 +110,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
                   //************FEES Information*************/
                   orderDate: thisOrder.date,
 
+                  isInternational: thisOrder.isInternational,
                   variant1: thisOrder.variant1,
                   variant2: thisOrder.variant2,
                 });
@@ -283,7 +284,8 @@ router.post('/addEx', passport.authenticate('jwt', { session: false }), (req, re
                 sellerPayout: thisOrder.sellerPayout,
                 //************FEES Information*************/
                 orderDate: thisOrder.date,
-
+                
+                isInternational: thisOrder.isInternational,
                 variant1: thisOrder.variant1,
                 variant2: thisOrder.variant2,
               });
