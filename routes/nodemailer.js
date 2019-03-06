@@ -204,12 +204,38 @@ module.exports.requestConfirmation = function (sellerEmail, userEmail, newOrder)
       subtotal: subtotal,
       totalVAT: totalVAT,
       date: date,
-
     }
   };
 
   // send mail with defined transport object
   transporter.sendMail(mailOptions);
+
+
+  //SEND SEPARATE EMAIL TO KANBAN TOOLS
+  //if internal order
+  if (
+    //testing ID
+    newOrder.sellerID == '5c4846895d3896d9e6c946ad' ||
+    //Iyokus store ID
+    newOrder.sellerID == '5c72c0df1ea39c6a638cce88'
+  ) {
+    // setup email data with unicode symbols
+    let mailOptions = {
+      from: '"Noreply" <' + config.noReplyEmailAddress + '>', // sender address
+      to: '65357f42d9be41c9def2+541175-74f38a60c-500463-add-task@iyokus.kanbantool.com',
+      subject: subject, // Subject line
+      template: 'kanbanTicket',
+      context: {
+        domain: domain,
+        href: href,
+        order: newOrder,
+        subtotal: subtotal,
+        date: date,
+      }
+    };
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions);
+  }
 };
 
 

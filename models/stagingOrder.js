@@ -90,21 +90,12 @@ const StagingOrderSchema = mongoose.Schema({
   variant2: { //size
     type: String
   },
-  
   isInternational: {
-    type: Boolean,
-  },
-  /*
-  isReferenced: {
     type: Boolean,
   },
   referenceURL: {
     type: String
   },
-  referenceID: {
-    type: String
-  },
-  */
   date: {
     type: Date,
     expires: 3600,

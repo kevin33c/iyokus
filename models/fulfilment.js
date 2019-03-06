@@ -114,17 +114,9 @@ const FulfilmentSchema = mongoose.Schema({
   isInternational: {
     type: Boolean,
   },
-  /*
-  isReferenced: {
-    type: Boolean,
-  },
   referenceURL: {
     type: String
   },
-  referenceID: {
-    type: String
-  },
-  */
   //************Pricing Information*************/
 
   //************Payment & Fees Information*************/

@@ -113,6 +113,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
                   isInternational: thisOrder.isInternational,
                   variant1: thisOrder.variant1,
                   variant2: thisOrder.variant2,
+                  referenceURL: thisOrder.referenceURL
                 });
 
 
@@ -288,6 +289,7 @@ router.post('/addEx', passport.authenticate('jwt', { session: false }), (req, re
                 isInternational: thisOrder.isInternational,
                 variant1: thisOrder.variant1,
                 variant2: thisOrder.variant2,
+                referenceURL: thisOrder.referenceURL
               });
 
 

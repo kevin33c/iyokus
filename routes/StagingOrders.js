@@ -4,7 +4,8 @@ const passport = require('passport');
 
 //bring in User data model
 const StagingOrder = require('../models/stagingOrder');
-
+//bring in Product data model
+const Product = require('../models/product');
 
 router.post('/add', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 
@@ -12,52 +13,61 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
 
   if (a != 'Unauthorized' && a.approved && a.verified) {
 
-    let newStagingOrder = new StagingOrder({
-      offerID: req.body.offerID,
-      userID: req.body.userID,
-      sellerID: req.body.sellerID,
-      productID: req.body.productID,
-      deliveryMethod: req.body.deliveryMethod,
-      ProductType: req.body.ProductType,
-      name: req.body.name,
-      country: req.body.country,
-      postCode: req.body.postCode,
-      address1: req.body.address1,
-      address2: req.body.address2,
-      city: req.body.city,
-      region: req.body.region,
-      phone: req.body.phone,
-      productName: req.body.productName,
-      image_Main: req.body.image_Main,
-      currency: req.body.currency,
-      price: Number(req.body.price).toFixed(2),
-      quantity: req.body.quantity,
-      deliveryFee: Number(req.body.deliveryFee).toFixed(2),
-      totalPrice: Number(req.body.totalPrice).toFixed(2),
-      variant1: req.body.variant1,
-      variant2: req.body.variant2,
-      
-      isInternational: req.body.isInternational,
-      /*
-      isReferenced: req.body.isReferenced,
-      referenceURL: req.body.referenceURL,
-      referenceID: req.body.referenceID,
-      */
-    });
 
-    StagingOrder.addStagingOrder(newStagingOrder, (err, order) => {
+    Product.getProductByProductID(req.body.productID, req.body.sellerID, (err, product) => {
       if (err) {
-        res.json({ success: false, msg: 'Failed to record staging order' });
-        //throw err;
+        res.json({ success: false, msg: 'No product found' });
       } else {
-        res.json({ success: true, msg: 'Staging order recorded' });
+        //res.json(product);
+
+        let newStagingOrder = new StagingOrder({
+          offerID: req.body.offerID,
+          userID: req.body.userID,
+          sellerID: req.body.sellerID,
+          productID: req.body.productID,
+          deliveryMethod: req.body.deliveryMethod,
+          ProductType: req.body.ProductType,
+          name: req.body.name,
+          country: req.body.country,
+          postCode: req.body.postCode,
+          address1: req.body.address1,
+          address2: req.body.address2,
+          city: req.body.city,
+          region: req.body.region,
+          phone: req.body.phone,
+          productName: req.body.productName,
+          image_Main: req.body.image_Main,
+          currency: req.body.currency,
+          price: Number(req.body.price).toFixed(2),
+          quantity: req.body.quantity,
+          deliveryFee: Number(req.body.deliveryFee).toFixed(2),
+          totalPrice: Number(req.body.totalPrice).toFixed(2),
+          variant1: req.body.variant1,
+          variant2: req.body.variant2,
+          isInternational: req.body.isInternational,
+          //get supplier url
+          referenceURL: product.referenceURL,
+        });
+
+        StagingOrder.addStagingOrder(newStagingOrder, (err, order) => {
+          if (err) {
+            res.json({ success: false, msg: 'Failed to record staging order' });
+            //throw err;
+          } else {
+            res.json({ success: true, msg: 'Staging order recorded' });
+          }
+        });
+
       }
     });
+
+
+
 
   } else {
     res.json({ success: false, msg: 'Unauthorized' });
   };
-  
+
 });
 
 

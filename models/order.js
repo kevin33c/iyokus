@@ -120,17 +120,9 @@ const OrderSchema = mongoose.Schema({
   isInternational: {
     type: Boolean,
   },
-  /*
-  isReferenced: {
-    type: Boolean,
-  },
   referenceURL: {
     type: String
   },
-  referenceID: {
-    type: String
-  },
-  */
   verificationCode: {
     type: String,
     required: true

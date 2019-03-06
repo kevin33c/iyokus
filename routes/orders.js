@@ -87,11 +87,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
               sellerPayout: sellerPayout,
               
               isInternational: stagingOrder.isInternational,
-              /*
-              isReferenced: stagingOrder.isReferenced,
               referenceURL: stagingOrder.referenceURL,
-              referenceID: stagingOrder.referenceID,
-              */
               variant1: stagingOrder.variant1,
               variant2: stagingOrder.variant2,
               //random 6 digits verification code

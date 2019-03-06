@@ -1,0 +1,37 @@
+<h1><b>Order Request</b></h1>
+<br>
+<label>{{date}}</label>
+<br>
+<br>
+<section>
+  <label>Order item: {{order.productName}} <b>{{order.variant1}} {{order.variant2}}</b></label>
+  <br>
+  <label>Order Qty: {{order.quantity}}</label>
+</section>
+<br>
+<br>
+<section>
+  <label>Delivery Address:
+    <br>
+    {{order.name}} <br />
+    {{order.address1}} <br />
+    {{order.city}}, {{order.postCode}}<br />
+    {{order.country}}
+  </label>
+</section>
+<br>
+<br>
+<section>
+  <label>Total paid: £{{order.totalPrice}}</label>
+  <br>
+  <label>Subtotal: £{{subtotal}}</label>
+  <br>
+  <label>Delivery: £{{order.deliveryFee}}</label>
+  <br>
+</section>
+<br>
+<br>
+<label>Internal Iyokus order link: {{href}}</label>
+<br>
+<br>
+<label>External supplier link: {{order.referenceURL}}</label>
