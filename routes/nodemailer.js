@@ -177,7 +177,7 @@ module.exports.orderConfirmation = function (userEmail, newOrder) {
 
 module.exports.requestConfirmation = function (sellerEmail, userEmail, newOrder) {
 
-  const subject = 'Order Request #' + newOrder.offerID;
+  var subject = 'Order Request #' + newOrder.offerID;
   const href = domain + '/business/order/' + newOrder.offerID;
   const subtotal = newOrder.price.toFixed(2) * newOrder.quantity;
   const date = formatDate(newOrder.date);
@@ -219,6 +219,11 @@ module.exports.requestConfirmation = function (sellerEmail, userEmail, newOrder)
     //Iyokus store ID
     newOrder.sellerID == '5c72c0df1ea39c6a638cce88'
   ) {
+    
+    if(newOrder.sellerID == '5c4846895d3896d9e6c946ad'){
+      var subject = 'TEST Order Request #' + newOrder.offerID;
+    }
+
     // setup email data with unicode symbols
     let mailOptions = {
       from: '"Noreply" <' + config.noReplyEmailAddress + '>', // sender address
