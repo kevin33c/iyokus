@@ -17,5 +17,6 @@ module.exports = {
   iyokusFee: process.env.IYOKUS_FEE,
   domain: process.env.DOMAIN,
   VAT: process.env.VAT_RATE_ES,
-  invoiceEmail: process.env.INVOICE_EMAIL
+  invoiceEmail: process.env.INVOICE_EMAIL,
+  preRenderToken: process.env.PRERENDER_TOKEN
 }

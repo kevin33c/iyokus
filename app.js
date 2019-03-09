@@ -7,6 +7,14 @@ const socketEvents = require('./socketEvents');
 const mongoose = require('mongoose');
 
 const config = require('./config/keys');
+
+const prerender = require('prerender-node').set('prerenderToken', config.preRenderToken);
+prerender.crawlerUserAgents.push('googlebot');
+prerender.crawlerUserAgents.push('bingbot');
+prerender.crawlerUserAgents.push('yandex');
+
+
+
 //initial app
 const app = express();
 //assign port
@@ -54,6 +62,12 @@ server = app.listen(port, () => {
 });
 
 //= =======================================
+// PreRender
+//= =======================================
+app.use(prerender);
+
+
+//= =======================================
 // enable cors to port
 //= =======================================
 app.use(cors());
@@ -73,7 +87,6 @@ app.use((req, res, next) => {
 // Enable body-parser
 //= =======================================
 app.use(bodyparser.json());
-
 
 
 //= =======================================
