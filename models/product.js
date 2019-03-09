@@ -392,7 +392,7 @@ module.exports.searchRelatedProducts = function (subcategory, location, callback
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(20).select('-reserve_price -sales_count -referenceURL');
+  Product.find(query, callback).sort({ relevance: -1 }).limit(30).select('-reserve_price -sales_count -referenceURL');
 };
 
 
@@ -412,7 +412,7 @@ module.exports.searchOfferProduct = function (location, callback) {
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(50).select('-reserve_price -sales_count -referenceURL');
+  Product.find(query, callback).sort({ relevance: -1 }).limit(30).select('-reserve_price -sales_count -referenceURL');
 };
 
 
@@ -432,7 +432,7 @@ module.exports.searchMostViewProduct = function (location, callback) {
     };
   };
 
-  Product.find(query, callback).sort({ view_count: -1 }).limit(50).select('-reserve_price -sales_count -referenceURL');
+  Product.find(query, callback).sort({ view_count: -1 }).limit(30).select('-reserve_price -sales_count -referenceURL');
 };
 
 
@@ -453,7 +453,7 @@ module.exports.searchRecommendedProducts = function (key, location, callback) {
   };
 
   //indexed search fulltext search query
-  Product.find(query, { score: { $meta: "textScore" } }, callback).sort({ score: { $meta: "textScore" } }).limit(50).select('-reserve_price -sales_count -referenceURL')
+  Product.find(query, { score: { $meta: "textScore" } }, callback).sort({ score: { $meta: "textScore" } }).limit(30).select('-reserve_price -sales_count -referenceURL')
 };
 
 
