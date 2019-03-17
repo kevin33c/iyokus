@@ -98,6 +98,9 @@ router.post('/register', (req, res, next) => {
       //send email verification email to the buyer
       nodemailer.emailVerification(newUser.email, token);
 
+      //send user sign up notification to Admin
+      nodemailer.newUserNotification(newUser);
+
       return res.json({ success: true, msg: 'User registered', tempToken: token }); //NEED TO CHANGE TO NOT SENDING BACK TOKEN
     }
   });

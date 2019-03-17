@@ -58,6 +58,26 @@ module.exports.emailVerification = function (receiverEmail, token) {
 };
 
 
+module.exports.newUserNotification = function (user) {
+
+  const subject = 'New User Signed Up'
+
+  // setup email data with unicode symbols
+  let mailOptions = {
+    from: '"Noreply" <' + config.noReplyEmailAddress + '>', // sender address
+    to: 'admin@iyokus.com', // list of receivers
+    subject: subject, // Subject line
+    template: 'newUserNotification', //emailVerification
+    context: {
+      user: user
+    }
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions);
+};
+
+
 module.exports.OnboardingBuyer = function (receiverEmail) {
 
   const subject = 'Welcome to Iyokus'
