@@ -567,4 +567,24 @@ router.get('/seller/:_id', (req, res, next) => {
 });
 
 
+
+//get products of a seller for userview
+router.post('/pagination', (req, res, next) => {
+  const subcategory = req.body.subcategory;
+  const perPage = req.body.perPage;
+  const page = req.body.page;
+
+  Product.paginationSearch(perPage, page, subcategory, (err, products) => {
+    if (err) {
+      res.json({ success: false, msg: 'Failed to get products' });
+      //throw err;
+    } else {
+      console.log(products);
+
+      res.json({ success: true, data: products });
+    }
+  });
+});
+
+
 module.exports = router;

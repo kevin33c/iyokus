@@ -203,8 +203,6 @@ module.exports.getProductByProductID = function (id, sellerID, callback) {
 
 //delete product by _id
 module.exports.deleteProductByProductID = function (id, callback) {
-  //const query = { _id: id };
-  //Product.deleteOne(query, callback);
 
   const query = { _id: id };
   const update = {
@@ -334,6 +332,26 @@ module.exports.searchProductByCategory = function (category, location, callback)
 
   Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
 };
+
+/*
+//PAGINATION!!!
+.limit(perPage)
+.skip(perPage * page)
+.count() //Return total number of iteam
+*/
+
+module.exports.paginationSearch = function (perPage, page, subcategory, callback) {
+  console.log(perPage);
+  console.log(page);
+  console.log(perPage * page);
+
+  var query = { $and: [{ subcategory: subcategory }, { status: "published" }, { verified: true }] };
+  var a = perPage * page;
+  var b = perPage;
+  Product.find(query, callback).sort({ relevance: -1 }).skip(a).limit(b).select('-reserve_price -sales_count -referenceURL');
+};
+
+
 
 //search product by subcategory
 module.exports.searchProductBySubcategory = function (subcategory, location, callback) {
