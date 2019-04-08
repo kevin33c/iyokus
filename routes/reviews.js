@@ -7,6 +7,30 @@ const Review = require('../models/review');
 //bring in Order data model
 const Order = require('../models/order');
 
+/*
+router.post('/addtemp', (req, res, next) => {
+
+  let newReview = new Review({
+    sellerID: req.body.sellerID,
+    userID: req.body.userID,
+    offerID: req.body.offerID,
+    stars: req.body.stars,
+    comment: req.body.comment,
+  });
+
+  Review.addReview(newReview, (err, address) => {
+    if (err) {
+      res.json({ success: false, msg: 'Error at adding review' });
+      //throw err;
+    } else {
+      res.json({ success: true, msg: 'Review added' });
+    }
+  });
+
+});
+*/
+
+
 //add
 router.post('/add', passport.authenticate('jwt', { session: false }), (req, res, next) => {
 
@@ -30,7 +54,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
         Order.getOrderByOfferID(offerID, (err, order) => {
           if (!order) {
 
-            return res.json({ success: false, msg: 'No se encontró el pedido' });
+            return res.json({ success: false, msg: 'Order not found' });
 
           } else {
             const sellerID = order.sellerID
@@ -45,7 +69,7 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
 
             Review.addReview(newReview, (err, address) => {
               if (err) {
-                res.json({ success: false, msg: 'Error al añadir la evaluación' });
+                res.json({ success: false, msg: 'Error at adding review' });
                 //throw err;
               } else {
                 res.json({ success: true, msg: 'Review added' });
@@ -57,12 +81,12 @@ router.post('/add', passport.authenticate('jwt', { session: false }), (req, res,
 
         //if review already exist then return message
       } else {
-        res.json({ success: false, msg: 'Evaluación para este pedido ya existe' });
+        res.json({ success: false, msg: 'Review of this order already exists' });
       }
     });
 
   } else {
-    res.json({ success: false, msg: 'No autorizado' });
+    res.json({ success: false, msg: 'Unauthorized' });
   };
 
 });
@@ -97,7 +121,7 @@ router.post('/check', passport.authenticate('jwt', { session: false }), (req, re
     });
 
   } else {
-    res.json({ success: false, msg: 'No autorizado' });
+    res.json({ success: false, msg: 'Unauthorized' });
   };
 
 });
@@ -107,7 +131,7 @@ router.get('/info/:_id', (req, res, next) => {
   const sellerID = req.params._id;
 
   Review.getReviewsBySellerID(sellerID, (err, reviews) => {
-    
+
     if (err) {
       return res.json({ success: false, msg: err.message });
     };
@@ -167,12 +191,12 @@ function getStat(reviews) {
 
 
 function roundNumber(num, scale) {
-  if(!("" + num).includes("e")) {
-    return +(Math.round(num + "e+" + scale)  + "e-" + scale);
+  if (!("" + num).includes("e")) {
+    return +(Math.round(num + "e+" + scale) + "e-" + scale);
   } else {
     var arr = ("" + num).split("e");
     var sig = ""
-    if(+arr[1] + scale > 0) {
+    if (+arr[1] + scale > 0) {
       sig = "+";
     }
     return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
