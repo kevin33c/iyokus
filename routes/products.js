@@ -5,6 +5,7 @@ const passport = require('passport');
 //bring in Product data model
 const Product = require('../models/product');
 const archiveProduct = require('../models/archiveProduct');
+const ProductVisit = require('../models/productVisit');
 
 //get products for seller view
 router.post('/', passport.authenticate('jwt', { session: false }), function (req, res) {
@@ -540,16 +541,19 @@ router.post('/recommended', function (req, res) {
 
 
 //increase view count
-router.put('/count/:_id', (req, res, next) => {
-  const id = req.params._id;
-  Product.increaseViewCountByID(id, (err, product) => {
-    if (err) {
-      res.json({ success: false, msg: 'Failed to increase view count' });
-      //throw err;
-    } else {
-      res.json({ success: true, msg: 'View count increased' });
-    }
+router.post('/count', (req, res, next) => {
+
+  let newProductVisit = new ProductVisit({
+    userID: req.body.userID,
+    productID: req.body.productID,
+    category: req.body.category,
+    subcategory: req.body.subcategory
   });
+
+  ProductVisit.addProductVisit(newProductVisit, (err, productVisit) => {});
+
+  Product.increaseViewCountByID(req.body.productID, (err, product) => {});
+  
 });
 
 
