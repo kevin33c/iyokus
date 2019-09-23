@@ -495,6 +495,13 @@ module.exports.searchProductByKeyword = function (key, location, callback) {
   Product.find(query, { score: { $meta: "textScore" } }, callback).sort({ score: { $meta: "textScore" } }).limit(100).select('-reserve_price -sales_count -referenceURL')
 };
 
+
+module.exports.getAdProducts = function (id, callback) {
+  const query = { $and: [{ subcategory: id }, { quantity: { $gt: 0 } }, { status: "published" }, { verified: true }] };
+  Product.find(query, callback).sort({ view_count: -1, lastEditDate: -1 }).limit(30).select('-reserve_price -sales_count -referenceURL');
+};
+
+
 //get product info for pricingEngine
 module.exports.getByID = function (id, callback) {
   const query = { _id: id };

@@ -540,6 +540,25 @@ router.post('/recommended', function (req, res) {
 });
 
 
+//get products of a seller for userview
+router.post('/adproducts', (req, res, next) => {
+
+  const id = req.body.id;
+
+  Product.getAdProducts(id, (err, product) => {
+    if (err) {
+      res.json({ success: false, msg: 'Failed to find product' });
+    };
+
+    if (product.length > 0) {
+      res.json(product);
+    } else {
+      res.json({ msg: 'No product found' });
+    };
+  });
+});
+
+
 //increase view count
 router.post('/count', (req, res, next) => {
 
