@@ -330,7 +330,7 @@ module.exports.searchProductByCategory = function (category, location, callback)
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
+  Product.find(query, callback).sort({ date: -1, relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
 };
 
 /*
@@ -370,7 +370,7 @@ module.exports.searchProductBySubcategory = function (subcategory, location, cal
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
+  Product.find(query, callback).sort({ date: -1, relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
 };
 
 //search product by gender ONLY for Fashion (300) and Sport (400)
@@ -390,7 +390,7 @@ module.exports.searchProductByGender = function (search, location, callback) {
     };
   };
 
-  Product.find(query, callback).sort({ relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
+  Product.find(query, callback).sort({ date: -1, relevance: -1 }).limit(1000).select('-reserve_price -sales_count -referenceURL');
 };
 
 //retrieve related products
@@ -498,7 +498,7 @@ module.exports.searchProductByKeyword = function (key, location, callback) {
 
 module.exports.getAdProducts = function (id, callback) {
   const query = { $and: [{ subcategory: id }, { quantity: { $gt: 0 } }, { status: "published" }, { verified: true }] };
-  Product.find(query, callback).sort({ view_count: -1, lastEditDate: -1 }).limit(30).select('-reserve_price -sales_count -referenceURL');
+  Product.find(query, callback).sort({ lastEditDate: -1 }).limit(30).select('-reserve_price -sales_count -referenceURL');
 };
 
 
