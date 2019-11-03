@@ -98,10 +98,10 @@ const StagingOrderSchema = mongoose.Schema({
   },
   date: {
     type: Date,
-    expires: 3600,
+    expires: 7200,
     default: Date.now
   }
-}).index({ "date": 1 }, { expireAfterSeconds: 3600 });
+}).index({ "date": 1 }, { expireAfterSeconds: 7200 });
 
 
 const StagingOrder = module.exports = mongoose.model('StagingOrder', StagingOrderSchema);

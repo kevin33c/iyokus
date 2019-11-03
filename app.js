@@ -156,7 +156,8 @@ const refunds = require('./routes/refunds');
 const claims = require('./routes/claims');
 //invoice
 const invoices = require('./routes/invoiceLogs');
-
+//coinbase
+const coinbase = require('./routes/coinbase');
 
 
 //= =======================================
@@ -206,6 +207,8 @@ app.use('/api/refunds', refunds);
 app.use('/api/claims', claims);
 //invoices
 app.use('/api/invoices', invoices);
+//coinbase
+app.use('/api/coinbase', coinbase);
 
 
 //= =======================================

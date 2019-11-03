@@ -185,7 +185,6 @@ router.delete('/delete/:_id', passport.authenticate('jwt', { session: false }), 
   }
 });
 
-
 //edit product
 router.put('/edit/:_id', passport.authenticate('jwt', { session: false }), (req, res) => {
   const a = req.user;

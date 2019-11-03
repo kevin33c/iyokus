@@ -10,14 +10,14 @@ const Payment = require('../models/payment');
 router.post('/execute', (req, res) => {
 
   const amount = req.body.stripeAmount;
-  const type = req.body.type;
+  //const type = req.body.type;
   const paymentID = req.body.stripeToken;
   const sellerID = req.body.sellerID;
   const userID = req.body.userID;
   const offerID = req.body.offerID;
   const description = req.body.description;
   const productID = req.body.productID;
-  const currency = req.body.currency;
+  //const currency = req.body.currency;
   const amountOrginal = req.body.amount;
   const email = req.body.stripeEmail;
 
@@ -96,7 +96,7 @@ router.post('/execute', (req, res) => {
         stripe.balance.retrieveTransaction(charge.balance_transaction, (err, balanceTransaction) => {
           //record payment in db
           let newPayment = new Payment({
-            type: type,
+            type: 'Stripe',
             paymentID: charge.id,
             sellerID: sellerID,
             balance_transaction: charge.balance_transaction,
@@ -106,7 +106,7 @@ router.post('/execute', (req, res) => {
             userID: userID,
             offerID: offerID,
             productID: productID,
-            currency: currency,
+            currency: 'gbp',
             amount: amountOrginal,
             fee: balanceTransaction.fee / 100,
             cash: amountOrginal - (balanceTransaction.fee / 100)

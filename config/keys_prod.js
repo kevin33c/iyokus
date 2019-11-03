@@ -18,5 +18,7 @@ module.exports = {
   domain: process.env.DOMAIN,
   VAT: process.env.VAT_RATE_ES,
   invoiceEmail: process.env.INVOICE_EMAIL,
-  preRenderToken: process.env.PRERENDER_TOKEN
+  preRenderToken: process.env.PRERENDER_TOKEN,
+  coinBaseApiKey: process.env.COINBASE_KEY,
+  coinBaseApiDomain: process.env.COINBASE_APIDOMAIN
 }
