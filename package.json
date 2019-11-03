@@ -2,6 +2,9 @@
   "name": "iyokus",
   "version": "1.0.0",
   "description": "Iyokus e-commerce platform",
+  "engines": {
+    "node": "10.10.0"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
