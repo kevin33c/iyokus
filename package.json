@@ -37,7 +37,7 @@
     "request": "*"
   },
   "author": "Kevin Chen",
-  "license": "MIT",
+  "license": "Private - Property of Iyokus Ltd",
   "devDependencies": {
     "@angular/cli": "^1.7.3"
   }
