@@ -1,0 +1,85 @@
+.iyokus-small-input{
+  max-width: 5cm;
+}
+
+.iyokus-medium-input{
+  max-width: 10cm;
+}
+
+.row {
+  position: relative;
+}
+
+.hover-btn {
+   position: absolute;
+   right: 15px;
+   display: none;
+}
+
+.row:hover .hover-btn {
+   display: block;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.img-preview{
+  object-fit: scale-down;
+  object-position: center;
+  max-width:220px;
+  max-height: 250px;
+}
+
+.woolime-theme {
+  color:#2e2e36;
+}
+
+.woolime-btn-theme{
+  background: linear-gradient(to right,#ff850b 0,#ff5945 100%);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+
+
+.page-background{
+  margin:0;
+  padding-bottom: 100px;
+  padding-top: 50px;
+  background-color: #B0C4DE
+}
+
+.card{
+  background-color: #f8f9fd;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+h4{
+  text-align: center;
+}
+
+#header{
+  background-color: #f8f9fd;
+}
+#header-text{
+  text-align: center;
+  font-size: 15px;
+}
+
+.woolime-btn-theme{
+  background: linear-gradient(to right,#ff850b 0,#ff5945 100%);
+  color: white;
+}
+
+small{
+  font-size: 12px;
+}
+
+label{
+  font-weight: 600;
+}

@@ -1,0 +1,156 @@
+<!--SYSTEM ACCEPT-->
+<div *ngIf="offer?.status === 'System Accept'" class="container mt-4">
+  <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12" id="bid-card">
+    <i class="fa fa-check-circle" id="icon-accept"></i>
+    <div class="card-body">
+      <p class="card-text" style="text-align: center;">
+        <b>Congratulation! Your bid of {{offer?.value * offer?.offer_quantity | currency: 'GBP': number}} for
+          {{offer?.offer_quantity}}</b>
+        <br>
+        <em>"{{offer?.name}}" <b>{{offer?.variant1}} {{offer?.variant2}}</b></em>
+        <br>
+        <b>was accepted
+          <sup>1</sup>.</b>
+        <br>
+        <b>A {{discount | percent}} discount from the list price of {{offer?.listed_price * offer?.offer_quantity |
+          currency:
+          'GBP': number}}.
+        </b>
+      </p>
+      <hr>
+      <button id="accept-btn" class="btn btn-lg btn-block" [routerLink]="['/purchase/selectaddress']" [queryParams]="{ord_id: offer?.uuID, prod_id: offer?.productID}">Continue
+        <i class="fa fa-arrow-right"></i>
+      </button>
+
+      <section class="card-footer">
+        <small>
+          <sup>1</sup>This offer is stored and valid for 1 day subject to availability.
+          <br>
+          <sup>*</sup>See all your valid offers <a routerLink="/user/yourbids">here</a>.
+        </small>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!--SYSTEM REJECT-->
+<div *ngIf="offer?.status === 'System Reject'" class="container mt-4">
+  <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12" id="bid-card">
+    <i class="fa fa-times-circle" id="icon-reject"></i>
+    <div class="card-body">
+      <p class="card-text" style="text-align: center;">
+        <b>Unfortunately, your bid of {{offer?.value * offer?.offer_quantity | currency: 'GBP': number}} for
+          {{offer?.offer_quantity}}</b>
+        <br>
+        <em>"{{offer?.name}}" <b>{{offer?.variant1}} {{offer?.variant2}}</b></em>
+        <br>
+        <b>was rejected
+          <sup>1,2</sup>.
+        </b>
+        <br>
+        <b>A {{discount | percent}} discount from the list price of {{offer?.listed_price * offer?.offer_quantity |
+          currency: 'GBP': number}}.</b>
+      </p>
+      <hr>
+      <button id="reject-btn" class="btn btn-lg btn-block" (click)="backClicked()">
+        <i class="fa fa-arrow-left"></i> Continue</button>
+
+      <section class="card-footer">
+        <small>
+          <sup>1</sup>Once your bid is rejected, you'll not able to bid again for the same product until the lock-out period expires.</small>
+        <br>
+        <small>
+          <sup>2</sup>
+          <b>Remember you can always pay the list price to purchase the item.</b>
+        </small>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+<!--SYSTEM COUNTER-->
+<div *ngIf="offer?.status === 'Counter'" class="container mt-4">
+  <div class="alert alert-warning alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-exclamation-triangle"></i>
+    Remember whether you accept the conter-offer or not, you are not committing to the purchase yet.
+  </div>
+
+  <div class="card col-lg-12 col-md-12 col-sm-12 col-xs-12" id="bid-card">
+    <i class="fa fa-info-circle" id="icon-decide"></i>
+    <div class="card-body">
+      <p class="card-text" style="text-align: center;">
+        <b>Congratulation! You have reiceved a counter-offer
+          <sup>1,2</sup> of {{offer?.value * offer?.offer_quantity | currency: 'GBP': number}} for
+          {{offer?.offer_quantity}} </b>
+        <br>
+        <em>"{{offer?.name}}" <b>{{offer?.variant1}} {{offer?.variant2}}</b></em>
+        <br>
+        <b>A {{discount | percent}} discount from the list price of {{offer?.listed_price * offer?.offer_quantity |
+          currency:
+          'GBP': number}}.</b>
+      </p>
+      <hr>
+      <small style="color: red;">
+        <b>Warning: if you leave this page before accepting the counter-offer, this offer will be rejected automatically and lock-out period will apply.</b>
+      </small>
+      <br>
+
+      <div class="text-center mb-3 mt-3">
+        <button id="accept-btn" class="btn btn-lg btn-block" (click)="onClickAcceptOffer()">Accept</button>
+        <button id="reject-btn" class="btn btn-lg btn-block" data-toggle="modal" data-target="#myModal">Reject</button>
+      </div>
+
+      <section class="card-footer">
+        <small>
+          <sup>1</sup>If you accept the counter-offer, the offer will be saved
+          <a routerLink="/user/yourbids">here</a> (valid for 1 day
+          <sup>*</sup>) and you can procced to payment at anytime before the expiry date.</small>
+        <br>
+        <small>
+          <sup>2</sup>If you reject the counter-offer, the lock-out period will apply and you'll not able to bid again for this product until after the lock-out period
+          <sup>3</sup>.</small>
+        <br>
+        <small>
+          <sup>3</sup>Remember you can always pay the list price to purchase the item.</small>
+        <br>
+        <small>
+          <sup>*</sup>The validity of the offer is subject to the item's availability.</small>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-info-circle" style="color: blue;"></i>
+        <span> Are you sure to reject the counter-offer of {{offer?.value * offer?.offer_quantity | currency: 'GBP':
+          number}} for
+          {{offer?.offer_quantity}}
+          <br>
+          <em>"{{offer?.name}}" <b>{{offer?.variant1}} {{offer?.variant2}}</b></em>?</span>
+        <br>
+        <br>
+        <i class="fa fa-exclamation-triangle" style="color: orange;"></i>
+        <span>If you reject the counter-offer, the lock-out period will apply and you'll not able to bid again for this product until after the lock-out period.</span>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal" (click)="onClickRejectOffer()">Continue</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL-->

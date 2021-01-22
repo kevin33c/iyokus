@@ -1,0 +1,14 @@
+#page-header{
+  height:200px;
+  background:url('https://s3.eu-west-3.amazonaws.com/woolime/assets/ContactUs_Main.jpg');
+  background-position:0 -560px;
+  background-attachment:fixed;
+  color:#fff;
+  border-bottom:1px #eee solid;
+  padding-top:50px;
+}
+
+footer#main-footer{
+  background:#000;
+  color:#fff;
+}

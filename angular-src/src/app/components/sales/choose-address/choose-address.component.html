@@ -1,0 +1,930 @@
+<section>
+  <div class="d-none d-sm-block">
+    <small>
+      <ol class="breadcrumb">
+        <form class="form-inline">
+          <a class="deactivate" href="javascript:void(0);" [routerLink]="['/']">
+            <i class="fa fa-home" style="font-size: 20px" for="home"></i>
+            <a class="black-text ml-1" id="home">Home</a>
+            <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="home"></i>
+          </a>
+        </form>
+
+        <form class="form-inline">
+          <a class="deactivate" href="javascript:void(0);" [routerLink]="['/product', productNameToUrl(product?.name), productID]">
+            <i class="fa fa-shopping-cart" style="font-size: 20px" for="product"></i>
+            <a class="black-text ml-1" id="product">Product</a>
+            <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="product"></i>
+          </a>
+        </form>
+
+        <form class="form-inline">
+          <i class="fa fa-truck" style="font-size: 20px" for="delivery"></i>
+          <a class="black-text ml-1" id="delivery">Delivery</a>
+          <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="delivery"></i>
+        </form>
+
+        <form class="form-inline deactivate">
+          <i class="fa fa-credit-card-alt" style="font-size: 20px" for="payment"></i>
+          <a class="black-text ml-1" id="payment">Payment</a>
+          <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="payment"></i>
+        </form>
+        <form class="form-inline deactivate">
+          <i class="fa fa-check-circle" style="font-size: 20px" for="confirmation"></i>
+          <a class="black-text ml-1" id="confirmation">Confirmation</a>
+        </form>
+      </ol>
+    </small>
+  </div>
+
+
+  <div class="mb-4 ml-3 mt-4">
+    <a href="javascript:void(0);" (click)="backClicked()">
+      <i class="fa fa-arrow-circle-o-left" style="font-size: 40px; color: black; float: left;"></i>
+    </a>
+    <br>
+  </div>
+</section>
+
+<!--IF MEETING DELIVERY-->
+<div *ngIf="product?.deliveryMethod == 0" class="mb-5">
+  <div class="container" id="meeting-container">
+
+    <h2>Meetup Delivery <img id="icon-button-del"
+        src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png" alt="iyoku.es"></h2>
+    <p>The delivery method of this item is "Meetup Delivery". The seller will contact you via Iyokus Messenger after the
+      order confirmation to arrange and agree on a delivery time and location within <b>{{product?.location}}</b>.</p>
+
+    <div class="card" style="width: 350px; height: 300px;">
+      <div class="card-body">
+        <h5 class="card-title">Order Summary</h5>
+        <small class="card-text">
+          <b>{{quantity}}</b> x {{productName}} <b>{{variant1}} {{variant2}}</b></small>
+        <br>
+        <small class="card-text">for
+          <b>{{(quantity * price) | currency: 'GBP': number }}</b>
+        </small>
+        <br>
+        <small class="card-text">
+          <b>Delivery cost: <span style="color: green;">FREE</span></b>
+        </small>
+        <br>
+        <small class="card-text">
+          <b>Total: {{(price * quantity) + product?.deliveryCost | currency: 'GBP': number }}</b>
+        </small>
+        <hr>
+        <button type="button" class="btn woolime-btn-theme btn-block mt-3" (click)="onClickCreateOrder()"
+          [routerLink]="['/purchase/payment', offerID]">Continue to Payment</button>
+      </div>
+    </div>
+
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <th scope="row"><img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Payment_Icon_number_1.png"
+              id="numbered-icon"></th>
+          <td>
+            <ul>
+              <li>Complete order payment</li>
+              <li>Iyokus will <b>withhold</b> your payment until you receive and confirm you are satisfied with the
+                item.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Payment_Icon_number_2.png"
+              id="numbered-icon"></th>
+          <td>
+            <ul>
+              <li>Once completed the order payment, you'll receive an email confirmation with a 6 digits <b>Payment
+                  Code</b>, which the seller will need to obtain in order to receive the payment.
+              </li>
+              <li>The seller will contact you soon using Iyokus Messenger to arrage a meetup as soon as possible to
+                deliver the item.
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Payment_Icon_number_3.png"
+              id="numbered-icon"></th>
+          <td>
+            <ul>
+              <li>Meet will seller at the agreed upon time and location to receive the item.</li>
+              <li>Once received and you are satisfied with the item, you can give the <b>Payment Code</b> to the seller
+                to release the payment.
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"><img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Payment_Icon_number_4.png"
+              id="numbered-icon"></th>
+          <td>
+            <ul>
+              <li>The seller enter and confirm the Payment Code in order to release the payment and complete the order.
+              </li>
+              <li>You'll be able to rate the seller upon order completion.</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <section>
+      <small style="color: red;">
+        <b>Warning:</b> for security and precaution, it is highly recommended to arrange a Meetup Delivery at a public
+        location and within a reasonable hour.
+      </small>
+    </section>
+
+  </div>
+</div>
+
+
+
+<!--IF POST DELIVERY-->
+<div *ngIf="product?.deliveryMethod == 1" class="mb-5">
+  <section>
+    <div class="container">
+      <h2>Postal Delivery <img id="icon-button-del"
+          src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"></h2>
+
+      <div *ngIf="product?.isFreeDelivery == true">
+        <h5 class="mt-3">Choose delivery method</h5>
+        <select [(ngModel)]="selectedDeliveryMethod" name="selectedDeliveryMethod" class="form-control col-2"
+          style="min-width: 4.5cm;" id="exampleFormControlSelect1" (change)="onClickSelectDeliveryMethod()">
+          <option>Free Delivery</option>
+          <option>Standard Delivery</option>
+        </select>
+        <small><b>{{selectedDeliveryMethod}}</b> <span *ngIf="selectedDeliveryMethod == 'Standard Delivery'">takes 3 to
+            4 weeks to deliver with tracking</span><span *ngIf="selectedDeliveryMethod == 'Free Delivery'">takes 4 to 5
+            weeks to deliver without tracking</span></small>
+      </div>
+
+      <br>
+      <br>
+      <h5>Choose delivery address</h5>
+
+      <!--SUMMARY SMALL SCREEN VIEW-->
+      <div class="d-block d-sm-none mb-3">
+        <div class="card" style="width: 320px; height: 320px;">
+          <div class="card-body">
+            <h5 class="card-title">Order Summary</h5>
+            <small class="card-text">
+              <b>{{quantity}}</b> x {{productName}} <b>{{variant1}} {{variant2}}</b></small>
+            <br>
+            <small class="card-text">For
+              <b>{{(quantity * price) | currency: 'GBP': number }}</b>
+            </small>
+            <br>
+            <small class="card-text">
+              <div *ngIf="storedAddressAvailable != false">
+                <b>Deliver to: </b>{{deliveryAddress?.fullname}}, {{deliveryAddress?.address1}}
+                {{deliveryAddress?.address2}} {{deliveryAddress?.city}}, {{deliveryAddress?.postCode}},
+                {{deliveryAddress?.region}}, {{deliveryAddress?.country}}
+                <br>
+              </div>
+              <b>Delivery cost: {{deliveryCost | currency: 'GBP': number }}</b>
+            </small><br>
+            <small class="card-text">
+              <b>Total: {{(price * quantity) + deliveryCost | currency: 'GBP': number }}</b>
+            </small>
+            <hr>
+            <button type="button" class="btn woolime-btn-theme btn-block mt-3" (click)="onClickCreateOrder()"
+              [routerLink]="['/purchase/payment', offerID]">Continue to Payment</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4 mt-4">
+
+        <!--EXISTING ADDRESS BOXES-->
+        <div *ngFor="let address of addresses" class="col-md-4 mt-3">
+          <div class="card">
+            <div class="card-content">
+              <a href="javascript:;" data-toggle="modal" data-target="#editModal" (click)="getData(address)">
+                <i class="fa fa-pencil" style="font-size: 20px; color: black; float: right;"></i>
+              </a>
+              <br>
+              <b>{{address.fullname}}</b>
+              <br>
+              <small>{{address.address1}} {{address.address2}}</small>
+              <br>
+              <small>{{address.city}}, {{address.postCode}}</small>
+              <br>
+              <small>{{address.region}}, {{address.country}}</small>
+              <br>
+              <small>Phone: {{address.phone}}</small>
+              <br>
+            </div>
+            <div class="card-footer text-muted">
+              <button type="button" class="btn btn-success btn-sm btn-block"
+                (click)="onClickSelectAddress(address)">Deliver to here</button>
+            </div>
+          </div>
+        </div>
+
+        <!--SUMMARY LARGE SCREEN VIEW-->
+        <div class="col-md-4 d-none d-sm-block">
+          <div class="card sidenav">
+            <div class="card-body">
+              <h5 class="card-title">Order Summary</h5>
+              <small class="card-text">
+                <b>{{quantity}}</b> x {{productName}} <b>{{variant1}} {{variant2}}</b></small>
+              <br>
+              <small class="card-text">For
+                <b>{{(quantity * price) | currency: 'GBP': number }}</b>
+              </small>
+              <br>
+              <hr>
+              <small class="card-text">
+                <div *ngIf="storedAddressAvailable != false">
+                  <b>Deliver to:</b>
+                  <br>{{deliveryAddress?.fullname}}, {{deliveryAddress?.address1}}
+                  {{deliveryAddress?.address2}} {{deliveryAddress?.city}}, {{deliveryAddress?.postCode}},
+                  {{deliveryAddress?.region}}, {{deliveryAddress?.country}}
+                  <br>
+                </div>
+                <b>Delivery cost: {{deliveryCost | currency: 'GBP': number }}</b>
+              </small>
+              <br>
+              <hr>
+              <small class="card-text">
+                <b>Total: {{price * quantity + deliveryCost | currency: 'GBP': number }}</b>
+              </small>
+              <br>
+              <hr>
+              <button type="button" class="btn woolime-btn-theme btn-block mt-3" (click)="onClickCreateOrder()"
+                [routerLink]="['/purchase/payment', offerID]">Continue to Payment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+
+
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content form-elegant">
+          <!--Header-->
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel">
+              <strong>Edit Address</strong>
+            </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!--Body-->
+          <div class="modal-body mx-4">
+            <form [formGroup]="form" #userForm="ngForm">
+              <!--Full name-->
+              <div class="form-group">
+                <label for="fullname">Full name</label>
+                <input type="text" [(ngModel)]="fullname" name="fullname" class="form-control"
+                  formControlName="fullname">
+              </div>
+              <!--Full name-->
+              <!--Country-->
+              <div class="form-group">
+                <label for="country">Country</label>
+                <select [(ngModel)]="country" name="country" class="form-control" formControlName="country">
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Åland Islands</option>
+                  <option value="AL">Albania</option>
+                  <option value="DZ">Algeria</option>
+                  <option value="AS">American Samoa</option>
+                  <option value="AD">Andorra</option>
+                  <option value="AO">Angola</option>
+                  <option value="AI">Anguilla</option>
+                  <option value="AQ">Antarctica</option>
+                  <option value="AG">Antigua and Barbuda</option>
+                  <option value="AR">Argentina</option>
+                  <option value="AM">Armenia</option>
+                  <option value="AW">Aruba</option>
+                  <option value="AU">Australia</option>
+                  <option value="AT">Austria</option>
+                  <option value="AZ">Azerbaijan</option>
+                  <option value="BS">Bahamas</option>
+                  <option value="BH">Bahrain</option>
+                  <option value="BD">Bangladesh</option>
+                  <option value="BB">Barbados</option>
+                  <option value="BY">Belarus</option>
+                  <option value="BE">Belgium</option>
+                  <option value="BZ">Belize</option>
+                  <option value="BJ">Benin</option>
+                  <option value="BM">Bermuda</option>
+                  <option value="BT">Bhutan</option>
+                  <option value="BO">Bolivia, Plurinational State of</option>
+                  <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                  <option value="BA">Bosnia and Herzegovina</option>
+                  <option value="BW">Botswana</option>
+                  <option value="BV">Bouvet Island</option>
+                  <option value="BR">Brazil</option>
+                  <option value="IO">British Indian Ocean Territory</option>
+                  <option value="BN">Brunei Darussalam</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="BF">Burkina Faso</option>
+                  <option value="BI">Burundi</option>
+                  <option value="KH">Cambodia</option>
+                  <option value="CM">Cameroon</option>
+                  <option value="CA">Canada</option>
+                  <option value="CV">Cape Verde</option>
+                  <option value="KY">Cayman Islands</option>
+                  <option value="CF">Central African Republic</option>
+                  <option value="TD">Chad</option>
+                  <option value="CL">Chile</option>
+                  <option value="CN">China</option>
+                  <option value="CX">Christmas Island</option>
+                  <option value="CC">Cocos (Keeling) Islands</option>
+                  <option value="CO">Colombia</option>
+                  <option value="KM">Comoros</option>
+                  <option value="CG">Congo</option>
+                  <option value="CD">Congo, the Democratic Republic of the</option>
+                  <option value="CK">Cook Islands</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="CI">Côte d'Ivoire</option>
+                  <option value="HR">Croatia</option>
+                  <option value="CU">Cuba</option>
+                  <option value="CW">Curaçao</option>
+                  <option value="CY">Cyprus</option>
+                  <option value="CZ">Czech Republic</option>
+                  <option value="DK">Denmark</option>
+                  <option value="DJ">Djibouti</option>
+                  <option value="DM">Dominica</option>
+                  <option value="DO">Dominican Republic</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="EG">Egypt</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="GQ">Equatorial Guinea</option>
+                  <option value="ER">Eritrea</option>
+                  <option value="EE">Estonia</option>
+                  <option value="ET">Ethiopia</option>
+                  <option value="FK">Falkland Islands (Malvinas)</option>
+                  <option value="FO">Faroe Islands</option>
+                  <option value="FJ">Fiji</option>
+                  <option value="FI">Finland</option>
+                  <option value="FR">France</option>
+                  <option value="GF">French Guiana</option>
+                  <option value="PF">French Polynesia</option>
+                  <option value="TF">French Southern Territories</option>
+                  <option value="GA">Gabon</option>
+                  <option value="GM">Gambia</option>
+                  <option value="GE">Georgia</option>
+                  <option value="DE">Germany</option>
+                  <option value="GH">Ghana</option>
+                  <option value="GI">Gibraltar</option>
+                  <option value="GR">Greece</option>
+                  <option value="GL">Greenland</option>
+                  <option value="GD">Grenada</option>
+                  <option value="GP">Guadeloupe</option>
+                  <option value="GU">Guam</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="GG">Guernsey</option>
+                  <option value="GN">Guinea</option>
+                  <option value="GW">Guinea-Bissau</option>
+                  <option value="GY">Guyana</option>
+                  <option value="HT">Haiti</option>
+                  <option value="HM">Heard Island and McDonald Islands</option>
+                  <option value="VA">Holy See (Vatican City State)</option>
+                  <option value="HN">Honduras</option>
+                  <option value="HK">Hong Kong</option>
+                  <option value="HU">Hungary</option>
+                  <option value="IS">Iceland</option>
+                  <option value="IN">India</option>
+                  <option value="ID">Indonesia</option>
+                  <option value="IR">Iran, Islamic Republic of</option>
+                  <option value="IQ">Iraq</option>
+                  <option value="IE">Ireland</option>
+                  <option value="IM">Isle of Man</option>
+                  <option value="IL">Israel</option>
+                  <option value="IT">Italy</option>
+                  <option value="JM">Jamaica</option>
+                  <option value="JP">Japan</option>
+                  <option value="JE">Jersey</option>
+                  <option value="JO">Jordan</option>
+                  <option value="KZ">Kazakhstan</option>
+                  <option value="KE">Kenya</option>
+                  <option value="KI">Kiribati</option>
+                  <option value="KP">Korea, Democratic People's Republic of</option>
+                  <option value="KR">Korea, Republic of</option>
+                  <option value="KW">Kuwait</option>
+                  <option value="KG">Kyrgyzstan</option>
+                  <option value="LA">Lao People's Democratic Republic</option>
+                  <option value="LV">Latvia</option>
+                  <option value="LB">Lebanon</option>
+                  <option value="LS">Lesotho</option>
+                  <option value="LR">Liberia</option>
+                  <option value="LY">Libya</option>
+                  <option value="LI">Liechtenstein</option>
+                  <option value="LT">Lithuania</option>
+                  <option value="LU">Luxembourg</option>
+                  <option value="MO">Macao</option>
+                  <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+                  <option value="MG">Madagascar</option>
+                  <option value="MW">Malawi</option>
+                  <option value="MY">Malaysia</option>
+                  <option value="MV">Maldives</option>
+                  <option value="ML">Mali</option>
+                  <option value="MT">Malta</option>
+                  <option value="MH">Marshall Islands</option>
+                  <option value="MQ">Martinique</option>
+                  <option value="MR">Mauritania</option>
+                  <option value="MU">Mauritius</option>
+                  <option value="YT">Mayotte</option>
+                  <option value="MX">Mexico</option>
+                  <option value="FM">Micronesia, Federated States of</option>
+                  <option value="MD">Moldova, Republic of</option>
+                  <option value="MC">Monaco</option>
+                  <option value="MN">Mongolia</option>
+                  <option value="ME">Montenegro</option>
+                  <option value="MS">Montserrat</option>
+                  <option value="MA">Morocco</option>
+                  <option value="MZ">Mozambique</option>
+                  <option value="MM">Myanmar</option>
+                  <option value="NA">Namibia</option>
+                  <option value="NR">Nauru</option>
+                  <option value="NP">Nepal</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="NC">New Caledonia</option>
+                  <option value="NZ">New Zealand</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NE">Niger</option>
+                  <option value="NG">Nigeria</option>
+                  <option value="NU">Niue</option>
+                  <option value="NF">Norfolk Island</option>
+                  <option value="MP">Northern Mariana Islands</option>
+                  <option value="NO">Norway</option>
+                  <option value="OM">Oman</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="PW">Palau</option>
+                  <option value="PS">Palestinian Territory, Occupied</option>
+                  <option value="PA">Panama</option>
+                  <option value="PG">Papua New Guinea</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Peru</option>
+                  <option value="PH">Philippines</option>
+                  <option value="PN">Pitcairn</option>
+                  <option value="PL">Poland</option>
+                  <option value="PT">Portugal</option>
+                  <option value="PR">Puerto Rico</option>
+                  <option value="QA">Qatar</option>
+                  <option value="RE">Réunion</option>
+                  <option value="RO">Romania</option>
+                  <option value="RU">Russian Federation</option>
+                  <option value="RW">Rwanda</option>
+                  <option value="BL">Saint Barthélemy</option>
+                  <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                  <option value="KN">Saint Kitts and Nevis</option>
+                  <option value="LC">Saint Lucia</option>
+                  <option value="MF">Saint Martin (French part)</option>
+                  <option value="PM">Saint Pierre and Miquelon</option>
+                  <option value="VC">Saint Vincent and the Grenadines</option>
+                  <option value="WS">Samoa</option>
+                  <option value="SM">San Marino</option>
+                  <option value="ST">Sao Tome and Principe</option>
+                  <option value="SA">Saudi Arabia</option>
+                  <option value="SN">Senegal</option>
+                  <option value="RS">Serbia</option>
+                  <option value="SC">Seychelles</option>
+                  <option value="SL">Sierra Leone</option>
+                  <option value="SG">Singapore</option>
+                  <option value="SX">Sint Maarten (Dutch part)</option>
+                  <option value="SK">Slovakia</option>
+                  <option value="SI">Slovenia</option>
+                  <option value="SB">Solomon Islands</option>
+                  <option value="SO">Somalia</option>
+                  <option value="ZA">South Africa</option>
+                  <option value="GS">South Georgia and the South Sandwich Islands</option>
+                  <option value="SS">South Sudan</option>
+                  <option value="ES">Spain</option>
+                  <option value="LK">Sri Lanka</option>
+                  <option value="SD">Sudan</option>
+                  <option value="SR">Suriname</option>
+                  <option value="SJ">Svalbard and Jan Mayen</option>
+                  <option value="SZ">Swaziland</option>
+                  <option value="SE">Sweden</option>
+                  <option value="CH">Switzerland</option>
+                  <option value="SY">Syrian Arab Republic</option>
+                  <option value="TW">Taiwan, Province of China</option>
+                  <option value="TJ">Tajikistan</option>
+                  <option value="TZ">Tanzania, United Republic of</option>
+                  <option value="TH">Thailand</option>
+                  <option value="TL">Timor-Leste</option>
+                  <option value="TG">Togo</option>
+                  <option value="TK">Tokelau</option>
+                  <option value="TO">Tonga</option>
+                  <option value="TT">Trinidad and Tobago</option>
+                  <option value="TN">Tunisia</option>
+                  <option value="TR">Turkey</option>
+                  <option value="TM">Turkmenistan</option>
+                  <option value="TC">Turks and Caicos Islands</option>
+                  <option value="TV">Tuvalu</option>
+                  <option value="UG">Uganda</option>
+                  <option value="UA">Ukraine</option>
+                  <option value="AE">United Arab Emirates</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="US">United States</option>
+                  <option value="UM">United States Minor Outlying Islands</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="UZ">Uzbekistan</option>
+                  <option value="VU">Vanuatu</option>
+                  <option value="VE">Venezuela, Bolivarian Republic of</option>
+                  <option value="VN">Viet Nam</option>
+                  <option value="VG">Virgin Islands, British</option>
+                  <option value="VI">Virgin Islands, U.S.</option>
+                  <option value="WF">Wallis and Futuna</option>
+                  <option value="EH">Western Sahara</option>
+                  <option value="YE">Yemen</option>
+                  <option value="ZM">Zambia</option>
+                  <option value="ZW">Zimbabwe</option>
+                </select>
+              </div>
+              <!--Country-->
+              <!--Post Code-->
+              <div class="form-group">
+                <label for="postcode">ZIP / Post Code</label>
+                <input type="text" [(ngModel)]="postcode" name="postcode" class="form-control"
+                  formControlName="postCode">
+              </div>
+              <!--Post Code-->
+              <!--Address1-->
+              <div class="form-group">
+                <label for="address1">Address</label>
+                <input type="text" [(ngModel)]="address1" name="address1" class="form-control"
+                  placeholder="Street, flat, number, etc." formControlName="address1">
+              </div>
+              <!--Address1-->
+              <!--Address2-->
+              <div class="form-group">
+                <input type="text" [(ngModel)]="address2" name="address2" class="form-control"
+                  formControlName="address2">
+              </div>
+              <!--Address2-->
+              <!--City-->
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" [(ngModel)]="city" name="city" class="form-control" formControlName="city">
+              </div>
+              <!--City-->
+              <!--region-->
+              <div class="form-group">
+                <label for="region">County / Province / Region</label>
+                <input type="text" [(ngModel)]="region" name="region" class="form-control" formControlName="region">
+              </div>
+              <!--region-->
+              <!--Phone Number-->
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" [(ngModel)]="phone" name="phone" class="form-control" formControlName="phone">
+              </div>
+              <!--Phone Number-->
+            </form>
+          </div>
+          <!--Body-->
+          <!--Footer-->
+          <div class="modal-footer mx-5 pt-3 mb-1">
+            <button type="submit" class="btn btn-success" data-dismiss="modal"
+              (click)="onClickUpdate(address?._id)">Save</button>
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
+    </div>
+    <!--  Edit Modal -->
+  </section>
+
+
+  <section>
+    <div class="container">
+      <h3 class="page-header">Enter a New Address</h3>
+      <div class="col-sm-8">
+        <form #addAddressForm="ngForm" style="max-width: 600px;">
+          <!--Full name-->
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" [(ngModel)]="name" name="name" class="form-control" #Name="ngModel"
+              [ngClass]="{'is-invalid' : Name.errors && Name.touched}" required minlength="2">
+            <div [hidden]="!Name.errors?.required" class="invalid-feedback">Full name required.</div>
+            <div [hidden]="!Name.errors?.minlength" class="invalid-feedback">Please enter a valid full name.</div>
+          </div>
+          <!--Full name-->
+          <!--Country-->
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select [(ngModel)]="country" name="country" class="form-control" #selectCountry="ngModel"
+              [ngClass]="{'is-invalid' : selectCountry.errors && selectCountry.touched}" required>
+              <option value="AF">Afghanistan</option>
+              <option value="AX">Åland Islands</option>
+              <option value="AL">Albania</option>
+              <option value="DZ">Algeria</option>
+              <option value="AS">American Samoa</option>
+              <option value="AD">Andorra</option>
+              <option value="AO">Angola</option>
+              <option value="AI">Anguilla</option>
+              <option value="AQ">Antarctica</option>
+              <option value="AG">Antigua and Barbuda</option>
+              <option value="AR">Argentina</option>
+              <option value="AM">Armenia</option>
+              <option value="AW">Aruba</option>
+              <option value="AU">Australia</option>
+              <option value="AT">Austria</option>
+              <option value="AZ">Azerbaijan</option>
+              <option value="BS">Bahamas</option>
+              <option value="BH">Bahrain</option>
+              <option value="BD">Bangladesh</option>
+              <option value="BB">Barbados</option>
+              <option value="BY">Belarus</option>
+              <option value="BE">Belgium</option>
+              <option value="BZ">Belize</option>
+              <option value="BJ">Benin</option>
+              <option value="BM">Bermuda</option>
+              <option value="BT">Bhutan</option>
+              <option value="BO">Bolivia, Plurinational State of</option>
+              <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+              <option value="BA">Bosnia and Herzegovina</option>
+              <option value="BW">Botswana</option>
+              <option value="BV">Bouvet Island</option>
+              <option value="BR">Brazil</option>
+              <option value="IO">British Indian Ocean Territory</option>
+              <option value="BN">Brunei Darussalam</option>
+              <option value="BG">Bulgaria</option>
+              <option value="BF">Burkina Faso</option>
+              <option value="BI">Burundi</option>
+              <option value="KH">Cambodia</option>
+              <option value="CM">Cameroon</option>
+              <option value="CA">Canada</option>
+              <option value="CV">Cape Verde</option>
+              <option value="KY">Cayman Islands</option>
+              <option value="CF">Central African Republic</option>
+              <option value="TD">Chad</option>
+              <option value="CL">Chile</option>
+              <option value="CN">China</option>
+              <option value="CX">Christmas Island</option>
+              <option value="CC">Cocos (Keeling) Islands</option>
+              <option value="CO">Colombia</option>
+              <option value="KM">Comoros</option>
+              <option value="CG">Congo</option>
+              <option value="CD">Congo, the Democratic Republic of the</option>
+              <option value="CK">Cook Islands</option>
+              <option value="CR">Costa Rica</option>
+              <option value="CI">Côte d'Ivoire</option>
+              <option value="HR">Croatia</option>
+              <option value="CU">Cuba</option>
+              <option value="CW">Curaçao</option>
+              <option value="CY">Cyprus</option>
+              <option value="CZ">Czech Republic</option>
+              <option value="DK">Denmark</option>
+              <option value="DJ">Djibouti</option>
+              <option value="DM">Dominica</option>
+              <option value="DO">Dominican Republic</option>
+              <option value="EC">Ecuador</option>
+              <option value="EG">Egypt</option>
+              <option value="SV">El Salvador</option>
+              <option value="GQ">Equatorial Guinea</option>
+              <option value="ER">Eritrea</option>
+              <option value="EE">Estonia</option>
+              <option value="ET">Ethiopia</option>
+              <option value="FK">Falkland Islands (Malvinas)</option>
+              <option value="FO">Faroe Islands</option>
+              <option value="FJ">Fiji</option>
+              <option value="FI">Finland</option>
+              <option value="FR">France</option>
+              <option value="GF">French Guiana</option>
+              <option value="PF">French Polynesia</option>
+              <option value="TF">French Southern Territories</option>
+              <option value="GA">Gabon</option>
+              <option value="GM">Gambia</option>
+              <option value="GE">Georgia</option>
+              <option value="DE">Germany</option>
+              <option value="GH">Ghana</option>
+              <option value="GI">Gibraltar</option>
+              <option value="GR">Greece</option>
+              <option value="GL">Greenland</option>
+              <option value="GD">Grenada</option>
+              <option value="GP">Guadeloupe</option>
+              <option value="GU">Guam</option>
+              <option value="GT">Guatemala</option>
+              <option value="GG">Guernsey</option>
+              <option value="GN">Guinea</option>
+              <option value="GW">Guinea-Bissau</option>
+              <option value="GY">Guyana</option>
+              <option value="HT">Haiti</option>
+              <option value="HM">Heard Island and McDonald Islands</option>
+              <option value="VA">Holy See (Vatican City State)</option>
+              <option value="HN">Honduras</option>
+              <option value="HK">Hong Kong</option>
+              <option value="HU">Hungary</option>
+              <option value="IS">Iceland</option>
+              <option value="IN">India</option>
+              <option value="ID">Indonesia</option>
+              <option value="IR">Iran, Islamic Republic of</option>
+              <option value="IQ">Iraq</option>
+              <option value="IE">Ireland</option>
+              <option value="IM">Isle of Man</option>
+              <option value="IL">Israel</option>
+              <option value="IT">Italy</option>
+              <option value="JM">Jamaica</option>
+              <option value="JP">Japan</option>
+              <option value="JE">Jersey</option>
+              <option value="JO">Jordan</option>
+              <option value="KZ">Kazakhstan</option>
+              <option value="KE">Kenya</option>
+              <option value="KI">Kiribati</option>
+              <option value="KP">Korea, Democratic People's Republic of</option>
+              <option value="KR">Korea, Republic of</option>
+              <option value="KW">Kuwait</option>
+              <option value="KG">Kyrgyzstan</option>
+              <option value="LA">Lao People's Democratic Republic</option>
+              <option value="LV">Latvia</option>
+              <option value="LB">Lebanon</option>
+              <option value="LS">Lesotho</option>
+              <option value="LR">Liberia</option>
+              <option value="LY">Libya</option>
+              <option value="LI">Liechtenstein</option>
+              <option value="LT">Lithuania</option>
+              <option value="LU">Luxembourg</option>
+              <option value="MO">Macao</option>
+              <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+              <option value="MG">Madagascar</option>
+              <option value="MW">Malawi</option>
+              <option value="MY">Malaysia</option>
+              <option value="MV">Maldives</option>
+              <option value="ML">Mali</option>
+              <option value="MT">Malta</option>
+              <option value="MH">Marshall Islands</option>
+              <option value="MQ">Martinique</option>
+              <option value="MR">Mauritania</option>
+              <option value="MU">Mauritius</option>
+              <option value="YT">Mayotte</option>
+              <option value="MX">Mexico</option>
+              <option value="FM">Micronesia, Federated States of</option>
+              <option value="MD">Moldova, Republic of</option>
+              <option value="MC">Monaco</option>
+              <option value="MN">Mongolia</option>
+              <option value="ME">Montenegro</option>
+              <option value="MS">Montserrat</option>
+              <option value="MA">Morocco</option>
+              <option value="MZ">Mozambique</option>
+              <option value="MM">Myanmar</option>
+              <option value="NA">Namibia</option>
+              <option value="NR">Nauru</option>
+              <option value="NP">Nepal</option>
+              <option value="NL">Netherlands</option>
+              <option value="NC">New Caledonia</option>
+              <option value="NZ">New Zealand</option>
+              <option value="NI">Nicaragua</option>
+              <option value="NE">Niger</option>
+              <option value="NG">Nigeria</option>
+              <option value="NU">Niue</option>
+              <option value="NF">Norfolk Island</option>
+              <option value="MP">Northern Mariana Islands</option>
+              <option value="NO">Norway</option>
+              <option value="OM">Oman</option>
+              <option value="PK">Pakistan</option>
+              <option value="PW">Palau</option>
+              <option value="PS">Palestinian Territory, Occupied</option>
+              <option value="PA">Panama</option>
+              <option value="PG">Papua New Guinea</option>
+              <option value="PY">Paraguay</option>
+              <option value="PE">Peru</option>
+              <option value="PH">Philippines</option>
+              <option value="PN">Pitcairn</option>
+              <option value="PL">Poland</option>
+              <option value="PT">Portugal</option>
+              <option value="PR">Puerto Rico</option>
+              <option value="QA">Qatar</option>
+              <option value="RE">Réunion</option>
+              <option value="RO">Romania</option>
+              <option value="RU">Russian Federation</option>
+              <option value="RW">Rwanda</option>
+              <option value="BL">Saint Barthélemy</option>
+              <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+              <option value="KN">Saint Kitts and Nevis</option>
+              <option value="LC">Saint Lucia</option>
+              <option value="MF">Saint Martin (French part)</option>
+              <option value="PM">Saint Pierre and Miquelon</option>
+              <option value="VC">Saint Vincent and the Grenadines</option>
+              <option value="WS">Samoa</option>
+              <option value="SM">San Marino</option>
+              <option value="ST">Sao Tome and Principe</option>
+              <option value="SA">Saudi Arabia</option>
+              <option value="SN">Senegal</option>
+              <option value="RS">Serbia</option>
+              <option value="SC">Seychelles</option>
+              <option value="SL">Sierra Leone</option>
+              <option value="SG">Singapore</option>
+              <option value="SX">Sint Maarten (Dutch part)</option>
+              <option value="SK">Slovakia</option>
+              <option value="SI">Slovenia</option>
+              <option value="SB">Solomon Islands</option>
+              <option value="SO">Somalia</option>
+              <option value="ZA">South Africa</option>
+              <option value="GS">South Georgia and the South Sandwich Islands</option>
+              <option value="SS">South Sudan</option>
+              <option value="ES">Spain</option>
+              <option value="LK">Sri Lanka</option>
+              <option value="SD">Sudan</option>
+              <option value="SR">Suriname</option>
+              <option value="SJ">Svalbard and Jan Mayen</option>
+              <option value="SZ">Swaziland</option>
+              <option value="SE">Sweden</option>
+              <option value="CH">Switzerland</option>
+              <option value="SY">Syrian Arab Republic</option>
+              <option value="TW">Taiwan, Province of China</option>
+              <option value="TJ">Tajikistan</option>
+              <option value="TZ">Tanzania, United Republic of</option>
+              <option value="TH">Thailand</option>
+              <option value="TL">Timor-Leste</option>
+              <option value="TG">Togo</option>
+              <option value="TK">Tokelau</option>
+              <option value="TO">Tonga</option>
+              <option value="TT">Trinidad and Tobago</option>
+              <option value="TN">Tunisia</option>
+              <option value="TR">Turkey</option>
+              <option value="TM">Turkmenistan</option>
+              <option value="TC">Turks and Caicos Islands</option>
+              <option value="TV">Tuvalu</option>
+              <option value="UG">Uganda</option>
+              <option value="UA">Ukraine</option>
+              <option value="AE">United Arab Emirates</option>
+              <option value="GB">United Kingdom</option>
+              <option value="US">United States</option>
+              <option value="UM">United States Minor Outlying Islands</option>
+              <option value="UY">Uruguay</option>
+              <option value="UZ">Uzbekistan</option>
+              <option value="VU">Vanuatu</option>
+              <option value="VE">Venezuela, Bolivarian Republic of</option>
+              <option value="VN">Viet Nam</option>
+              <option value="VG">Virgin Islands, British</option>
+              <option value="VI">Virgin Islands, U.S.</option>
+              <option value="WF">Wallis and Futuna</option>
+              <option value="EH">Western Sahara</option>
+              <option value="YE">Yemen</option>
+              <option value="ZM">Zambia</option>
+              <option value="ZW">Zimbabwe</option>
+            </select>
+            <div [hidden]="!selectCountry.errors?.required" class="invalid-feedback">Country required.</div>
+          </div>
+          <!--Country-->
+          <!--Post Code-->
+          <div class="form-group">
+            <label for="postcode">ZIP / Post Code</label>
+            <input type="text" [(ngModel)]="postcode" name="postcode" class="form-control" #postCode="ngModel"
+              [ngClass]="{'is-invalid' : postCode.errors && postCode.touched}" required>
+            <div [hidden]="!postCode.errors?.required" class="invalid-feedback">ZIP / Post Code required.</div>
+          </div>
+          <!--Post Code-->
+          <!--Address1-->
+          <div class="form-group">
+            <label for="address1">Address</label>
+            <input type="text" [(ngModel)]="address1" name="address1" class="form-control" #Address="ngModel"
+              [ngClass]="{'is-invalid' : Address.errors && Address.touched}" placeholder="Street, flat, number, etc."
+              required>
+            <div [hidden]="!Address.errors?.required" class="invalid-feedback">Address required.</div>
+          </div>
+          <!--Address1-->
+          <!--Address2-->
+          <div class="form-group">
+            <input type="text" [(ngModel)]="address2" name="address2" class="form-control">
+          </div>
+          <!--Address2-->
+          <!--City-->
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" [(ngModel)]="city" name="city" class="form-control" #City="ngModel"
+              [ngClass]="{'is-invalid' : City.errors && City.touched}" required>
+            <div [hidden]="!City.errors?.required" class="invalid-feedback">City required.</div>
+          </div>
+          <!--City-->
+          <!--region-->
+          <div class="form-group">
+            <label for="region">County / Province / Region</label>
+            <input type="text" [(ngModel)]="region" name="region" class="form-control" #Region="ngModel"
+              [ngClass]="{'is-invalid' : Region.errors && Region.touched}" required>
+            <div [hidden]="!Region.errors?.required" class="invalid-feedback">County / Province / Region required.
+            </div>
+          </div>
+          <!--region-->
+          <!--Phone Number-->
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="text" [(ngModel)]="phone" name="phone" class="form-control">
+          </div>
+          <!--Phone Number-->
+        </form>
+
+        <!--Body-->
+        <button [disabled]="!addAddressForm.form.valid" type="submit" class="btn btn-success btn-block mb-3"
+          data-dismiss="modal" (click)="onClickAdd()" style="max-width: 600px;">Deliver to this address</button>
+      </div>
+    </div>
+  </section>
+</div>

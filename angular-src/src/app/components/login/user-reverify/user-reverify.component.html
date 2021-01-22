@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="page-background vertical-center">
+  <div class="container">
+    <div class="card card-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <form #userForm="ngForm" (submit)="onSubmit()">
+        <h4>Re-send Verification Email</h4>
+        <label for="type"><small>Enter your email address associated with your Iyokus account and we'll send you an email to verify your account.</small></label>
+        <div class="form-group">
+          <label for="type">Select your user type</label>
+          <select [(ngModel)]="type" name="type" class="form-control" #userType="ngModel" [ngClass]="{'is-invalid' : userType.errors && userType.touched}"
+            required>
+            <option selected disabled>Select type</option>
+            <option value="user">Buyer</option>
+            <option value="['seller','business']">Seller</option>
+          </select>
+          <div [hidden]="!userType.errors?.required" class="invalid-feedback">User type required.</div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" [(ngModel)]="email" name="email" #userEmail="ngModel" [ngClass]="{'is-invalid' : userEmail.errors && userEmail.touched}"
+            required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+          <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">Email required.</div>
+          <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+        <input [disabled]="!userForm.form.valid" type="submit" value="Continue" class="btn btn-dark">
+        <br>
+      </form>
+    </div>
+  </div>
+</div>

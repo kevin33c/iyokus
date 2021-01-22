@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="page-background">
+  <div class="container">
+    <div class="card card-body mt-3">
+      <form #userForm="ngForm">
+        <div class="mb-3">
+          <h2 class="mb-0">Create Account</h2>
+          <small>Already have an account? Sign in <a routerLink="/login">here</a></small>
+          <!--<small>To create a seller account go to <a routerLink="/seller-signup" data-dismiss="modal">here</a></small>-->
+        </div>
+
+
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" [(ngModel)]="name" name="name" class="form-control" #userName="ngModel" [ngClass]="{'is-invalid' : userName.errors && userName.touched}"
+            required minlength="2">
+          <div [hidden]="!userName.errors?.required" class="invalid-feedback">Username required.</div>
+          <div [hidden]="!userName.errors?.minlength" class="invalid-feedback">Please enter a valid username
+              (minimum 2 letters).</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" [(ngModel)]="email" name="email" class="form-control" #userEmail="ngModel" [ngClass]="{'is-invalid' : userEmail.errors && userEmail.touched}"
+            required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+          <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">Email required.</div>
+          <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Confirm Email</label>
+          <input type="email" [(ngModel)]="email2" name="email2" class="form-control" #userEmail2="ngModel" [ngClass]="{'is-invalid' : userEmail2.errors && userEmail2.touched}"
+            required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+          <div [hidden]="!userEmail2.errors?.required" class="invalid-feedback">Email confirmation
+              required.</div>
+          <div [hidden]="!userEmail2.errors?.pattern" class="invalid-feedback">Please enter a valid
+              email.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <small>(minimum 6 characters)</small>
+          <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="At least six characters"
+            #userPassword="ngModel" [ngClass]="{'is-invalid' : userPassword.errors && userPassword.touched}" required
+            minlength="6">
+          <div [hidden]="!userPassword.errors?.required" class="invalid-feedback">Password required.</div>
+          <div [hidden]="!userPassword.errors?.minlength" class="invalid-feedback">For security, please
+              enter a password at least 6 characters long.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password2">Re-enter Password</label>
+          <input type="password" [(ngModel)]="password2" name="password2" class="form-control" #userPassword2="ngModel"
+            [ngClass]="{'is-invalid' : userPassword2.errors && userPassword2.touched}" required>
+          <div [hidden]="!userPassword.errors?.required" class="invalid-feedback">Password confirmation
+              required.</div>
+        </div>
+      </form>
+      <button [disabled]="!userForm.form.valid" type="submit" class="btn woolime-btn-theme btn-block mt-3" (click)="onRegisterSubmit()">Create Account</button>
+      <small class="help-format">
+          By creating an account you agree to Iyokus' <a href="javascript:void(0);" routerLink="/legal/policies"
+            data-dismiss="modal">Conditions of Use</a>
+          and <a href="javascript:void(0);" routerLink="/legal/useprivacy" data-dismiss="modal">Privacy & Cookies Notices</a>.
+        </small>
+    </div>
+  </div>
+</div>

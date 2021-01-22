@@ -1,0 +1,38 @@
+td {
+  font-size: 12px;
+}
+
+th{
+  font-size: 14px;
+}
+
+#fulfilment-id{
+  max-width:200px;
+}
+
+.summary-table{
+  max-width: 700px;
+  margin-bottom: 200px;
+}
+
+#plus-icon{
+  color: black;
+}
+
+#tick-icon{
+  color: #4F8A10;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#wait-icon{
+  color: #9F6000;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#cancelled-icon{
+  color: red;
+  font-weight: 500;
+  font-size: 20px;
+}

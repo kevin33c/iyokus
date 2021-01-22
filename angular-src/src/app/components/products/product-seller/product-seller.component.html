@@ -1,0 +1,114 @@
+<app-header></app-header>
+
+<div class="container">
+  <h3>{{seller?.name}}</h3>
+  <div class="seller-products-header">
+    <ngb-rating [(rate)]="rate">
+      <ng-template let-fill="fill" let-index="index">
+        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+      </ng-template>
+    </ngb-rating>
+    <span>| {{rate}} stars based on {{reviewNumber}} reviews</span>
+    <br>
+    <span>{{seller?.name}} is {{sellerType}} and verified seller from {{seller?.location}}. Joined Iyokus on
+      {{seller?.date | date:'dd.MM.yyyy'}}.</span>
+  </div>
+
+  <div class="seller-product body">
+    <div class="container py-3">
+      <h2 class="text-center mt-5 mb-5" style="font-style: italic;" *ngIf="products?.length ===0">We're sorry, looks like we didn't find any product associated with this seller.</h2>
+      <h4 *ngIf="products?.length > 0">Products sold by {{seller?.name}}</h4>
+      <div class="card mt-3" *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p }">
+        <div class="row">
+
+          <div class="col-md-3">
+
+            <div class="container Wcenter p-2">
+              <a [routerLink]="['/product', productNameToUrl(product.name), product._id]" class="thumbnail">
+                <img class="card-img-top p-2" [src]=product.image_Main alt="Card image cap">
+              </a>
+            </div>
+
+          </div>
+
+          <div class="col-md-9 px-2 mt-3">
+            <div class="card-block px-3">
+              <h6 class="card-title mb-0">
+                <a class="card-text" [routerLink]="['/product', productNameToUrl(product.name), product._id]" style="color: #0066c0;">{{product?.name}}</a>
+              </h6>
+              
+              <ng-template #tipAddFavourite>Add to favourites</ng-template>
+
+              <a *ngIf="!checkIfFavourite(product?._id) && authService.userRole() === 'user'" href="javascript:void(0);"
+                (click)="onClickAddFaourite(product)">
+                <i class="fa fa-heart-o pull-right" id="heart" aria-hidden="true" style="font-size: 23px;" placement="right"
+                  [ngbTooltip]="tipAddFavourite"></i>
+              </a>
+
+              <ng-template #tipRemoveFavourite>Remove from favourites</ng-template>
+
+              <a *ngIf="checkIfFavourite(product?._id) && authService.userRole() === 'user'" href="javascript:void(0);"
+                (click)="onClickRemoveFavourite(product._id)">
+                <i class="fa fa-heart pull-right" id="diheart" aria-hidden="true" style="font-size: 23px;" placement="right"
+                  [ngbTooltip]="tipRemoveFavourite"></i>
+              </a>
+              <br>
+              <div class="mt-1">
+                <button id="icon-button" *ngIf="product?.type === 0" type="button" class="btn btn-outline-primary">Used</button>
+                <button id="icon-button" *ngIf="product?.type === 1" type="button" class="btn btn-outline-info">New</button>
+                <img *ngIf="product?.deliveryMethod === 0 || product?.deliveryMethod === 2" id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                  alt="">
+                <img *ngIf="product?.deliveryMethod === 1 || product?.deliveryMethod === 2" id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                  alt="">
+              </div>
+
+
+              <hr>
+              <div class="row">
+                <div class="col-md-4 px-3">
+                  <span class="a-size-small a-color-secondary">Buy Now for:</span>
+                  <h6 class="card-text">{{product?.listed_price | currency: 'GBP': number }}
+                    <span *ngIf="product?.deliveryMethod === 1" class="a-size-small a-color-secondary">+ Delivery cost</span>
+                  </h6>
+                  <span class="a-size-small a-color-secondary">Or  bid for less</span>
+                  <ng-template #tipContent>If product has a lock-out period of
+                      {{product?.locked_period}} day(s) if your bid fails</ng-template>
+                  <i class="fa fa-info-circle" id="info" aria-hidden="true" placement="right" [ngbTooltip]="tipContent"></i>
+                  <br>
+                </div>
+                <div *ngIf="soldOut(product?.quantity)" class="col-md-8">
+                  <div>
+                    <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/icon/sold-out.png" class="img-fluid" alt="Responsive image"
+                      style="width: 7cm; height: 4cm;">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3 text-center">
+    <pagination-controls (pageChange)="p = $event"
+                         previousLabel=""
+                         nextLabel="" 
+                         (click)="goTop()">
+    </pagination-controls>
+  </div>
+
+
+
+</div>
+
+<section id="info" class="py-5">
+  <div class="container">
+    <app-product-recommendation></app-product-recommendation>
+    <app-product-offers></app-product-offers>
+    <app-product-top-viewed></app-product-top-viewed>
+  </div>
+</section>
+
+<app-footer></app-footer>

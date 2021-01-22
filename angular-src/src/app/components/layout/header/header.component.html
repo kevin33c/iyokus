@@ -1,0 +1,425 @@
+<div class="sticky-top">
+
+  <!--UPPER NAV BAR-->
+  <nav class="navbar navbar-dark bg-faded woolime-theme">
+    <!--LOGO-->
+    <a routerLink="/" class="navbar-brand"><img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Iyokus_Transparent.png"
+        id="iyokus-icon" alt="iyokus.com" />
+    </a>
+    
+
+    <!--SEARCH BAR-->
+    <div class="ml-3 d-none d-md-block" style="min-width: 350px;">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-bar-top"
+          [(ngModel)]="key" name="key" autocomplete="off" (keyup.enter)="onClickSearch()" (input)="onSearch()">
+        <div class="input-group-append">
+          <button class="btn woolime-btn-theme" type="submit" (click)="onClickSearch()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ul class="nav ml-auto" style="margin-right: 20px;">
+      <!--
+      <li *ngIf="!authService.loggedIn() || authService.userRole() != 'seller'" class="nav-item d-none d-lg-block">
+        <a class="nav-link active" href="javascript:void(0);" routerLink="/info/getstarted-Business">Sell with iyokus</a>
+      </li>
+
+      <li *ngIf="!authService.loggedIn() || authService.userRole() != 'seller'" class="nav-item d-lg-none">
+        <a class="nav-link active" href="javascript:void(0);" routerLink="/info/getstarted-Business">Sell</a>
+      </li>
+      -->
+
+      <li class="nav-item dropdown">
+        <a *ngIf="authService.loggedIn() && authService.userRole() === 'seller'" class="nav-link active" href="javascript:void(0);"
+          id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user" aria-hidden="true"></i> My Account<i class="fa fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-menu withline" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/business/profile">
+            <small>My Profile</small>
+          </a>
+          <a class="dropdown-item" routerLink="/business/viewproduct">
+            <small>My Products</small>
+          </a>
+          <a class="dropdown-item" routerLink="/business/addproduct">
+            <small>Upload Product</small>
+          </a>
+          <a class="dropdown-item" routerLink="/business/orders">
+            <small>My Orders</small>
+          </a>
+          <a class="dropdown-item" routerLink="/business/finance">
+            <small>My Finance</small>
+          </a>
+          <a class="dropdown-item" routerLink="/business/editprofile">
+            <small>Edit Account</small>
+          </a>
+          <a routerLink="/" class="dropdown-item" (click)='onLogoutClick()'>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <small>Sign Out</small>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a *ngIf="authService.loggedIn() && authService.userRole() === 'user'" class="nav-link active" href="javascript:void(0);"
+          id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user" aria-hidden="true"></i> My Account
+          <i class="fa fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-menu withline" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/user/profile">
+            <small>My Profile</small>
+          </a>
+          <a class="dropdown-item" routerLink="/user/yourfavourites">
+            <small>My Favourites</small>
+          </a>
+          <a class="dropdown-item" routerLink="/user/yourbids">
+            <small>My Offers</small>
+          </a>
+          <a class="dropdown-item" routerLink="/user/yourorders">
+            <small>My Orders</small>
+          </a>
+          <a class="dropdown-item" routerLink="/user/address">
+            <small>My Address</small>
+          </a>
+          <a class="dropdown-item" routerLink="/user/editprofile">
+            <small>Edit Account</small>
+          </a>
+          <a routerLink="/" class="dropdown-item" (click)='onLogoutClick()'>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <small>Sign Out</small>
+          </a>
+        </div>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item">
+        <div class="item">
+          <a class="nav-link active" href="javascript:void(0);" routerLink="/messenger">
+            <span *ngIf="unreadMessages > 0" class="notify-badge">{{unreadMessages}}</span>
+            <i class="fa fa-envelope" style="font-size: 20px"></i>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item active" *ngIf="!authService.loggedIn()">
+        <a href="javascript:void(0);" class="nav-link" data-toggle="modal" data-target="#loginModal">
+          <i class="fa fa-sign-in" aria-hidden="true"></i> Sign In</a>
+      </li>
+      <li class="nav-item active" *ngIf="!authService.loggedIn()">
+        <a href="javascript:void(0);" class="nav-link" data-toggle="modal" data-target="#signupModal">
+          <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!--LOWER NAV BAR-->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-new-bottom">
+
+    <div class="row">
+      <div class="col-2">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar2">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="col-10">
+        <div class="d-md-none w-100 px-3">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-bar-bottom"
+              [(ngModel)]="key" name="key" autocomplete="off" (keyup.enter)="onClickSearch()" (input)="onSearch()">
+            <div class="input-group-append">
+              <button class="btn woolime-btn-theme" type="submit" (click)="onClickSearch()">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-collapse collapse pt-2 pt-md-0" id="navbar2">
+
+      <ul class="navbar-nav w-100 justify-content-center px-3" style="margin-right: 100px;">
+        <li class="nav-item dropdown" *ngFor="let category of categories" style="margin-right: 80px;">
+          <a class="nav-link" href="#" data-toggle="dropdown" (click)="onSelect(category.id)" [attr.id]="category.name">{{category.name}}
+          </a>
+          <ul class="dropdown-menu multi-column columns-2">
+            <div class="row">
+              <div class="col-sm-4 border-right">
+                <ul class="multi-column-dropdown">
+                  <li> <a class="dropdown-main" [routerLink]="['/view/category', category.name]">
+                      <span style="font-weight: bold;">{{category.name}}</span>
+                    </a></li>
+                  <div *ngIf="category.name === 'Fashion' || category.name === 'Sport'">
+                    <li> <a class="dropdown-main" [routerLink]="['/view/category', category.name]" [queryParams]="{g:'1'}">
+                        <span>Women</span>
+                      </a></li>
+                    <li> <a class="dropdown-main" [routerLink]="['/view/category', category.name]" [queryParams]="{g:'0'}">
+                        <span>Men</span>
+                      </a></li>
+                  </div>
+                </ul>
+              </div>
+              <div class="col-sm-8">
+                <ul class="multi-column-dropdown">
+                  <li> <a class="dropdown-item" [routerLink]="['/view/subcategory', subcategory.n_name]" *ngFor="let subcategory of subcategories">
+                      <small>{{subcategory.name}}</small>
+                    </a></li>
+                </ul>
+              </div>
+            </div>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="col-1 close" data-dismiss="modal">&times;</button>
+      <div class="modal-header mb-3">
+        <h5 class="col-12 modal-title text-center">User Sign In
+          <br>
+          <small>For sellers sign in <a routerLink="/seller-login" data-dismiss="modal">here</a></small>
+        </h5>
+
+      </div>
+      <div class="modal-body mt-3 mb-3">
+        <div class="modal-container">
+          <div class="row">
+            <div class="col">
+              <form class="" #userLoginForm="ngForm">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" class="form-control" [(ngModel)]="email" name="email" #userEmail="ngModel"
+                    [ngClass]="{'is-invalid' : userEmail.errors && userEmail.touched}" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                  <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">Email required.</div>
+                  <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">Please enter a valid email.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" [(ngModel)]="password" name="password" #userPassword="ngModel"
+                    [ngClass]="{'is-invalid' : userPassword.errors && userPassword.touched}" required minlength="6">
+                  <div [hidden]="!userPassword.errors?.required" class="invalid-feedback">Password required.</div>
+                  <div [hidden]="!userPassword.errors?.minlength" class="invalid-feedback">Please enter a valid
+                    password.
+                  </div>
+                </div>
+              </form>
+              <small>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" checked="checked" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">
+                    Keep me signed in
+                  </label>
+                </div>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!userLoginForm.form.valid" type="submit" class="btn woolime-btn-theme btn-lg btn-block"
+          data-dismiss="modal" (click)="onLoginSubmit()">Sign In</button>
+      </div>
+      <small class="help-format">
+        <a href="javascript:void(0);" data-toggle="modal" data-target="#resetpwModal" data-dismiss="modal">Forgot
+          password?</a>
+        <br>
+        <a href="javascript:void(0);" data-toggle="modal" data-target="#verifyEmailModal" data-dismiss="modal">Email
+          not verified?</a>
+      </small>
+      <section id="modal-footer" class="mt-3">
+        <p id="modal-footer-text">New to Iyokus? <a href="javascript:void(0);" data-toggle="modal" data-target="#signupModal"
+            data-dismiss="modal">Create your Iyokus Account</a></p>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- LOGIN MODAL -->
+
+
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="col-1 close" data-dismiss="modal">&times;</button>
+      <div class="modal-header mb-3">
+
+        <h5 class="col-12 modal-title text-center">Create Account
+          <br>
+          <small>To create a seller account go to <a routerLink="/seller-signup" data-dismiss="modal">here</a></small>
+        </h5>
+      </div>
+      <div class="modal-body mt-2">
+        <div class="modal-container">
+          <div class="row">
+            <div class="col">
+              <form #userSignupForm="ngForm">
+
+                <div class="form-group">
+                  <label for="name">Your name</label>
+                  <input type="text" [(ngModel)]="name" name="name" class="form-control" #userName="ngModel" [ngClass]="{'is-invalid' : userName.errors && userName.touched}"
+                    required minlength="2">
+                  <div [hidden]="!userName.errors?.required" class="invalid-feedback">Username required.</div>
+                  <div [hidden]="!userName.errors?.minlength" class="invalid-feedback">Please enter a valid username
+                    (minimum 2 letters).</div>
+                </div>
+
+                <div class="form-group">
+                  <label for="signupEmail">Email</label>
+                  <input type="email" [(ngModel)]="signupEmail" name="signupEmail" class="form-control"
+                    #userSignUpEmail="ngModel" [ngClass]="{'is-invalid' : userSignUpEmail.errors && userSignUpEmail.touched}"
+                    required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                  <div [hidden]="!userSignUpEmail.errors?.required" class="invalid-feedback">Email required.</div>
+                  <div [hidden]="!userSignUpEmail.errors?.pattern" class="invalid-feedback">Please enter a valid email.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="signupEmail2">Confirm Email</label>
+                  <input type="email" [(ngModel)]="signupEmail2" name="signupEmail2" class="form-control"
+                    #userSignUpEmail2="ngModel" [ngClass]="{'is-invalid' : userSignUpEmail2.errors && userSignUpEmail2.touched}"
+                    required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                  <div [hidden]="!userSignUpEmail2.errors?.required" class="invalid-feedback">Email confirmation
+                    required.</div>
+                  <div [hidden]="!userSignUpEmail2.errors?.pattern" class="invalid-feedback">Please enter a valid
+                    email.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="sigupPassword">Password</label>
+                  <small>(minimum 6 characters)</small>
+                  <input type="password" [(ngModel)]="sigupPassword" name="sigupPassword" class="form-control"
+                    #userSignUpPassword="ngModel" [ngClass]="{'is-invalid' : userSignUpPassword.errors && userSignUpPassword.touched}"
+                    required minlength="6">
+                  <div [hidden]="!userSignUpPassword.errors?.required" class="invalid-feedback">Password required.
+                  </div>
+                  <div [hidden]="!userSignUpPassword.errors?.minlength" class="invalid-feedback">For security, please
+                    enter a password at least 6 characters long.</div>
+                </div>
+
+                <div class="form-group">
+                  <label for="sigupPassword2">Re-enter Password</label>
+                  <input type="password" [(ngModel)]="sigupPassword2" name="sigupPassword2" class="form-control"
+                    #userSignUpPassword2="ngModel" [ngClass]="{'is-invalid' : userSignUpPassword2.errors && userSignUpPassword2.touched}"
+                    required>
+                  <div [hidden]="!userPassword.errors?.required" class="invalid-feedback">Password confirmation
+                    required.
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!userSignupForm.form.valid" type="submit" class="btn woolime-btn-theme btn-lg btn-block"
+          data-dismiss="modal" (click)="onRegisterSubmit()">Create Account</button>
+      </div>
+      <small class="help-format">
+        By creating an account you agree to Iyokus' <a href="javascript:void(0);" routerLink="/legal/policies"
+          data-dismiss="modal">Conditions of Use</a>
+        and <a href="javascript:void(0);" routerLink="/legal/useprivacy" data-dismiss="modal">Privacy & Cookies Notices</a>.
+      </small>
+      <section id="modal-footer" class="mt-3">
+        <p id="modal-footer-text">Already has an account? Sign in <a href="javascript:void(0);" data-toggle="modal"
+            data-target="#loginModal" data-dismiss="modal">here</a></p>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- SIGNUP MODAL -->
+
+
+<!-- RESETPW MODAL -->
+<div class="modal" id="resetpwModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="col-1 close" data-dismiss="modal">&times;</button>
+      <div class="modal-header mb-3">
+        <h5 class="col-12 modal-title text-center">Password Assistance<br><small style="font-size: 15px;">
+            Enter your email address associated with your Iyokus account and we'll send you an email to reset your
+            password.
+          </small></h5>
+      </div>
+
+      <div class="modal-body mt-3 mb-3">
+        <div class="modal-container">
+          <div class="row">
+            <div class="col">
+              <form #userChangePWForm="ngForm">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" [(ngModel)]="changePWEmail" name="changePWEmail" #changePW="ngModel"
+                    [ngClass]="{'is-invalid' : changePW.errors && changePW.touched}" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                  <div [hidden]="!changePW.errors?.required" class="invalid-feedback">Email required.</div>
+                  <div [hidden]="!changePW.errors?.pattern" class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!userChangePWForm.form.valid" type="submit" class="btn woolime-btn-theme btn-lg btn-block"
+          data-dismiss="modal" (click)="onSubmitChangePW()">Continue</button>
+      </div>
+      <section id="modal-footer" class="mt-3">
+        <p id="modal-footer-text">Back to <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal"
+            data-dismiss="modal">Sign In</a></p>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- RESETPW MODAL -->
+
+
+<!-- VERIFYEMAIL MODAL -->
+<div class="modal" id="verifyEmailModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button class="col-1 close" data-dismiss="modal">&times;</button>
+      <div class="modal-header mb-3">
+        <h5 class="col-12 modal-title text-center">Verify Email <br><small style="font-size: 15px;">
+            Enter your email address associated with your Iyokus account and we'll send you an email to help you.
+          </small></h5>
+      </div>
+
+      <div class="modal-body mt-3 mb-3">
+        <div class="modal-container">
+          <div class="row">
+            <div class="col">
+              <form class="" #userVerifyEmailForm="ngForm">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" [(ngModel)]="reVerifyEmail" name="reVerifyEmail"
+                    #verifyEmail="ngModel" [ngClass]="{'is-invalid' : verifyEmail.errors && verifyEmail.touched}"
+                    required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                  <div [hidden]="!verifyEmail.errors?.required" class="invalid-feedback">Email required.</div>
+                  <div [hidden]="!verifyEmail.errors?.pattern" class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!userVerifyEmailForm.form.valid" type="submit" class="btn woolime-btn-theme btn-lg btn-block"
+          data-dismiss="modal" (click)="onSubmitReverifyEmail()">Continue</button>
+      </div>
+      <section id="modal-footer" class="mt-3">
+        <p id="modal-footer-text">Back to <a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal"
+            data-dismiss="modal">Sign In</a></p>
+      </section>
+    </div>
+  </div>
+</div>
+<!-- VERIFYEMAIL MODAL -->

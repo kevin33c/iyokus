@@ -1,0 +1,87 @@
+<div class="main">
+  <!--navigation header-->
+  <div id="header-container" class="container">
+    <span><a href="javascript:void(0);" routerLink="/">Home</a> | <a href="javascript:void(0);" routerLink="/user/profile">My Account</a> | <a href="javascript:void(0);" routerLink="/user/yourorders">My Orders</a></span>
+  </div>
+
+  <div id="main-container" class="container">
+    <!--Image header-->
+    <img class="img-fit" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Order_Confirmation_Header.png" >
+    <h2 class="confirmation-font align-center">Order Confirmation</h2>
+    <h6 class="confirmation-font align-center">Order number: #{{StagingOrder?.offerID}}</h6>
+
+    <!--Date-->
+    <h6 class="confirmation-section-header">Date: <span id="output">{{StagingOrder?.date | date:'dd.MM.yyyy'}}</span></h6>
+
+    <!--intro description-->
+    <p id="description" class="a-size-small">
+      Hello,<br>
+      Thank you very much for shopping with Iyokus, your order has been completed successfully. We have sent you an email with the confirmation details and notified the seller of your order. You can review your order detail in the following section or by visiting <a href="javascript:void(0);" routerLink="/user/yourorders">My Orders</a>.
+    </p>
+
+    <!--delivery-->
+    <h6 class="confirmation-section-header">DELIVERY:
+      <span *ngIf="StagingOrder?.deliveryMethod === 0" id="output">Meetup Delivery <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png" ></span>
+      <span *ngIf="StagingOrder?.deliveryMethod === 1" id="output">
+        Postal Delivery <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png" >
+      </span>
+    </h6>
+
+    <p *ngIf="StagingOrder?.deliveryMethod === 0" id="description" class="a-size-small">
+      "Meetup Delivery" is a form of free delivery. The seller will contact you soon via Iyokus Messenger to arrange a delivery time and location that is mutually satisfactory within the next 5 days. Once received and confirmed the order, please give the following Payment Code to the seller to complete the order: <span id="verification-code"><b>{{verificationCode}}</b></span>
+    </p>
+
+    <p *ngIf="StagingOrder?.deliveryMethod === 1" id="description" class="a-size-small">
+      We'll notify you as soon as the seller has dispatched the order. The order will be send to the following address:<br>
+      <small id="address">
+        <b>{{StagingOrder?.name}}</b>
+        <br>
+        <b>{{StagingOrder?.address1}} {{StagingOrder?.address2}}</b>
+        <br>
+        <b>{{StagingOrder?.city}}, {{StagingOrder?.postCode}}</b>
+        <br>
+        <b>{{StagingOrder?.region}}, {{StagingOrder?.country}}</b>
+      </small>
+      <br>
+    </p>
+
+    <!--summary-->
+    <h6 class="confirmation-section-header">SUMMARY:</h6>
+
+    <div class="card mt-3">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]=StagingOrder?.image_Main class="img-fluid w-100">
+          <br>
+          <small style="color: red;"><b>The picture above is indicative only. Exact item as per product name/description</b></small>
+        </div>
+        <div class="col-md-8 px-3 mt-3">
+          <div class="card-block px-3">
+
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row" id="table-title">{{StagingOrder?.productName}} <b>{{StagingOrder?.variant1}} {{StagingOrder?.variant2}}</b><small><br><b>x
+                        {{StagingOrder?.quantity}}</b></small></th>
+                  <td>{{StagingOrder?.price | currency: 'GBP': number }}</td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-title">Delivery cost</th>
+                  <td>
+                    <span *ngIf="StagingOrder?.deliveryFee > 0">{{StagingOrder?.deliveryFee | currency: 'GBP':
+                      number }}</span>
+                    <span *ngIf="StagingOrder?.deliveryFee == 0 || StagingOrder?.deliveryFee === null" id="delivery-free">FREE</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" id="table-total">Total</th>
+                  <td id="table-total">{{IDs?.total | currency: 'GBP': number }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

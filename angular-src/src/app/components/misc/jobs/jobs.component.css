@@ -1,0 +1,22 @@
+#career-head-section{
+  margin-top: 50px;
+}
+
+#statement{
+  color: rgb(137, 137, 137);
+  font-weight: 500;
+}
+
+#splitter{
+  position: relative;
+  min-height: 200px;
+  background: url('https://s3.eu-west-3.amazonaws.com/woolime/assets/Career_Splitter1.jpeg');
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #fff;
+  background-position: 0 -100px;
+}
+
+#open-positions-section{
+  margin-bottom: 300px;
+}

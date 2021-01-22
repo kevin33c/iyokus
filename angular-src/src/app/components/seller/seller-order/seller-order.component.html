@@ -1,0 +1,392 @@
+<app-header></app-header>
+
+<div class="container">
+  <h3 class="mt-3">Order Details</h3>
+  <small>Ordered on {{order?.date | date:'dd.MM.yyyy'}} | Order Number #{{order?.offerID}} | Status:
+    <b>{{orderStatus}}</b></small>
+
+  <!--MEETING DELIVERY-->
+  <div *ngIf="order?.deliveryMethod === 0">
+    <div class="input-group mt-3">
+      <input type="text" class="form-control" placeholder="Payment code" [(ngModel)]="paymentCode" name="paymentCode"
+        #code="ngModel" [ngClass]="{'is-invalid' : code.errors && code.touched}" required minlength="6"
+        aria-describedby="basic-addon2" [disabled]="disableCodeInput">
+      <div class="input-group-append">
+        <button type="button" class="btn woolime-btn-theme" id="basic-addon2" (click)="onSubmit()"
+          [disabled]="disableCodeInput">Enter</button>
+      </div>
+    </div>
+    <small class="mb-3">Once you have completed the Meetup Delivery and receive the payment code from the buyer, please
+      enter it above to complete the sale.</small>
+    <div [hidden]="!code.errors?.required" class="invalid-feedback">Payment code required.</div>
+    <div [hidden]="!code.errors?.minlength" class="invalid-feedback">Please enter a valid payment code.</div>
+
+
+    <div class="card mt-3 mb-3">
+      <div class="row">
+
+        <div class="col-md-4">
+
+          <div class="container Wcenter p-2">
+            <img class="card-img-top p-2" [src]=order.image_Main alt="iyokus.es">
+            <div class="p-2">
+              <small>Illustrative only - exact order as per Order Summary</small>
+              <br>
+              <!--<small>Produced by: {{product?.brand}} | Condition: {{productType}}</small>-->
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Delivery Information</h6>
+
+            <p class="small-font">
+              <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                alt="iyokus.es"> Meetup Delivery <br>
+              Please contact the buyer to arrange a time and location<sup>1</sup> for Meetup delivery that is mutually
+              satisfactory.
+              Remember to arrage a delivery within <b>5 days</b>, otherwise the buyer reserve the right to cancel the
+              order.
+            </p>
+            <button *ngIf="!conversationExists" type="button" class="btn btn-info mt-2" data-toggle="modal"
+              data-target="#getContact">Contact Buyer</button>
+
+            <button *ngIf="conversationExists" type="button" class="btn btn-info mt-2"
+              [routerLink]="['/messenger', order?.offerID]">Contact Buyer</button>
+
+            <button type="button" class="btn btn-danger mt-2" data-toggle="modal" data-target="#claim"
+              [disabled]="!claimPossible"><b>Raise Claim</b></button>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Order Summary</h6>
+            <span class="small-font">
+              {{order?.productName}}
+              <br>
+              <b>{{order?.variant1}} {{order?.variant2}}</b>
+            </span>
+
+            <table class="table borderless mt-3">
+              <tbody>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Quantity:</th>
+                  <td id="table-row">{{order?.quantity}}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Price:</th>
+                  <td id="table-row">{{order?.price | currency: 'GBP': number }}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Subtotal:</th>
+                  <td id="table-row">{{order?.price * order?.quantity | currency: 'GBP': number }}</td>
+                </tr>
+                <tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Delivery Cost:</th>
+                  <td *ngIf="!post" id="table-row">FREE</td>
+                </tr>
+                <hr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row"><b>Total:</b></th>
+                  <td id="table-row"><b>{{order?.totalPrice | currency: 'GBP': number }}</b></td>
+                </tr>
+                <tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Transaction Fee:</th>
+                  <td id="table-row">{{order?.transactionFee * -1 | currency: 'GBP': number }}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Iyokus Fee:</th>
+                  <td id="table-row">{{order?.iyokusFee * -1 | currency: 'GBP': number }}</td>
+                </tr>
+                <!--
+                <tr id="table-row">
+                  <th id="table-row" scope="row">VAT (20%):</th>
+                  <td id="table-row">{{(order?.transactionVAT + order?.feeVAT) * -1 | currency: 'GBP': number }}</td>
+                </tr>
+                -->
+                <tr id="table-row">
+                  <th id="table-row" scope="row"><b>Net Payout:</b></th>
+                  <td id="table-row"><b>{{order?.sellerPayout | currency: 'GBP': number }}</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <small>
+      <div style="color: red;">
+        <sup>1</sup><b>Warning:</b> for security and precaution, it is highly recommended to arrange a Meetup Delivery
+        at a public location and within a reasonable hour.
+      </div>
+    </small>
+  </div>
+
+
+  <!--POST DELIVERY-->
+  <div *ngIf="order?.deliveryMethod === 1">
+
+    <button *ngIf="order?.orderStatus === 0" type="button" class="btn btn-info btn-sm mt-2" data-toggle="modal"
+      data-target="#confirmation">Dispatch Order</button>
+    <small *ngIf="order?.orderStatus === 0" class="mb-3"><br>
+      Dispatch the order within 2 working days and click on "Dispatch Order" above to change the order status to
+      "Dispatched". We'll notify the buyer that you have dispatched the order.</small>
+
+    <div class="card mt-3 mb-3">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="container Wcenter p-2">
+            <img class="card-img-top p-2" [src]=order.image_Main alt="iyokus.es"
+              [routerLink]="['/product', productNameToUrl(order.productName), order.productID]">
+            <div class="p-2">
+              <small>Illustrative only - exact order as per Order Summary</small>
+              <br>
+              <!--<small>Produced by: {{product?.brand}} | Condition: {{productType}}</small>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Delivery Information</h6>
+
+            <p>
+              <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                alt="iyokus.es">
+              Postal Delivery <br>
+              <br>
+              Delivery to: <br>
+              <br>
+              <b>
+                {{order?.name}}<br>
+                {{order?.address1}} {{order?.address2}}<br>
+                {{order?.city}}, {{order?.postCode}}<br>
+                {{order?.region}}, {{order?.country}}
+              </b>
+            </p>
+            <br>
+            <button *ngIf="order.orderStatus == 3" type="button" class="btn btn-danger mt-2" data-toggle="modal"
+              data-target="#claim" [disabled]="!claimPossible"><b>Raise Claim</b></button>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Order Summary</h6>
+            <span class="small-font">
+              <a class="card-text" [routerLink]="['/product', productNameToUrl(order.productName), order.productID]" style="color: #0066c0;">{{order?.productName}}</a>
+              <br>
+              <b>{{order?.variant1}} {{order?.variant2}}</b>
+            </span>
+
+            <table class="table borderless mt-3">
+              <tbody>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Quantity:</th>
+                  <td id="table-row">{{order?.quantity}}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Price:</th>
+                  <td id="table-row">{{order?.price | currency: 'GBP': number }}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Subtotal:</th>
+                  <td id="table-row">{{order?.price * order?.quantity | currency: 'GBP': number }}</td>
+                </tr>
+                <tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Delivery Cost:</th>
+                  <td *ngIf="post" id="table-row">{{order?.deliveryFee | currency: 'GBP': number }}</td>
+                  <!--<td *ngIf="!post" id="table-row">{{deliveryFee}}</td>-->
+                </tr>
+                <hr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row"><b>Total:</b></th>
+                  <td id="table-row"><b>{{order?.totalPrice | currency: 'GBP': number }}</b></td>
+                </tr>
+                <tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Transaction Fee:</th>
+                  <td id="table-row">{{order?.transactionFee * -1 | currency: 'GBP': number }}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Iyokus Fee:</th>
+                  <td id="table-row">{{order?.iyokusFee * -1 | currency: 'GBP': number }}</td>
+                </tr>
+                <!--
+                <tr id="table-row">
+                  <th id="table-row" scope="row">VAT (20%):</th>
+                  <td id="table-row">{{(order?.transactionVAT + order?.feeVAT) * -1 | currency: 'GBP': number }}</td>
+                </tr>
+                -->
+                <tr id="table-row">
+                  <th id="table-row" scope="row"><b>Net Payout:</b></th>
+                  <td id="table-row"><b>{{order?.sellerPayout | currency: 'GBP': number }}</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- CLAIM MODAL-->
+<div class="modal" id="claim">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Raise Claim</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <form #contactForm="ngForm">
+              <div class="form-group" class="mt-2">
+                <label for="reason">Choose a claim reason</label>
+                <select [(ngModel)]="reason" name="reason" class="form-control iyokus-small-input"
+                  #claimReason="ngModel" [ngClass]="{'is-invalid' : claimReason.errors && claimReason.touched}"
+                  required>
+                  <option selected disabled>Select</option>
+                  <option>Product wasn't returned in the same condition as it was delivered</option>
+                  <option>Others</option>
+                </select>
+                <div [hidden]="!claimReason.errors?.required" class="invalid-feedback">Claim reason required.</div>
+              </div>
+
+              <div class="form-group" class="mt-2">
+                <label for="name">Enter your comment:</label>
+                <textarea class="form-control" rows="8" type="text" [(ngModel)]="claimMessage" name="claimMessage"
+                  #message2="ngModel" [ngClass]="{'is-invalid' : message2.errors && message2.touched}"
+                  required></textarea>
+                <div [hidden]="!message2.errors?.required" class="invalid-feedback">Comment required.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!contactForm.form.valid" class="btn btn-success" data-dismiss="modal" (click)="claim()">Send
+          Claim</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--GET IN CONTACT WITH THE BUYER MODAL-->
+<div *ngIf="!conversationExists" class="modal" id="getContact">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Contact Buyer</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <form #contactForm="ngForm">
+              <div class="form-group">
+                <label for="name">Enter your first message:</label>
+                <textarea class="form-control" placeholder="Escriba un mensaje" rows="8" type="text"
+                  [(ngModel)]="composedMessage" name="composedMessage" #message2="ngModel"
+                  [ngClass]="{'is-invalid' : message2.errors && message2.touched}" required></textarea>
+                <div [hidden]="!message2.errors?.required" class="invalid-feedback">Message required.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!contactForm.form.valid" class="btn btn-success" data-dismiss="modal"
+          (click)="contactUser()">Send</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Dispatch confirmation MODAL -->
+<div class="modal" id="confirmation">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Dispatch Order</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <small>You are change the status of:
+              <br>Order number
+              <b>#{{order?.offerID}}</b>
+              <br> for
+              <b>{{order?.quantity}}</b>
+              <i style="color: gray">{{order?.productName}}</i> <b>{{order?.variant1}} {{order?.variant2}}</b>
+              <br>to
+              <b style="color: red">"Dispatched"</b>.</small>
+            <br>
+            <div class="text-center">
+              <small style="color: gray">Send the order to:</small>
+              <br>
+              <small>
+                <b>{{order?.name}}</b>
+              </small>
+              <br>
+              <small>
+                <b>{{order?.address1}} {{order?.address2}}</b>
+              </small>
+              <br>
+              <small>
+                <b>{{order?.city}}, {{order?.postCode}}</b>
+              </small>
+              <br>
+              <small>
+                <b>{{order?.region}}, {{order?.country}}</b>
+              </small>
+            </div>
+            <p>
+              <br>
+              <small>
+                Are you sure to continue? This means that you have already dispatched the order to the address above.
+                Once confirmed, we'll notify the buyer that you have dispatched the order.</small>
+            </p>
+
+            <form #deliveryForm="ngForm">
+              <div class="form-group">
+                <label for="delCompany">Enter delivery company name <br><small>For example: Royal Mail, DHL, FedEx,
+                    UPS, TNT</small></label>
+                <input class="form-control" type="text" [(ngModel)]="delCompany" name="delCompany" #company="ngModel"
+                  [ngClass]="{'is-invalid' : company.errors && company.touched}" required>
+                <div [hidden]="!company.errors?.required" class="invalid-feedback">Delivery company name required.</div>
+              </div>
+              <div class="form-group">
+                <label for="delRef">Delivery reference/tracking number</label>
+                <input class="form-control" type="text" [(ngModel)]="delRef" name="delRef" #reference="ngModel"
+                  [ngClass]="{'is-invalid' : reference.errors && reference.touched}" required>
+                <div [hidden]="!reference.errors?.required" class="invalid-feedback">Delivery reference number required.
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!deliveryForm.form.valid" class="btn btn-danger" data-dismiss="modal"
+          (click)="onClickChangeStatusToDispatched()">Confirm</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

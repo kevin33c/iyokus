@@ -1,0 +1,383 @@
+<app-header></app-header>
+
+<section class="page-background">
+  <div class="container">
+
+    <div class="card card-body mt-3" id="header">
+      <h4 class="woolime-theme">Upload Products</h4>
+      <p id="header-text">
+        Please make sure to provide an accurate description of the product. <br>Read more about selling with Iyokus at:
+        <a href="#" routerLink="/help/center/203" target="_blank">Prohibited
+          items</a>, <a href="#" routerLink="/help/center/207" target="_blank">How to set a price</a> and <a href="#"
+          routerLink="/help/center/202" target="_blank">Seller's Guide</a>
+      </p>
+    </div>
+
+
+    <form [formGroup]="form" #userForm="ngForm" (submit)="onSubmitEditProduct()">
+
+      <div class="card card-body mt-1">
+        <div class="form-group">
+          <label class="mt-2">Where is your product originating from?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios" id="domestic" (click)="selectDomestic()"
+              value="Domestic" [checked]="isInternational == false">
+            <label class="form-check-label" for="domestic">
+              Domestic (UK & EU) - 1 week delivery time
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios" id="international"
+              (click)="selectInternational()" value="international" [checked]="isInternational == true">
+            <label class="form-check-label" for="international">
+              International - 3 to 5 weeks delivery time
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="mt-2">Is your product imported from a different website?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios2" id="unreferenced" (click)="selectUnreferenced()"
+              value="unreferenced" [checked]="isReferenced == false">
+            <label class="form-check-label" for="unreferenced">
+              No
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios2" id="referenced" (click)="selectReferenced()"
+              value="referenced" [checked]="isReferenced == true">
+            <label class="form-check-label" for="referenced">
+              Yes
+            </label>
+          </div>
+        </div>
+
+        <div [hidden]="!isReferenced">
+          <div class="form-group">
+            <label class="mt-1" for="referenceURL">Reference URL</label>
+            <input type="text" class="form-control" [(ngModel)]="referenceURL" name="referenceURL"
+              formControlName="referenceURL">
+          </div>
+          <div class="form-group">
+            <label class="mt-1" for="referenceID">Reference ID</label>
+            <input type="text" class="form-control" [(ngModel)]="referenceID" name="referenceID"
+              formControlName="referenceID">
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-body mt-1">
+        <!--1. Product Information-->
+        <h5 class="mt-2 woolime-theme">1. Product Information</h5>
+        <!--NAME-->
+        <div class="form-group">
+          <label class="mt-5" for="name">Product Name <br><small>Avoid generic naming and use a name that is
+              descriptive. For example, instead of "T-shirt", use "Red t-shirt Adidas size M".</small></label>
+          <input type="text" class="form-control" [(ngModel)]="name" name="name" formControlName="name">
+        </div>
+        <!--CONDITON-->
+        <div class="form-group">
+          <label class="mt-5" for="type">Product Condition <br><small>Select whether the product is new or
+              used.</small></label>
+          <select type="text" class="form-control iyokus-small-input" [(ngModel)]="type" name="type"
+            formControlName="type" (change)="onSelectCondition()">
+            <option selected disabled>Select</option>
+            <option value="1">New</option>
+            <option value="0">Used</option>
+          </select>
+        </div>
+        <!--CONDITION IN %-->
+        <div [hidden]="type != 0" class="form-group">
+          <label class="mt-5" for="reserve"><small>If your product is used, please help us understand the condition of
+              the product. For example, if the product is half new, please enter 50%.</small></label>
+          <div class="input-group">
+            <input type="number" [(ngModel)]="condition" name="condition" class="form-control iyokus-small-input"
+              aria-label="Recipient's username" aria-describedby="basic-addon2" formControlName="condition">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">%</span>
+            </div>
+          </div>
+        </div>
+        <!--BRAND-->
+        <div class="form-group">
+          <label class="mt-5" for="brand">Product Brand <br><small>For example, Adidas, Sony, Apple. If you do not know
+              the brand name or if it is self-made, please enter your username.</small></label>
+          <input type="text" class="form-control iyokus-small-input" [(ngModel)]="brand" name="brand"
+            formControlName="brand">
+        </div>
+        <!--CATEGORY-->
+        <div class="form-group">
+          <label class="mt-5" for="category">Product Category</label>
+          <select type="text" class="form-control iyokus-small-input" [(ngModel)]="category" name="category"
+            formControlName="category" (change)="onSelect(category)">
+            <option selected disabled>Select</option>
+            <option *ngFor="let category of categories" attr.value={{category.id}}>{{category.name}}</option>
+          </select>
+        </div>
+        <!--SUBCATEGORY-->
+        <div [hidden]="!category" class="form-group">
+          <label class="mt-5" for="subcategory">Product Subcategory</label>
+          <select type="text" class="form-control iyokus-medium-input" [(ngModel)]="subcategory" name="subcategory"
+            formControlName="subcategory">
+            <option selected disabled>Select</option>
+            <option *ngFor="let subcategory of subcategories" attr.value={{subcategory.id}}>{{subcategory.name}}
+            </option>
+          </select>
+          <small>
+            Remember that product category and subcategory do not need to be perfect. These are only an indication to
+            guide the buyers. You'll have more opportunities below to describe your product in more details.
+          </small>
+        </div>
+        <!--GENDER-->
+        <div [hidden]="category != '300' && category != '400'" class="form-group">
+          <label class="mt-5">Gender</label>
+          <select type="text" class="form-control iyokus-small-input" [(ngModel)]="gender" name="gender"
+            formControlName="gender">
+            <option selected disabled>Select</option>
+            <option value="1">Women</option>
+            <option value="0">Men</option>
+            <option value="2">Unisex</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="mt-5">Does your product has any variant? E.g. different colours, sizes, etc.</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios3" id="novariant" (click)="selectNoVariant()"
+              value="novariant" [checked]="isVariant == false">
+            <label class="form-check-label" for="novariant">
+              No
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios3" id="isvariant" (click)="selectIsVariant()"
+              value="isvariant" [checked]="isVariant == true">
+            <label class="form-check-label" for="isvariant">
+              Yes
+            </label>
+          </div>
+        </div>
+
+        <div [hidden]="!isVariant" class="form-group">
+          <label class="mt-5" for="variant1">Variant 1<br><small>Enter different colours, e.g. "Red", "Light Blue".
+              Please use the "Enter ⏎" enter a tag in COMPLETE word or sentences WITH SPACEC where applicable.
+            </small></label>
+          <tag-input (onAdd)="onItemAdded($event, 'variant1')" (onRemove)="onItemRemoved($event, 'variant1')"
+            [ngModel]="variant1" name="variant1" theme='light' [maxItems]='20' placeholder="+Colours"
+            secondaryPlaceholder='Enter colour' [ngModelOptions]="{standalone: true}"></tag-input>
+        </div>
+
+        <div [hidden]="!isVariant" class="form-group">
+          <label class="mt-5" for="variant2">Variant 2<br><small>Enter different size, system, hardware, etc., e.g.
+              "XL", "Android", "iPhone 6". Please use the "Enter ⏎" enter a tag in COMPLETE word or sentences WITH
+              SPACEC where applicable.
+            </small></label>
+          <tag-input (onAdd)="onItemAdded($event, 'variant2')" (onRemove)="onItemRemoved($event, 'variant2')"
+            [ngModel]="variant2" name="variant2" theme='light' [maxItems]='20' placeholder="+Variant"
+            secondaryPlaceholder='Enter variant' [ngModelOptions]="{standalone: true}"></tag-input>
+        </div>
+
+      </div>
+
+
+      <!--2. Pricing Information-->
+      <div class="card card-body mt-1">
+        <h5 class="mt-3 woolime-theme">2. Pricing Information <br> <small>Read more about <a href="#"
+              routerLink="/help/center/207" target="_blank">How to set a price</a>.</small></h5>
+        <!--CURRENCY-->
+        <div class="form-group">
+          <label class="mt-5" for="price">Currency</label>
+          <input [attr.disabled]="true" type="text" [(ngModel)]="currency" name="currency"
+            class="form-control iyokus-small-input" formControlName="currency">
+        </div>
+        <!--LIST PRICE-->
+        <div class="form-group">
+          <label class="mt-5" for="price">List Price <small>incl. VAT</small> <br><small>This is the <b>public price
+                shown to the buyers</b>. I.e. your usual selling price <u>without discount</u>.</small></label>
+          <input type="number" class="form-control iyokus-small-input" [(ngModel)]="listed_price" name="listed_price"
+            formControlName="listed_price">
+        </div>
+        <!--RESERVE PRICE-->
+        <div class="form-group">
+          <label class="mt-5" for="reserve">Reserve Price <small>incl. VAT</small> <br><small>Thi is the <b>private
+                price NOT shown to the buyers</b>. I.e. <u>the minimum price you are willing to sell</u> the
+              product.</small></label>
+          <input type="number" class="form-control iyokus-small-input" [(ngModel)]="reserve_price" name="reserve_price"
+            formControlName="reserve_price">
+        </div>
+        <small>
+          Together, the list price and reserve price, represent the range pricing used when selling with Iyokus. I.e. if
+          the buyer's bid price is within the range, the bid will be accepted, else the buyers will receive a
+          counter-offer or if the bid is signicantly lower then the bid will be rejected.
+        </small>
+
+        <!--QUANTITY-->
+        <div class="form-group">
+          <label class="mt-5" for="quantity">Quantity Available <br><small><b>Please remember to update the quantity
+                available if its availability changes</b>. We'll send you a reminder every 3 weeks.</small></label>
+          <input type="number" class="form-control iyokus-small-input" [(ngModel)]="quantity" name="quantity"
+            formControlName="quantity">
+        </div>
+        <!--LOCKOUT PERIOD-->
+        <div class="form-group">
+          <label class="mt-5" for="locked_period">Lock-out Period <br><small>This is the period, <u><b>in days</b></u>,
+              that the buyer will not able to bid again for this product if his/her bid failed. For example, 2 days
+              means
+              if buyer's bid failed on a Monday, he/she will NOT able to bid again for this product until Wednesday. In
+              general a longer lock-out period will attract more serious bids but will also receive less bids.
+              <br>Read more at <a href="#" routerLink="/help/center/222" target="_blank">Lock-out Period Guide</a>.
+            </small></label>
+          <input type="number" class="form-control iyokus-small-input" [(ngModel)]="locked_period" name="locked_period"
+            formControlName="locked_period">
+        </div>
+      </div>
+
+      <div class="card card-body mt-1">
+        <!--3. Package Information-->
+        <h5 class="mt-3 woolime-theme">3. Delivery Information</h5>
+        <div class="form-group">
+          <label class="mt-5" for="location">Your City<br><small>ONLY RELEVANT FOR INDIVIDUAL SELLERS: it is expected
+              that you can arrange a Meetup Delivery within your city/location. You can change your city by editing your
+              profile
+              <a href="#" routerLink="/business/editprofile" target="_blank">Here</a>.</small></label>
+          <tag-input [(ngModel)]="location" name="location" theme='dark' placeholder="" secondaryPlaceholder=''
+            style="max-width: 10cm;" disable="true" formControlName="location"></tag-input>
+        </div>
+        <!--DELIVERY METHOD-->
+        <div class="form-group">
+          <label class="mt-5" for="deliveryMethod">Delivery Method <br><small>Read more about our delivery and payment
+              methods
+              <a href="#" routerLink="/help/center/204" target="_blank">Here</a>.</small></label>
+          <select [disabled]="user?.type === 'seller'" [(ngModel)]="deliveryMethod" name="deliveryMethod"
+            class="form-control iyokus-small-input" (change)="onSelectDeliveryMethod()"
+            formControlName="deliveryMethod">
+            <option selected disabled>Select</option>
+            <option value="0">Meetup Delivery</option>
+            <option value="1">Postal Delivery</option>
+          </select>
+          <small *ngIf="user?.type === 'seller'">
+            <b>NOTE</b>, Individual sellers can only use <b>"Meetup Delivery"</b>. To enable "Postal Delivery", please
+            consider registering a Professional seller account.
+          </small>
+        </div>
+        <!--DELIVERY COST-->
+        <div [hidden]="deliveryMethod != 1" class="form-group">
+          <label class="mt-5" for="quantity">Delivery Cost in {{currency}} <small>incl. VAT</small> <br><small>NOTE:
+              this cost will be added to the buyer's check out amount, please provide an accurate and fair
+              amount.</small></label>
+          <input [disabled]="user?.type === 'seller'" type="number" [(ngModel)]="deliveryCost" name="deliveryCost"
+            class="form-control iyokus-small-input" formControlName="deliveryCost">
+        </div>
+
+        <!--FREE POSTAL DELIVERY OPTION-->
+        <div [hidden]="deliveryMethod != 1" class="form-group">
+          <label class="mt-5">Do you also offer a Free Delivery option?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios4" id="nofreedelivery"
+              (click)="selectNoFreeDelviery()" value="nofreedelivery" [checked]="isFreeDelivery == false">
+            <label class="form-check-label" for="nofreedelivery">
+              No
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="Radios4" id="freedelivery" (click)="selectFreeDelviery()"
+              value="freedelivery" [checked]="isFreeDelivery == true">
+            <label class="form-check-label" for="freedelivery">
+              Yes
+            </label>
+          </div>
+        </div>
+
+        <!--RETURN POLICY -->
+        <div class="form-group">
+          <label class="mt-5" for="return_policy">Return Policy <br><small>Read more about <a href="#"
+                routerLink="/help/center/111" target="_blank">Return Policies</a>.</small></label>
+
+          <select disabled type="text" class="form-control iyokus-small-input" [(ngModel)]="return_policy"
+            name="return_policy" formControlName="return_policy">
+            <option selected disabled>Select</option>
+            <option value="0">24 hours</option>
+            <option value="14">14 days</option>
+          </select>
+        </div>
+        <small>
+          Return policy is predetermined depending on the Product Condution.
+          <br>If <b>"Used"</b>, the buyer has 24 hours upon receiving the item to claim a refund.
+          <br>If <b>"New"</b>, the buyer has 14 working days upon receiving the item to claim a refund.
+        </small>
+      </div>
+
+      <div class="card card-body mt-1">
+        <!--4. Description & Pictures-->
+        <h5 class="mt-3 woolime-theme">4. Description & Pictures</h5>
+        <!--DESCRIPTION-->
+        <div class="form-group">
+          <label class="mt-5" for="description">Product Description <br><small>Please describe your product in as much
+              details as possible, such as colour, size and where applicable the technical specification and any
+              information that you consider necessary to allow the buyers to know and evaluate your
+              product.</small></label>
+          <ckeditor [config]="ckeConfig" class="form-control" [(ngModel)]="description" name="description"
+            formControlName="description"></ckeditor>
+        </div>
+        <br>
+        <!--TAGS SYSTEM-->
+        <div class="form-group">
+          <label class="mt-5" for="tags">Tags<br><small>Optional but highly recommended, as these help us to show your
+              product to the right buyers. Please use the "Enter ⏎" enter a tag in COMPLETE word or sentences WITH
+              SPACEC where applicable.
+              <br><u><b>Correct:</b></u> "T-shirt", "Green T-shirt" <b>and</b> pulse "Enter ⏎"
+              <br><u><b>Incorrect:</b></u> "#T-shirt" o "TshirtGreen"
+            </small></label>
+          <tag-input (onAdd)="onItemAdded($event, 'tag')" (onRemove)="onItemRemoved($event, 'tag')" [ngModel]="tags"
+            name="tags" theme='dark' [maxItems]='20' placeholder="+Tag" secondaryPlaceholder='Enter tag'
+            [ngModelOptions]="{standalone: true}"></tag-input>
+        </div>
+        <!--TAGS SYSTEM-->
+        <br>
+        <!--Upload-->
+        <div *ngIf="fileSources?.length < 4" class="center mb-2 mt-2">
+          <label class="mt-5" for="picture">Pictures - Upload up to 4 pictures <br><small>Remember is important to shown
+              accurate and up to date picture of your product.</small></label>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label class="btn btn-dark" class="input-group-text" id="basic-addon1">
+                Search
+                <input type="file" (change)="onFileChanged($event)" accept="image/*" hidden>
+              </label>
+            </div>
+            <input type="text" class="form-control" [value]="selectedFileName" aria-describedby="basic-addon1">
+          </div>
+
+          <button class="btn btn-dark mt-1" type="button" (click)="onUpload()">Upload</button>
+        </div>
+
+        <table class="table table-striped mt-2 mb-2" *ngFor="let image of fileSources">
+          <tbody>
+            <tr>
+              <img src="{{image}}" class="img-preview">
+              <td>
+                <a href="javascript:void(0);">
+                  <i class="fa fa-times-circle" style="color: red; font-size: 30px"
+                    (click)="onClickDeleteImage(image)"></i>
+                </a>
+              </td>
+              <td>
+                <a href="javascript:void(0);">
+                  <i class="fa fa-home" style="color: blue; font-size: 30px" (click)="onClickMakeMain(image)"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-body mt-0">
+        <input [disabled]="!userForm.form.valid" type="submit" value="Save Changes" class="btn woolime-btn-theme">
+      </div>
+
+    </form>
+
+  </div>
+</section>

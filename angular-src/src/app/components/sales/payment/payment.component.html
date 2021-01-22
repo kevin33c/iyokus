@@ -1,0 +1,172 @@
+<section *ngIf="order">
+  <div class="d-none d-sm-block">
+    <small>
+      <ol class="breadcrumb">
+        <form class="form-inline">
+          <a class="deactivate" href="javascript:void(0);" [routerLink]="['/']">
+            <i class="fa fa-home" style="font-size: 20px" for="home"></i>
+            <a class="black-text ml-1" id="home">Home</a>
+            <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="home"></i>
+          </a>
+        </form>
+
+        <form class="form-inline">
+          <a class="deactivate" href="javascript:void(0);" [routerLink]="['/product', productNameToUrl(productName), productID]">
+            <i class="fa fa-shopping-cart" style="font-size: 20px" for="product"></i>
+            <a class="black-text ml-1" id="product">Product</a>
+            <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="product"></i>
+          </a>
+        </form>
+
+        <form class="form-inline">
+          <a class="deactivate" href="javascript:void(0);" (click)="backClicked()">
+            <i class="fa fa-truck" style="font-size: 20px" for="delivery"></i>
+            <a class="black-text ml-1" id="delivery">Delivery</a>
+            <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="delivery"></i>
+          </a>
+        </form>
+
+        <form class="form-inline">
+          <i class="fa fa-credit-card-alt" style="font-size: 20px" for="payment"></i>
+          <a class="black-text ml-1" id="payment">Payment</a>
+          <i class="fa fa-chevron-right mx-2" aria-hidden="true" id="payment"></i>
+        </form>
+        <form class="form-inline deactivate">
+          <i class="fa fa-check-circle" style="font-size: 20px" for="confirmation"></i>
+          <a class="black-text ml-1" id="confirmation">Confirmation</a>
+        </form>
+      </ol>
+    </small>
+  </div>
+
+
+  <div class="mb-4 ml-3 mt-4">
+    <a href="javascript:void(0);" (click)="backClicked()">
+      <i class="fa fa-arrow-circle-o-left" style="font-size: 40px; color: black; float: left;"></i>
+    </a>
+    <br>
+  </div>
+
+  <div class="container">
+    <h2 class="page-header">PAYMENT</h2>
+    <!--<p>Choose your payment method</p>-->
+    <div class="row mb-4 mt-4">
+      <div class="col-md-4 col-xs-0 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Order Summary</h5>
+            <small class="card-text">
+              <b>{{order?.quantity}}</b> x {{order?.productName}} <b>{{order?.variant1}} {{order?.variant2}}</b></small>
+            <br>
+            <small class="card-text">For
+              <b>{{(order?.quantity * order?.price) | currency: 'GBP': number }}</b>
+            </small>
+            <br>
+            <hr>
+            <small class="card-text">
+              <!--POST DELIVERY-->
+              <div *ngIf="deliveryMethod == 1" class="div">
+                <b>Delivery to:</b>
+                <br> {{order?.name}}
+                <br>{{order?.address1}} {{order?.address2}}
+                <br>{{order?.city}}, {{order?.postCode}}
+                <br>{{order?.region}}, {{order?.country}}
+                <br>
+                <b>Delivery cost: {{order?.deliveryFee | currency: 'GBP': number }}</b>
+              </div>
+
+              <!--MEETING DELIVERY-->
+              <div *ngIf="deliveryMethod == 0" class="div">
+                <b>Delivery cost: <span style="color: green;">FREE</span></b>
+              </div>
+            </small>
+            <hr>
+            <span class="card-text">
+              <b>Total: {{order?.totalPrice | currency: 'GBP': number }}</b>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8 col-centered">
+        <h5 class="card-title">Pay with Credit/Debit Card</h5>
+        <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Payment_Visa.png" alt="">
+        <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Payment_Mastercard.png" alt="">
+        <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Payment_Amex.png" alt="">
+
+        <p>Pay easily and safely with your credit/debit card through<a href="https://stripe.com/gb" target="_blank"><img
+              id="icon-stripe" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Payment_Stripe.png"
+              alt="Iyokus-Stripe"></a> </p>
+
+        <button [disabled]="!acceptPolicy" class="btn woolime-btn-theme" (click)="openCheckout()" type="button">PAY WITH
+          CARD</button>
+
+        <small class="mt-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked="checked" id="terms"
+              (change)="acceptPoliciesStripe()">
+            <label class="form-check-label" for="terms">
+              I've read and accepted the <a href="https://stripe.com/gb/checkout/legal" target="_blank">Terms and
+                Conditions of Use</a>
+            </label>
+          </div>
+        </small>
+        <br>
+        <hr>
+        <br>
+        <h5 class="card-title">Pay with Cryptocurrency</h5>
+        <p>We process cryptocurrency payments through our payment partner Coinbase Commerce</p>
+        <button [disabled]="!acceptPolicyCoinbase" class="btn crypto-btn-theme" data-toggle="modal"
+          data-target="#cryptoPayment" type="button" disabled>PAY
+          WITH CRYPTO</button>
+        <small class="mt-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" checked="checked" id="terms"
+              (change)="acceptPoliciesCoinbase()">
+            <label class="form-check-label" for="terms">
+              I've read and accepted the <a href="https://commerce.coinbase.com/legal/terms-of-service/"
+                target="_blank">Terms and
+                Conditions of Use</a>
+            </label>
+          </div>
+        </small>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- crypto info MODAL -->
+<div class="modal" id="cryptoPayment">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crypto Payment Guide</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <b>Currently we only accept Bitcoin and Ethereum.</b>
+        </p>
+        <ol>
+          <li>Continue to be redirected to a Coinbase payment portal</li>
+          <li>Choose your payment cryptocurrency and method</li>
+          <li>Pay directly through Coinbase (fastest but you need to have an account with them) or by transfer (can take
+            several minutes)</li>
+          <li>Wait for network confirmation. <b>Keep the windown open and wait to be directed back to our site to
+              receive your order confirmation</b></li>
+          <li>Receive email order confirmation</li>
+        </ol>
+        <p>
+          <i>For reference, an Ethereum payment can take 3-5 minutes to be detected and confirmed. If you have any doubts, contact us
+            at <a href="mailto:client@iyokus.com">Support</a>.</i>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" data-dismiss="modal" (click)="cryptoPay()">Continue to Pay</button>
+        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- crypto info MODAL -->

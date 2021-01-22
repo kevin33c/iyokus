@@ -1,0 +1,123 @@
+<app-header></app-header>
+
+<div class="container mt-4">
+  <h3>My Finance</h3>
+  <div class="row">
+    <div class="col-md-5 mt-1">
+      <span>From:</span>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="fromDate" ngbDatepicker #d="ngbDatepicker"
+              [displayMonths]="1" [maxDate]="toDate" (document:click)="closeFix($event, d)">
+
+            <div class="input-group-append">
+              <button class="btn btn-secondary calendar" (click)="d.toggle(); $event.stopPropagation();" type="button"><i
+                  class="fa fa-calendar"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-5 mt-1">
+      <span>To:</span>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="toDate" ngbDatepicker #d2="ngbDatepicker"
+              [displayMonths]="1" [minDate]="fromDate" [maxDate]="today" (document:click)="closeFix($event, d2)">
+
+            <div class="input-group-append">
+              <button class="btn btn-secondary calendar" (click)="d2.toggle(); $event.stopPropagation();" type="button"><i
+                  class="fa fa-calendar"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <button class="btn btn-primary mt-3 mb-3" type="button" (click)="onRefresh()">Update Search</button>
+
+
+  <div>
+    <h5>Transactions</h5>
+    <small><i id="wait-icon" class="fa fa-clock-o"></i> Pending | <i id="tick-icon" class="fa fa-check-circle"></i> Processed | <i id="cancelled-icon" class="fa fa-times-circle"></i> Cancelled</small>
+    <div class="table-responsive-lg">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Delivery</th>
+            <th scope="col">Transaction Fee</th>
+            <th scope="col">Iyokus Fee</th>
+            <th scope="col">VAT</th>
+            <th scope="col">Net Payout</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let fulfilment of fulfilments">
+          <tr>
+            <td id="fulfilment-id">
+
+              <a data-toggle="collapse" [attr.href]="'#' + fulfilment.offerID" aria-expanded="false"
+                [attr.aria-controls]="fulfilment.offerID"><i id="plus-icon" class="fa fa-plus"></i></a>
+              <a href="javascript:void(0);" [routerLink]="['/business/order', fulfilment?.offerID]">{{fulfilment?.offerID}}</a>
+
+              <div class="collapse" [attr.id]="fulfilment.offerID" style="min-width: 300px;">
+                <div class="card card-body">
+                  <b>Product name:</b> 
+                  {{fulfilment?.productName}}
+                  <b>Quantity:</b>{{fulfilment?.quantity}}
+                </div>
+              </div>
+
+            </td>
+
+            <td>{{fulfilment?.orderDate | date:'dd.MM.yyyy'}}</td>
+            <td>{{fulfilment?.price * fulfilment?.quantity | currency: 'GBP': number }}</td>
+            <td>{{fulfilment?.deliveryFee | currency: 'GBP': number }}</td>
+            <td>{{fulfilment?.transactionFee * -1 | currency: 'GBP': number }}</td>
+            <td>{{fulfilment?.iyokusFee * -1 | currency: 'GBP': number }}</td>
+            <td>{{(fulfilment?.feeVAT + fulfilment?.transactionVAT) * -1 | currency: 'GBP': number }}</td>
+            <td>{{fulfilment?.sellerPayout | currency: 'GBP': number }}</td>
+            <td>
+              <div *ngIf="fulfilment?.payoutToSeller && fulfilment?.sellerPayout != 0"><i id="tick-icon" class="fa fa-check-circle"></i></div>
+              <div *ngIf="!fulfilment?.payoutToSeller && fulfilment?.fulfilmentStatus != 0"><i id="wait-icon" class="fa fa-clock-o"></i></div>
+              <div *ngIf="fulfilment?.fulfilmentStatus == 0"><i id="cancelled-icon" class="fa fa-times-circle"></i></div>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h5>Summary</h5>
+    <table class="table table-striped summary-table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Total Payments</th>
+          <th scope="col">Total Transaction Fee</th>
+          <th scope="col">Total Iyokus Fee</th>
+          <th scope="col">Total VAT</th>
+          <th scope="col">Total Payout</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{totalPayment | currency: 'GBP': number }}</td>
+          <td>{{totalTransactionFees * -1 | currency: 'GBP': number }}</td>
+          <td>{{totalIyokusFees * -1 | currency: 'GBP': number }}</td>
+          <td>{{totalVAT * -1 | currency: 'GBP': number }}</td>
+          <td>{{totalPayout | currency: 'GBP': number }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

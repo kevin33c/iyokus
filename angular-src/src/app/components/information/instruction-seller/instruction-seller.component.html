@@ -1,0 +1,496 @@
+<app-header></app-header>
+
+<div class="container" style="margin-top: 2cm; margin-bottom: 10cm;">
+  <h2 class="text-center">Coming Soon</h2>
+</div>
+
+<!--
+<body>
+  <section id="main-header" class="d-none d-lg-block">
+    <div class="box">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Registro</h5>
+                <p class="card-text">¿Como me uno a Iyokus explicado paso a paso?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#register-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-plus-square fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Añadir producto</h5>
+                <p class="card-text">¿Como añado un producto en Iyokus?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#add-product-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Completar venta</h5>
+                <p class="card-text">¿Como completar la venta paso a paso?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#sales-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-credit-card fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Recibir pagos</h5>
+                <p class="card-text">¿Como y cuando recibo el pago por mis ventas?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#payments-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-undo fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Políticas de Devolución</h5>
+                <p class="card-text">¿Como funciona la política de devolución de Iyokus?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#refund-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-envelope fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Contáctanos</h5>
+                <p class="card-text">¿Y si tengo más preguntas? Contáctanos!</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#contact-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="main-header" class="d-lg-none">
+    <div class="container mt-5 mb-5">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#register-section'">¿Como
+                me uno a Iyokus explicado paso a paso?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#add-product-section'">¿Como
+                añado un producto en Iyokus?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#sales-section'">¿Como
+                completar la venta paso a paso?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#payments-section'">¿Como
+                y cuando recibo el pago por mis ventas?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#refund-section'">¿Como
+                funciona las políticas de devolución de Iyokus?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#contact-section'">¿Y
+                si tengo más preguntas?</a>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <hr class="d-none d-lg-block">
+
+
+  <section id="register-section">
+    <div class="container">
+      <h3>Registrarse en Iyokus</h3>
+      <div class="how-section">
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <ol>
+              <h5 class="subheading">Sigue los pasos descritos abajo para abrir su cuenta como venderdor.</h5>
+              <li>
+                <p class="text-muted">Para empezar acceda a la pagina de registro:</p>
+                <div class="col-md-3 btn btn-dark btn-center btn-block m-2 center-block" [routerLink]="['/seller-signup']">Regístrate
+                  aquí</div>
+              </li>
+              <li>
+                <p class="text-muted">Decide que tipo de cuenta de vendedor quieres abrir. En Iyokus tenemos dos tipos
+                  de cuentas de vendedor:
+                </p>
+                <ul class="text-muted">
+                  <li><b>Particular:</b> Para vendedores circunstanciales y vendedores de baja cantidad. Más fácil de
+                    registrar, cualquiera puede abrir una cuenta particular, pero <u>solo puedes entregar via "Entrega en
+                      Mano"</u></li>
+                  <li><b>Profesional:</b> Para empresas o vendedores profesionales que venden mayor cantidades. Necesita
+                    más información para registrarse, <u>pero puede optar por entregar a través de "Entrega en Mano" o
+                      "Envío Postal"</u> y más asistencias de ventas.</li>
+                </ul>
+                <img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/GetStarted_Seller_Profile.png" alt="iyokus.es" class="img-fluid mb-3 imagenlong">
+              </li>
+              <li>
+                <p class="text-muted">Para registrarte en iyokus solo necesitamos lo siguiente datos<sup>1</sup> tuyos:
+                </p>
+                <ul class="text-muted">
+                  <li>Un nombre de usuario</li>
+                  <li>Su nombre y apellidos legal</li>
+                  <li>Un email válido</li>
+                  <li>Un número de teléfono móvil válido</li>
+                  <li>Tu ubicación actual (ciudad)</li>
+                  <li>Una contraseña</li>
+                </ul>
+                <p class="text-muted">Para una <b>cuenta de profesionales</b> rellene el formulario y nos pondremos en
+                  contacto con usted para completar la solicitud de su cuenta.</p>
+              </li>
+              <li>
+                <p class="text-muted">Le enviaremos inmediatamente un email a la dirección de email que proporcionó
+                  para verificarlo. Haga clic en el enlace en el email para verificar.</p>
+              </li>
+              <li>
+                <p class="text-muted">También le enviamos un código de verificación por SMS a su teléfono móvil. Deberá
+                  introducir al acceder por primera vez a su cuenta Iyokus tras el registro para verificar su teléfono
+                  móvil.</p>
+              </li>
+              <li>
+                <p class="text-muted">Una vez que haya verificado su correo electrónico y teléfono móvil, puede iniciar
+                  sesión <a href="javascript:void(0);" [routerLink]="['/seller-login']">aquí</a>.</p>
+              </li>
+              <li>
+                <p class="text-muted">Una vez que haya iniciado sesión por primera vez, deberá completar su información
+                  bancaria en su <a href="javascript:void(0);" [routerLink]="['/business/editprofile']">Perfil</a> para
+                  que podamos pagarle.</p>
+              </li>
+              <li>
+                <p class="text-muted">Sube tus productos <a href="javascript:void(0);" [routerLink]="['/business/addproduct']">aquí</a>
+                  y empieza a vender.</p>
+              </li>
+            </ol>
+            <p>
+              <small>
+                <sup>1</sup>Nos preocupamos por la seguridad y privacidad de sus datos. Sus datos nunca serán
+                utilizados con fines comerciales o de marketing. <b>Solo utilizaremos sus datos para facilitar las
+                  ventas y transacciones.</b>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+
+  <section id="add-product-section">
+    <div class="container">
+      <h3>Como añadir un producto</h3>
+      <div class="how-section">
+        <div class="row">
+          <div class="col-md-12">
+            <ol>
+              <li>
+                <p class="text-muted">Inicia sesión como vendedor <a href="javascript:void(0);" [routerLink]="['/seller-login']">aquí</a>.</p>
+              </li>
+              <li>
+                <p class="text-muted">Ir "Mi Cuenta" -> "Añadir Producto" o <a href="javascript:void(0);" [routerLink]="['/business/addproduct']">aquí</a>
+                  para subir productos.</p>
+              </li>
+              <li>
+                <p class="text-muted">Siga las instrucciones y complete la información requerida del producto.</p>
+              </li>
+              <li>
+                <p class="text-muted">Publique el producto. <i>Recuerde que solo puede editar el producto cuando no
+                    está publicado o inactivo</i>.</p>
+              </li>
+            </ol>
+            <p class="text-muted">
+              Antes de subir tu productos vea los siguientes para más información: <a href="javascript:void(0);"
+                [routerLink]="['/help/center/203']">Artículos
+                prohibidos</a>, <a href="javascript:void(0);" [routerLink]="['/help/center/207']">¿Cómo fijar un
+                precio?</a>, <a href="javascript:void(0);" [routerLink]="['/help/center/202']">Guía del vendedor</a>,
+              <a href="javascript:void(0);" [routerLink]="['/help/center/204']">¿Cómo funciona el envío para los
+                vendedores?</a> o más <a href="javascript:void(0);" [routerLink]="['/help/center']">aquí</a>.
+            </p>
+            <p>
+              <small>
+                <b>Ayuda!</b> recuerde que siempre puedes completar la información básica requerida del producto,
+                cargar el producto y editarlo más tarde. Mientras no lo publiques, los usuarios no lo verán todavía.
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <hr>
+
+
+  <section id="sales-section">
+    <div class="container">
+      <h3>Como completar una venta</h3>
+      <div class="how-section ">
+        <div class="row">
+          <div class="col-md-12">
+            <ol>
+              <li>
+                <p class="text-muted">
+                  Una vez que el comprador haya completado el pago de su producto, le enviaremos un email
+                  con una solicitud de pedido.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">En Iyokus tenemos dos modos<sup>1</sup> de entregas, <b>"Entrega en Mano"</b>
+                  <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es">
+                  y <b>"Envío
+                    Postal"</b> <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es">:</p>
+                <ul class="text-muted"><b>"Entrega en Mano"</b> <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es"> : Tendras que contactar con el comprador para determinar la hora y punto de
+                  entrega. Puedes contactar con el comprador en la pagina de pedido en "Mi Cuenta" -> "Mis Pedidos" o
+                  <a href="javascript:void(0);" [routerLink]="['/business/orders']">aquí</a>.
+                  <ol class="text-muted" type="i">
+                    <li>Póngase en contacto con el comprador para organizar una entrega.</li>
+                    <li>Reunirse con el comprador y entregar el pedido.</li>
+                    <li>Obtenga el <b>código de pago de 6 dígitos</b> del comprador.</li>
+                    <li>Ir a la página del pedido en "Mis Pedidos" y <b>introduzca el código de pago</b> obtenido. <i>Recomendamos
+                        hacer este paso directamente en el momento de la entrega en caso de error.</i></li>
+                    <li>Recibirás un email de confirmación.</li>
+                    <li>Le pagaremos<sup>2</sup> después de <b>24 horas</b> <i>(vea nosotras Políticas de Devolución)</i>
+                      si no hay una solicitud de devolución por parte del comprador.</li>
+                  </ol>
+
+
+
+                  <br>
+                  <b>"Envío
+                    Postal"</b> <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es"> : Tendras que enviar el pedido a la dirección indicada. Administra tus pedidos en
+                  "Mi Cuenta" -> "Mis Pedidos" o
+                  <a href="javascript:void(0);" [routerLink]="['/business/orders']">aquí</a>.
+                  <ol class="text-muted" type="i">
+                    <li>Enviar el pedido a la dirección indicada. <b>Recuerde de añadir una nota con la dirección de
+                        devolución en caso de que el comprador desee solicitar una devolución</b>.</li>
+                    <li>Ir a la página del pedido en "Mis Pedidos" y cambiar el estado del pedido a <b>"Enviado"</b>.
+                      También debe introduzcir su empresa de envío y una referencia de envío. <b>Recomendamos siempre
+                        enviar a través de una compañia con servicio de seguimiento</b>.</li>
+                    <li>Recibirás un email de confirmación.</li>
+                    <li>Le pagaremos<sup>2</sup> después de <b>14 días</b> <i>(vea nosotras Políticas de Devolución)</i>
+                      si no hay una solicitud de devolución por parte del comprador.</li>
+                  </ol>
+                </ul>
+              </li>
+            </ol>
+            <p>
+              <small>
+                <sup>1</sup>Recuerde que vendedores particulares solo pueden entregar a través de "Entrega en Mano".
+                <br>
+                <sup>2</sup>Tenga en cuenta que el tiempo transcurrido desde que procesamos el pago hasta que sea
+                depósitado en su cuenta puede variar y puede tardar entre 2-3 días hábiles.
+              </small>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+
+  <section id="payments-section">
+    <div class="container">
+      <h3>Recibir pagos</h3>
+      <div class="how-section">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h5 class="subheading">El tiempo que tarda para que usted pueda recibir los pagos por sus ventas depende
+              del estado del producto vendido, es decir, <b>si es nuevo o usado</b>. Siempre procesamos los pagos
+              cuando el periodo de desistimiento expira para el comprador, es decir 14 días para un producto nuevo y 24
+              horas para un producto usado.
+            </h5>
+            <ol>
+              <li>
+                <p class="text-muted">
+                  Para completar la configuración de su cuenta para poder vender, deberá proporcionar su información
+                  bancaria, incluido su IBAN. <i>Recuerde que por el momento solo aceptamos IBAN de un banco español,
+                    es un IBAN que comienza con "ES"</i>.
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">
+                  Puedes seguir tus estados de pagos en <a href="javascript:void(0);" [routerLink]="['/business/finance']">"Mis
+                    Finanzas"</a>.
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">
+                  Recibirá una confirmación por email cuando procesemos su pago y se depositará en su
+                  cuenta en unos días.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <hr>
+
+  <section id="refund-section">
+    <div class="container">
+      <h3>Políticas de devolución</h3>
+      <div class="how-section mb-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="subheading">El comprador puede solicitar una devolución y reembolso de su pedido dentro de <b>14
+                días
+                para artículos nuevos</b> y <b>24 horas para artículos usados</b> si los artículos devueltos son
+              exactamente como fueron entregados.</h5>
+            <ol>
+              <li>
+                <p class="text-muted">
+                  El comprador solicita una devolución y reembolso en su perfil del pedido.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">
+                  Recibirás un email con la solicitud de devolución.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">
+                  El comprador es responsable de devolver el artículo a ti. Si el pedido fue entregado vía <b>"Entrega
+                    en Mano"</b> se espera que vuelvas a encontrarte con el comprador para recibir el artículo. Si el
+                  pedido fue entregado vía <b>"Envío Postal"</b>, el comprador paga los costos de envío a la dirección
+                  de retorno que indicó.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">
+                  Una vez que haya recibido el artículo, tendrá <b>24 horas</b> para confirmar el estado del artículo
+                  devuelto. Si no recibimos ninguna reclamación, le reembolsaremos al comprador inmediatamente despues del 24 horas.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-section">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-3">
+          <h1 class="display-4 ">Contacta con Iyokus</h1>
+          <p class="lead"></p>
+          <a href="#" class="text-white"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-light py-5 mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3>Contacta con Nosotros</h3>
+          <p>¿Tiene alguna pregunta?<br> Contacta con nosotros <a href="javascript:void(0);" [routerLink]="['/misc/contactus']">Aqui</a>
+            y le responderemos lo mas rápidamente posible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+-->
+
+<app-footer></app-footer>

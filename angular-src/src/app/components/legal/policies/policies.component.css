@@ -1,0 +1,16 @@
+.page-subtitle {
+  max-width: 1180px;
+  margin: 0 auto 1.25rem;
+  padding-top: 3rem;
+  background-color: #fff
+}
+
+.content{
+  margin-bottom: 10rem;
+}
+
+.page-main_title {
+  margin: 1.875rem 0;
+  font-size: 2.1875rem;
+  text-align: center
+}

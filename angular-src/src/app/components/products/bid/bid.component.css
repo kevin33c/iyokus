@@ -1,0 +1,51 @@
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
+
+#icon-reject{
+  color: red; 
+  font-size: 200px; 
+  text-align: center;
+}
+
+#icon-accept{
+  color: green; 
+  font-size: 200px; 
+  text-align: center;
+}
+
+#icon-decide{
+  color: blue; 
+  font-size: 200px; 
+  text-align: center;
+}
+
+.card-footer{
+  background-color: #f8f9fd !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+
+#reject-btn{
+  background: linear-gradient(to right,#f1623e 0,#ee260f 100%);
+  color: white;
+}
+
+#accept-btn{
+  background: linear-gradient(to right,#49cf27 0,#03a710 100%);
+  color: white;
+}
+
+#decision-btn{
+  background: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  color: white;
+}
+
+
+
+#bid-card{
+  width: 30rem !important;
+}

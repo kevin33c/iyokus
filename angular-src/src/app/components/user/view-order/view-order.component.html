@@ -1,0 +1,282 @@
+<app-header></app-header>
+
+<div class="container">
+  <h3 class="mt-3">Order Details</h3>
+  <small>Ordered on {{order?.date | date:'dd.MM.yyyy'}} | Order Number #{{order?.offerID}} | Status:
+    <b>{{orderStatus}}</b></small>
+  <!--MEETING DELIVERY-->
+  <div *ngIf="order?.deliveryMethod === 0">
+    <div class="mt-3">
+      <h5>Your Payment Code: <span style="color: red;">{{order?.verificationCode}}</span></h5>
+    </div>
+
+    <div class="card mt-3 mb-3">
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="container Wcenter p-2">
+            <img class="card-img-top p-2" [src]=order.image_Main alt="iyokus.es"
+              [routerLink]="['/product', productNameToUrl(order.productName), order.productID]">
+            <div class="p-2">
+              <small>Illustrative only - exact order as per Order Summary</small>
+              <br>
+              <!--<small>Produced by: {{product?.brand}} | Sold by: {{seller?.name}} <br> Condition: {{productType}}</small>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Delivery Information</h6>
+
+            <p class="small-font">
+              <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                alt="iyokus.es"> Meetup Delivery
+              <br>
+              The seller will contact you soon via Iyokus Messenger to try to arrange a time and location for Meetup
+              Delivery that is mutually satisfactory<sup>1</sup>.
+            </p>
+
+            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#claim"
+              [disabled]="!claimPossible"><b>Raise Claim</b></button>
+            <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#refund"
+              [disabled]="!refundPossible"><b>Return</b></button>
+            <small>
+              <a href="javascript:void(0);" [routerLink]="['/help/center/101']">Why can I not return my order?</a>
+            </small>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Order Summary</h6>
+            <span class="small-font">
+              <a class="card-text" [routerLink]="['/product', productNameToUrl(order.productName), order.productID]"
+                style="color: #0066c0;">{{order?.productName}}</a>
+              <br>
+              <b>{{order?.variant1}} {{order?.variant2}}</b>
+            </span>
+
+            <table class="table borderless mt-3">
+              <tbody>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Quantity:</th>
+                  <td id="table-row">{{order?.quantity}}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Price:</th>
+                  <td id="table-row">{{order?.price | currency: 'GBP': number }}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Subtotal:</th>
+                  <td id="table-row">{{order?.price * order?.quantity | currency: 'GBP': number }}</td>
+                </tr>
+                <tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Delivery Cost:</th>
+                  <!--<td *ngIf="post" id="table-row">{{order?.deliveryFee | currency: 'GBP': number }}</td>-->
+                  <td *ngIf="!post" id="table-row">FREE</td>
+                </tr>
+                <hr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row"><b>Total:</b></th>
+                  <td id="table-row"><b>{{order?.totalPrice | currency: 'GBP': number }}</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <small style="color: red;">
+        <sup>1</sup><b>Warning:</b> for security and precaution, it is highly recommended to arrange a Meetup Delivery
+        at a public location and within a reasonable hour.
+      </small>
+    </section>
+  </div>
+
+
+  <!--POST DELIVERY-->
+  <div *ngIf="order?.deliveryMethod === 1">
+
+    <div class="card mt-3 mb-3">
+      <div class="row">
+
+        <div class="col-md-4">
+
+          <div class="container Wcenter p-2">
+            <img class="card-img-top p-2" [src]=order.image_Main alt="iyokus.es"
+              [routerLink]="['/product', productNameToUrl(order.productName), order.productID]">
+            <div class="p-2">
+              <small>Illustrative only - exact order as per Order Summary</small>
+              <br>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Delivery Information</h6>
+            <p>
+              <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                alt="iyokus.es">
+              Postal Delivery <br>
+              <br>
+              Delivery to: <br>
+              <b>
+                {{order?.name}}<br>
+                {{order?.address1}} {{order?.address2}}<br>
+                {{order?.city}}, {{order?.postCode}}<br>
+                {{order?.region}}, {{order?.country}}
+              </b>
+            </p>
+
+            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#claim"
+              [disabled]="!claimPossible"><b>Raise Claim</b></button>
+            <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#refund"
+              [disabled]="!refundPossible"><b>Return</b></button>
+            <small>
+              <a href="javascript:void(0);" [routerLink]="['/help/center/101']">Why can I not return my order?</a>
+            </small>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3 mb-3">
+          <div class="card-block px-3">
+            <h6>Order Summary</h6>
+            <span class="small-font">
+              <a class="card-text" [routerLink]="['/product', productNameToUrl(order.productName), order.productID]"
+                style="color: #0066c0;">{{order?.productName}}</a>
+              <br>
+              <b>{{order?.variant1}} {{order?.variant2}}</b>
+            </span>
+
+            <table class="table borderless mt-3">
+              <tbody>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Quantity:</th>
+                  <td id="table-row">{{order?.quantity}}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Price:</th>
+                  <td id="table-row">{{order?.price | currency: 'GBP': number }}</td>
+                </tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Subtotal:</th>
+                  <td id="table-row">{{order?.price * order?.quantity | currency: 'GBP': number }}</td>
+                </tr>
+                <tr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row">Delivery Cost:</th>
+                  <td *ngIf="post" id="table-row">{{order?.deliveryFee | currency: 'GBP': number }}</td>
+                </tr>
+                <hr>
+                <tr id="table-row">
+                  <th id="table-row" scope="row"><b>Total:</b></th>
+                  <td id="table-row"><b>{{order?.totalPrice | currency: 'GBP': number }}</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- CLAIM MODAL-->
+<div class="modal" id="claim">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Raise Claim</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <form #claimForm="ngForm">
+              <div class="form-group" class="mt-2">
+                <label for="reason">Choose a reason for your claim</label>
+                <select [(ngModel)]="claimReason" name="claimReason" class="form-control iyokus-small-input"
+                  #cReason="ngModel" [ngClass]="{'is-invalid' : cReason.errors && cReason.touched}" required>
+                  <option selected disabled>Select</option>
+                  <option>{{claimReason}}</option>
+                  <option>Others</option>
+                </select>
+                <div [hidden]="!cReason.errors?.required" class="invalid-feedback">Claim reason required.</div>
+              </div>
+
+              <div class="form-group" class="mt-2">
+                <label for="name">Please enter a suplementary message/commentary:</label>
+                <textarea class="form-control" rows="8" type="text" [(ngModel)]="composedMessage" name="composedMessage"
+                  #message2="ngModel" [ngClass]="{'is-invalid' : message2.errors && message2.touched}"
+                  required></textarea>
+                <div [hidden]="!message2.errors?.required" class="invalid-feedback">Message required.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!claimForm.form.valid" class="btn btn-success" data-dismiss="modal" (click)="claim()">Send
+          Claim</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- REFUND MODAL-->
+<div class="modal" id="refund">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Return Item</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <form #contactForm="ngForm">
+              <div class="form-group" class="mt-2">
+                <label for="reason">Choose a return reason</label>
+                <select [(ngModel)]="reason" name="reason" class="form-control iyokus-small-input" #cReason="ngModel"
+                  [ngClass]="{'is-invalid' : cReason.errors && cReason.touched}" required>
+                  <option selected disabled>Select</option>
+                  <option>The item delivered was not as advertised</option>
+                  <option>The item is broken</option>
+                  <option>I do not like the item</option>
+                  <option>I found a cheaper one elsewhere</option>
+                  <option>Others</option>
+                </select>
+                <div [hidden]="!cReason.errors?.required" class="invalid-feedback">Return reason required.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mt-2">
+          <small>
+            <p>
+              Remember that you can request a full refund<sup>*</sup> if the item is returned in the same condition and,
+              if applicable, in the same packaging, as it was delivered.
+              <br>
+              <sup>*</sup>Refund does not include the already incurred delivery cost. In special cases, please contact
+              us by raising a claim.
+            </p>
+          </small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!contactForm.form.valid" class="btn btn-success" data-dismiss="modal"
+          (click)="refund()">Request Return</button>
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

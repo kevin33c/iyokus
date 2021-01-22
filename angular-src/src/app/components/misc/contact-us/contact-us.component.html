@@ -1,0 +1,89 @@
+<app-header></app-header>
+
+<body>
+  <header id="page-header" class="">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="m-auto text-center">
+          <h1>Contact us</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="contact" class="py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card p-4">
+            <div class="card-body">
+              <h4>Do you have any questions?</h4>
+              <p>Fill out the contact form with your questions and contact details, and we will get back to you as soon as possible.
+                <br>
+                 We are happy to receive your questions, feedbacks or suggestions.
+                </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card p-4">
+            <div class="card-body">
+              <h3 class="text-center">Please fill out the following form to contact us:</h3>
+              <small class="text-center">*Mandatory fields</small>
+              <hr>
+              <form #contactForm="ngForm" (submit)="onSendMessage()">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="firstname">Name<sup>*</sup></label>
+                      <input type="text" class="form-control" [(ngModel)]="firstname" name="firstname" #userFirstName="ngModel"
+                        [ngClass]="{'is-invalid' : userFirstName.errors && userFirstName.touched}" required>
+                      <div [hidden]="!userFirstName.errors?.required" class="invalid-feedback">Name required</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lastname">Last Name<sup>*</sup></label>
+                      <input type="text" class="form-control" [(ngModel)]="lastname" name="lastname" #userLastName="ngModel"
+                        [ngClass]="{'is-invalid' : userLastName.errors && userLastName.touched}" required>
+                      <div [hidden]="!userLastName.errors?.required" class="invalid-feedback">Last name required</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Email<sup>*</sup></label>
+                      <input type="text" class="form-control" [(ngModel)]="email" name="email" #userEmail="ngModel"
+                        [ngClass]="{'is-invalid' : userEmail.errors && userEmail.touched}" required>
+                      <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">Email required</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="phonenumber">Phone number</label>
+                      <input type="text" class="form-control" [(ngModel)]="phonenumber" name="phonenumber">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="message">Message<sup>*</sup></label>
+                      <textarea class="form-control" [(ngModel)]="message" name="message" #userMessage="ngModel"
+                        [ngClass]="{'is-invalid' : userMessage.errors && userMessage.touched}" required></textarea>
+                      <div [hidden]="!userMessage.errors?.required" class="invalid-feedback">Message required</div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <input [disabled]="!contactForm.form.valid" type="submit" value="Submit" class="btn btn-outline-danger btn-block">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+<app-footer></app-footer>

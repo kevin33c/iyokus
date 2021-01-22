@@ -1,0 +1,38 @@
+#page-header{
+  height:400px;
+  background:url('https://s3.eu-west-3.amazonaws.com/woolime/assets/AboutUs_Main.jpg');
+  background-repeat: no-repeat;
+  background-size: 1700px 1200px;
+  background-position:0 -360px;
+  background-attachment:fixed;
+  color:#fff;
+  border-bottom:1px #eee solid;
+  padding-top:10px;
+};
+
+footer#main-footer{
+  background:#000;
+  color:#fff;
+}
+
+.display-4{
+  font-weight: 400;
+  margin-top: 100px;
+}
+
+body{
+  background-color: linear-gradient(transparent,transparent 50%,#f6f9fc 0,#f6f9fc);
+}
+
+p{
+  font-weight: 300;
+  font-size: 21px;
+  line-height: 31px;
+  color: #030033;
+}
+
+#side-pic{
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+}

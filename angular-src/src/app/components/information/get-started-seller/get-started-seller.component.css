@@ -1,0 +1,117 @@
+body {
+  background: white;
+  color: black;
+}
+
+.navbar {
+  border-bottom: 3px solid;
+  opacity: 1;
+}
+
+#home-section {
+  /* background: url(https://s3.eu-west-3.amazonaws.com/woolime/assets/GetStarted_Seller_Main.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 800px;
+  color: black;
+}
+
+#home-section .dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 800px;
+  background: white ;
+}
+
+#home-section .home-inner {
+  padding-top: 150px;
+}
+
+#home-section .card-form {
+  opacity: 0.8;
+}
+
+#home-section .fas,
+#create-section .fas {
+  color: #008ed6;
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#explore-section .fas,
+#share-section .fas {
+  background: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#iyokus-icon{
+  width: 70px; 
+  height: 30px;
+}
+
+.navbar-nav{
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.woolime-theme {
+  background-color:black;
+  color:white !important; 
+} 
+
+.paragraph {
+  font-size: 15px;
+}
+
+.fees-section{
+  background-color: white;
+  border-style: solid 2px;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.fees-section1{
+  background-color: rgb(18, 156, 236);
+  border-style: solid 2px;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+#pricing{
+  max-width: 600px;
+  border-style: solid 2px;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+#icon {
+  max-width: 250px; 
+  max-height: 200px;
+}
+
+#icon-stripe{
+	max-width: 50px; 
+  max-height: 50px;
+}
+
+
+.fixed-margin{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#faq {
+  background-color:black;
+  color:white !important; 
+} 
+
+#faq2 {
+  background-color:white;
+  color:black !important; 
+} 
+

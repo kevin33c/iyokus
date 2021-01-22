@@ -1,0 +1,447 @@
+<app-header></app-header>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/view/category', categoryRef]">{{categoryTag}}</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="['/view/subcategory', subcategoryRef]">{{subcategoryTag}}</a></li>
+  </ol>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-lg-7">
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1">
+              <img src={{product?.image_Main}} />
+            </div>
+            <div class="tab-pane" id="pic-2">
+              <img src={{product?.image_1}} />
+            </div>
+            <div class="tab-pane" id="pic-3">
+              <img src={{product?.image_2}} />
+            </div>
+            <div class="tab-pane" id="pic-4">
+              <img src={{product?.image_3}} />
+            </div>
+          </div>
+          <ul class="preview-thumbnail nav nav-tabs">
+            <li class="active">
+              <a data-target="#pic-1" data-toggle="tab">
+                <img src={{product?.image_Main}} />
+              </a>
+            </li>
+            <li>
+              <a data-target="#pic-2" data-toggle="tab">
+                <img src={{product?.image_1}} />
+              </a>
+            </li>
+            <li>
+              <a data-target="#pic-3" data-toggle="tab">
+                <img src={{product?.image_2}} />
+              </a>
+            </li>
+            <li>
+              <a data-target="#pic-4" data-toggle="tab">
+                <img src={{product?.image_3}} />
+              </a>
+            </li>
+          </ul>
+
+        </div>
+        <div class="details col-lg-5">
+          <h5 class="product-title">{{product?.name}}</h5>
+          <small>
+            <!--{product?.brand}},-->Sold by <a *ngIf="seller" href="javascript:void(0);"
+              [routerLink]="['/view/seller', product?.sellerID]">{{seller?.name}}</a>
+          </small>
+          <small *ngIf="product?.deliveryMethod === 0">
+            <b>Delivery only possible in <i class="fa fa-location-arrow"></i>{{seller?.location}}</b>
+          </small>
+
+          <div class="pull-left mt-2">
+
+            <button id="icon-button" *ngIf="product?.type === 0" type="button"
+              class="btn btn-outline-primary">Used</button>
+            <button id="icon-button" *ngIf="product?.type === 1" type="button" class="btn btn-outline-info">New</button>
+            <img *ngIf="product?.deliveryMethod === 0 || product?.deliveryMethod === 2" id="icon-button-del"
+              src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png" alt="iyokus.es">
+            <img *ngIf="product?.deliveryMethod === 1 || product?.deliveryMethod === 2" id="icon-button-del"
+              src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png" alt="iyokus.es">
+
+            <ng-template #tipAddFavourite>Add to favourites</ng-template>
+
+            <a *ngIf="!checkIfFavourite(product?._id) && authService.userRole() === 'user'" href="javascript:void(0);"
+              (click)="onClickAddFaourite(product)">
+              <i class="fa fa-heart-o pull-right" id="heart" aria-hidden="true" style="font-size: 23px;"
+                placement="right" [ngbTooltip]="tipAddFavourite"></i>
+            </a>
+
+            <ng-template #tipRemoveFavourite>Remove from favourites</ng-template>
+
+            <a *ngIf="checkIfFavourite(product?._id) && authService.userRole() === 'user'" href="javascript:void(0);"
+              (click)="onClickRemoveFavourite(product._id)">
+              <i class="fa fa-heart pull-right" id="diheart" aria-hidden="true" style="font-size: 23px;"
+                placement="right" [ngbTooltip]="tipRemoveFavourite"></i>
+            </a>
+
+          </div>
+
+          <br>
+
+
+          <div *ngIf="soldOut === false">
+
+            <div class="form-group">
+              <!--<small *ngIf="!authService.loggedIn()" style="color: red">Sign in required to bid.</small>-->
+              <small *ngIf="bidEnabled === false && userType === 'user'" style="color: red">You can bid again for this
+                product on: {{previousBidDetails?.expireDate | date:'dd.MM.yyyy HH:mm'}}</small>
+
+              <form #userForm="ngForm" (submit)="onSubmitEvaluateBid()">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">£</span>
+                  </div>
+                  <!--
+                  <input aria-describedby="basic-addon1" type="number" class="form-control col-4" [(ngModel)]="bid"
+                    name="bid" #productBid="ngModel"
+                    [ngClass]="{'is-invalid' : productBid.errors && productBid.touched}"
+                    [disabled]="!authService.loggedIn() || bidEnabled === false || userType != 'user'" required>
+                  -->
+                  <input aria-describedby="basic-addon1" type="number" class="form-control" [(ngModel)]="bid"
+                    name="bid" #productBid="ngModel" placeholder="Enter your bid"
+                    [ngClass]="{'is-invalid' : productBid.errors && productBid.touched}"
+                    [disabled]="bidEnabled === false" required>
+                </div>
+
+                <div [hidden]="!productBid.errors?.required" class="invalid-feedback">Enter a valid bid.</div>
+                
+                <div *ngIf="authService.loggedIn()">
+                  <input [disabled]="!userForm.form.valid" type="submit" value="Submit Your Bid"
+                    class="btn-sm btn-info btn-block mt-2" data-toggle="modal" data-target="#myModal">
+                </div>
+
+                <div *ngIf="!authService.loggedIn()">
+                  <input type="submit" value="Submit Your Bid"
+                    class="btn-sm btn-info btn-block mt-2" [routerLink]="['/purchase/selectaddress']">
+                </div>
+
+              </form>
+            </div>
+            <hr>
+            <h4 class="price">Price:
+              <span>{{(product?.listed_price * quantity) | currency: 'GBP': number }}
+              </span>
+            </h4>
+            <div class="action mt-3">
+              <button [disabled]="userType === 'seller'" class="btn-sm btn-success btn-block" type="button"
+                [routerLink]="['/purchase/selectaddress']"
+                [queryParams]="{ord_id: uuID, prod_id: product?._id, ord_qty: quantity, var1: variant1, var2: variant2, del: deliveryCost}">Buy
+                It
+                Now</button>
+            </div>
+
+            <br>
+
+            <div [hidden]="product?.variant1.length < 1" class="form-group">
+              <select [(ngModel)]="variant1" name="variant1" class="form-control" id="exampleFormControlSelect1"
+                style="width: auto; min-width: 3cm;">
+                <option *ngFor='let x of product?.variant1'>{{x}}</option>
+              </select>
+            </div>
+
+            <div [hidden]="product?.variant2.length < 1" class="form-group">
+              <select [(ngModel)]="variant2" name="variant2" class="form-control" id="exampleFormControlSelect1"
+                style="width: auto; min-width: 3cm;">
+                <option *ngFor='let z of product?.variant2'>{{z}}</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-1">
+              <label for="exampleFormControlSelect1">
+                <b>QUANTITY</b>
+              </label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <button class="btn btn-dark" type="button" id="button-addon1"
+                    (click)="substractQty()"><b>-</b></button>
+                </div>
+                <input type="number" [(ngModel)]="quantity" name="quantity" min="1" [max]="quantityAvailable"
+                  class="form-control text-center" aria-describedby="button-addon1" style="max-width: 2cm;">
+                <div class="input-group-prepend">
+                  <button class="btn btn-dark" type="button" id="button-addon1" (click)="addQty()"><b>+</b></button>
+                </div>
+              </div>
+            </div>
+
+            <div [hidden]="product?.isInternational == false" class="form-group mt-1">
+              <label for="exampleFormControlSelect1">
+                <b>DELIVERY: {{deliveryCost | currency: 'GBP': number }}</b>
+                <br>
+                <small *ngIf="product?.isFreeDelivery">Free delivery available</small>
+              </label>
+              <select [(ngModel)]="selectedDeliveryMethod" name="selectedDeliveryMethod" class="form-control col-2"
+                style="min-width: 4.5cm;" id="exampleFormControlSelect1"
+                (change)="onChangeDeliveryMethod(selectedDeliveryMethod)">
+                <option *ngIf="product?.isFreeDelivery">Free Delivery</option>
+                <option>{{deliveryMethod}}</option>
+              </select>
+              <small><b>{{selectedDeliveryMethod}}</b> <span *ngIf="selectedDeliveryMethod == 'Standard Delivery'">takes
+                  3 to 4 weeks to deliver with tracking <br>
+                  <b>Estimated by:</b> {{estimatedDeliveryDateLowerBound | date:'MMMM d'}} -
+                  {{estimatedDeliveryDateUpperBound | date:'MMMM d'}}
+                </span><span *ngIf="selectedDeliveryMethod == 'Free Delivery'">takes 4 to 5 weeks to deliver without
+                  tracking<br>
+                  <b>Estimated by:</b> {{estimatedDeliveryDateLowerBound | date:'MMMM d'}} -
+                  {{estimatedDeliveryDateUpperBound | date:'MMMM d'}}</span></small>
+            </div>
+
+            <span class="a-size-small a-color-secondary">*This product has a lock-out period of
+              {{product?.locked_period}} day(s) if your bid is rejected or if you rejected the
+              counter-offer<sup>1</sup>.
+            </span>
+            <br>
+            <span class="a-size-small a-color-secondary">
+              <sup>1</sup>You are not guaranteed to receive a counter-offer and the offer may vary with time.
+            </span>
+
+          </div>
+
+
+          <div *ngIf="soldOut === true">
+            <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/icon/sold-out.png" class="img-fluid"
+              alt="Responsive image" style="width: 10cm; height: 7cm;">
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Bid Confirmation</h5>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <i class="fa fa-info-circle" style="color: blue;"></i>
+          <span>Your bid of </span>
+          <span style="font-weight: bold;">{{bid | currency: 'GBP': number }} </span>
+          <span>represents a discount from the list price of </span>
+          <span style="color:red; font-weight: bold;">{{discount | percent}}</span>
+          <span *ngIf='quantity > 1'>per unit</span>
+          for {{quantity}} <i>"{{product?.name}}"</i>
+          <span *ngIf="product?.variant1.length > 0"><b>{{variant1}}</b></span> <span
+            *ngIf="product?.variant2.length > 0"><b>{{variant2}}</b></span>.
+          <br>
+          <br>
+          <i class="fa fa-exclamation-triangle" style="color: orange;"></i>
+          <span>Once submitted, if your bid is rejeted or if you reject the counter-offer, you'll not able to bid again
+            for this product for
+          </span>
+          <span style="color:red; font-weight: bold;">{{product?.locked_period}} day(s)</span>
+          <br>
+        </div>
+        <div class="modal-footer">
+          <label>
+            <span class="label-text a-size-small a-color-secondary" style="line-height: 0cm;">
+              I confirm that the bid is the price I'm willing to pay for this product and I understand that I may not
+              always receive a counter-offer for my bid and that the counter-offer may vary across time. I understand
+              that I risk to be excluded from the bidding system for this product during the lock-out period if my bid
+              is rejected or if I reject the counter-offer.
+            </span>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-dismiss="modal" (click)="onClickSubmitBid()">Confirm</button>
+          <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL-->
+
+
+  <!--Related Products-->
+  <app-product-related></app-product-related>
+
+
+  <section id="tabs">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="product-description-tab" data-toggle="tab"
+                href="#product-description" role="tab" aria-controls="product-description"
+                aria-selected="true">Description</a>
+              <a class="nav-item nav-link" id="return-policy-tab" data-toggle="tab" href="#return-policy" role="tab"
+                aria-controls="return-policy" aria-selected="false">Return Policy</a>
+              <a class="nav-item nav-link" id="delivery-policy-tab" data-toggle="tab" href="#delivery-policy" role="tab"
+                aria-controls="delivery-policy" aria-selected="false">Delivery Method</a>
+              <a class="nav-item nav-link" id="seller-info-tab" data-toggle="tab" href="#seller-info" role="tab"
+                aria-controls="seller-info" aria-selected="false">Seller Information
+              </a>
+            </div>
+          </nav>
+          <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="product-description" role="tabpanel"
+              aria-labelledby="product-description-tab">
+              <small>
+                <div [innerHTML]="description"></div>
+              </small>
+            </div>
+
+
+            <div class="tab-pane fade" id="return-policy" role="tabpanel" aria-labelledby="return-policy-tab">
+              <h6>Please read the Return Policy for this product carefully.</h6>
+              <small>
+                <p *ngIf="product?.type === 0">
+                  Return and refund request can be accepted within <b>24 hours</b> from the delivery of the item.
+                  <br>
+                  <br>
+                  The returned item must be in the same condition and packaging, if applicable, as it was delivered. In
+                  case the return item does not fulfil the condition, i.e. if the item shows signs of usage or has been
+                  damaged beyond it is original condition, the seller reserve the right to reject the return and refund.
+                  <br>
+                  <br>
+                  To request a return, please use the manage order page within the "My Orders" section.
+                  <br>
+                  <br>
+                  <b>
+                    The buyer is sorely responsible to return the item to the return address and any delivery costs
+                    associated.
+                  </b>
+                </p>
+
+                <p *ngIf="product?.type === 1">
+                  Return and refund request can be accepted within <b>14 working days</b> from the delivery of the item.
+                  <br>
+                  <br>
+                  The returned item must be in the same condition and packaging, if applicable, as it was delivered. In
+                  case the return item does not fulfil the condition, i.e. if the item shows signs of usage or has been
+                  damaged beyond it is original condition, the seller reserve the right to reject the return and refund.
+                  <br>
+                  <br>
+                  To request a return, please use the manage order page within the "My Orders" section.
+                  <br>
+                  <br>
+                  <b>
+                    The buyer is sorely responsible to return the item to the return address and any delivery costs
+                    associated.
+                  </b>
+                </p>
+              </small>
+            </div>
+
+
+
+            <div class="tab-pane fade" id="delivery-policy" role="tabpanel" aria-labelledby="delivery-policy-tab">
+              <small>
+
+                <p>This item can be delivered to you via: <b>{{deliveryMethod}}</b>
+                </p>
+
+                <div class="row ml-1" *ngIf="product?.deliveryMethod === 0">
+                  <div class="col-xs-2 mr-3">
+                    <img id="icon"
+                      src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                      alt="iyokus.es">
+                  </div>
+                  <div class="col-xs-10">
+                    <ul class="mt-3">
+                      <li><b>Step 1:</b> Complete the payment of the order.</li>
+                      <li><b>Step 2:</b> Iyokus will hold your payment and issue you a payment code.</li>
+                      <li><b>Step 3:</b> The seller will contact you to arrange a Meetup Delivery within 5 days.</li>
+                      <li><b>Step 4:</b> Once you have received the item, and verified its condition, give the payment
+                        code to the seller in order to realease the payment and complete the purchase.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="row ml-1" *ngIf="product?.deliveryMethod === 1 && product?.isInternational == false">
+                  <div class="col-xs-2 mr-3">
+                    <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                      alt="iyokus.es">
+                  </div>
+                  <div class="col-xs-10">
+                    <ul class="mt-3">
+                      <li><b>Step 1:</b> Add or select your delivery address.</li>
+                      <li><b>Step 2:</b> Complete the payment of the order including delivery cost.</li>
+                      <li><b>Step 3:</b> The seller will dispatched your order within 2 working days and we'll notified
+                        you once dispatched.
+                      </li>
+                      <li><b>Step 4:</b> You'll receive the item usually within 5 working days after the order is
+                        dispatched.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row ml-1" *ngIf="product?.deliveryMethod === 1 && product?.isInternational == true">
+                  <div class="col-xs-2 mr-3">
+                    <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                      alt="iyokus.es">
+                  </div>
+                  <div class="col-xs-10">
+                    <ul class="mt-3">
+                      <li><b>Step 1:</b> Add or select your delivery address.</li>
+                      <li><b>Step 2:</b> Complete the payment of the order including delivery cost.</li>
+                      <li><b>Step 3:</b> The seller will dispatched your order within 2 working days and we'll notified
+                        you once dispatched.
+                      </li>
+                      <li><b>Step 4:</b> You'll receive the item usually within 3-5 weeks after the order is dispatched.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </small>
+              <!--<button class="btn btn-success mt-3" type="button">Read more</button>-->
+            </div>
+
+
+
+            <div class="tab-pane fade" id="seller-info" role="tabpanel" aria-labelledby="seller-info-tab">
+              <small>
+                <p>Sold by <a *ngIf="seller" href="javascript:void(0);"
+                    [routerLink]="['/view/seller', product?.sellerID]">{{seller?.name}}</a>.</p>
+                <p><a *ngIf="seller" href="javascript:void(0);"
+                    [routerLink]="['/view/seller', product?.sellerID]">{{seller?.name}}</a>
+                  is {{sellerType}} and verified seller from {{seller?.location}}. Joined Iyokus on
+                  {{seller?.date | date:'dd.MM.yyyy'}}.</p>
+              </small>
+
+              <ngb-rating [(rate)]="rate">
+                <ng-template let-fill="fill" let-index="index">
+                  <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                </ng-template>
+              </ngb-rating>
+              <br>
+              <small>{{rate}} stars based on {{reviewNumber}} reviews</small>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr>
+
+
+  <section id="info" class="py-5">
+    <div class="container">
+      <app-product-recommendation></app-product-recommendation>
+      <app-product-offers></app-product-offers>
+      <app-product-top-viewed></app-product-top-viewed>
+    </div>
+  </section>
+
+
+</div>
+
+<app-footer></app-footer>

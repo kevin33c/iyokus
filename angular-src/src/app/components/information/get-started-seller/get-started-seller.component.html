@@ -1,0 +1,585 @@
+<body data-spy="scroll" data-target="#main-nav" id="home">
+
+  <!--NAV BAR begin-->
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="main-nav">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand"><img
+          src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Iyokus_Transparent.png" id="iyokus-icon"
+          alt="iyokus.com" />
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <a href="javascript:void(0);" [ngx-scroll-to]="'#home'" class="nav-link">Why Iyokus?</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a href="javascript:void(0);" [ngx-scroll-to]="'#explore-head-section'" class="nav-link">Discover Iyokus</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a href="javascript:void(0);" [ngx-scroll-to]="'#selling-head-section'" class="nav-link">Selling</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a href="javascript:void(0);" [ngx-scroll-to]="'#delivery-head-section'" class="nav-link">Delivery</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a href="javascript:void(0);" [ngx-scroll-to]="'#fees-head-section'" class="nav-link">Payment</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a href="javascript:void(0);" [ngx-scroll-to]="'#faq'" class="nav-link">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--NAV BAR end-->
+
+  <!--Main home header begin-->
+  <header id="home-section">
+    <div class="dark-overlay">
+      <div class="home-inner container">
+        <div class="row">
+          <div class="col-lg-8 d-none d-lg-block">
+            <h1 class="display-4">Iyokus helps you to sell more and faster!</h1>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                <strong class="text-success">Intelligent and automated bid system.</strong>
+                Tell us what is the price that you want to get for your product and we will find you the right willing
+                buyers.
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                <strong class="text-success">Access to more buyers with one price.</strong> Iyokus uses range pricing
+                instead of fixed pricing. Allowing you access to a range of willing buyers with a simple list price.
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                <strong class="text-success">Offer discounts without lowering your price.</strong> Iyokus let you offer
+                discounts without lowering your list price.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card bg-success text-center card-form">
+              <div class="card-body text-white">
+                <h3>Sign up now</h3>
+                <p>And start selling with Iyokus in minute.</p>
+                <form>
+                  <input type="submit" value="Sign Up" [routerLink]="['/seller-signup']" target="_blank"
+                    class="btn btn-outline-light btn-block">
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="container d-lg-none m-3">
+            <h3>Iyokus helps you to sell more and faster!</h3>
+            <div class="row">
+              <div class="fixed-margin">
+                <div class="d-flex mt-3">
+                  <div class="pr-5 align-self-start">
+                    <i class="fa fa-check fa-2x"></i>
+                  </div>
+                  <div class="align-self-end">
+                    <strong class="text-success">Intelligent and automated bid system.</strong>
+                  </div>
+                </div>
+                <div class="d-flex mt-3">
+                  <div class="pr-5 align-self-start">
+                    <i class="fa fa-check fa-2x"></i>
+                  </div>
+                  <div class="align-self-end">
+                    <strong class="text-success">Access to more buyers with one price.</strong>
+                  </div>
+                </div>
+                <div class="d-flex mt-3">
+                  <div class="pr-5 align-self-start">
+                    <i class="fa fa-check fa-2x"></i>
+                  </div>
+                  <div class="align-self-end">
+                    <strong class="text-success">Offer discounts without lowering your price.</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--Main home header end-->
+
+  <!--Explore section header begin-->
+  <section id="explore-head-section" class="woolime-theme">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-5">
+          <h1 class="display-4">Learn more about Iyokus</h1>
+          <p class="lead">Discorver a new way of selling online</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="explore-section" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col d-none d-lg-block">
+          <img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/GetStarted_Seller_Explore.jpeg" alt="iyokus"
+            class="img-fluid mt-5 rounded-circle">
+        </div>
+        <div class="col">
+          <h3>What do Iyokus offer?</h3>
+          <p>
+            Unlike others e-commerce sites, with Iyokus you sell with a range of prices instead of a fixed price. With a
+            fixed price you can only sell to those willing to pay the list price or above while with range pricing you
+            can access to a whole range of willing buyers each with their own willingness to pay, thus maximizing your
+            chance of sales.
+            <br>
+            <br>
+            Iyokus offers you the following advantages:
+          </p>
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <i class="fa fa-check fa-2x"></i>
+            </div>
+            <div class="p-2 align-self-end">
+              <strong class="text-success">Dynamic and personalize prices.</strong> Range pricing ensures that each
+              buyer pay what they are willing to pay while remaining satisfactory for you.
+            </div>
+          </div>
+
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <i class="fa fa-check fa-2x"></i>
+            </div>
+            <div class="p-2 align-self-end">
+              <strong class="text-success">Automated bidding responses.</strong> There will be no more price haggling or
+              waiting. Each bid is assessed and responded automatically and instantaneously.
+
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <i class="fa fa-check fa-2x"></i>
+            </div>
+            <div class="p-2 align-self-end">
+              <strong class="text-success">Lock-out period.</strong> In order to ensure that you receive serious bids,
+              buyers are blocked from bidding for the same product if his or her bid fails. You decide the duration of
+              the lock-out period for each of your products.
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <i class="fa fa-check fa-2x"></i>
+            </div>
+            <div class="p-2 align-self-end">
+              <strong class="text-success">Sell more and faster.</strong> Iyokus will connect you with more willing
+              buyers.
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <i class="fa fa-check fa-2x"></i>
+            </div>
+            <div class="p-2 align-self-end">
+              <strong class="text-success">Offer hidden discounts for your products</strong> With the range pricing, you
+              can offer discounts without lowering the list price.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Explore section header end-->
+
+  <!--Selling section header begin-->
+  <section id="selling-head-section" class="bg-success">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-5">
+          <h1 class="display-4 text-white">Selling</h1>
+          <p class="lead text-white">Learn how to sell with Iyokus</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="selling-section" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h3>How to start selling with Iyokus?</h3>
+          Follow these steps to start selling:
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <b>1</b>
+            </div>
+            <div class="p-2 align-self-end">
+              <b>Sign up.</b> You can sign up as private/individual seller<sup>1</sup> or as business/professional
+              seller <a href="javascript:void(0);" [routerLink]="['/seller-signup']" target="_blank">here</a>.
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <b>2</b>
+            </div>
+            <div class="p-2 align-self-end">
+              <b>Upload your products.</b> Fill out the upload product form together with add up to four updated
+              pictures.
+            </div>
+          </div>
+
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <b>3</b>
+            </div>
+            <div class="p-2 align-self-end">
+              <b>Receive and deliver the order.</b> Be notified of any orders via email and use the Meetup or postal
+              delivery to deliver your product to the buyer.
+            </div>
+          </div>
+
+          <div class="d-flex">
+            <div class="p-2 align-self-start">
+              <b>4</b>
+            </div>
+            <div class="p-2 align-self-end">
+              <b>Get paid.</b> After delivery the order, you will receive the payment in your bank account within 14
+              business days. Remember to input your payout bank account details to receive payments.
+            </div>
+          </div>
+
+          <p>
+            <small><sup>1</sup>
+              Private sellers can only deliver items using the Meetup delivery. A business seller can use both, Meetup
+              or Postal delivery.
+            </small>
+          </p>
+
+        </div>
+        <div class="col d-none d-lg-block">
+          <img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/GetStarted_Seller_Selling.jpeg" alt="iyokus"
+            class="img-fluid mt-5 rounded-circle">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Selling section header end-->
+
+  <!--Delivery section header begin-->
+  <section id="delivery-head-section" class="bg-info">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-5 text-white">
+          <h1 class="display-4">Delivery</h1>
+          <p class="lead">Learn our different delivery methods</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="share-section" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/profile/profileCategory_Orders.png" alt="iyokus"
+            class="img-fluid mb-3 rounded-circle">
+        </div>
+        <div class="col-md-6">
+          <h3>Deliver your order</h3>
+          <p>
+            Iyokus offers two delivery options,
+            <b>"Meetup" delivery and "Postal" delivery</b>.
+            Currently, the postal delivery option is only available for business/professional sellers.</p>
+          <div class="d-flex">
+            <div class="p-4 align-self-start">
+              <i class="fa fa-check fa-2x"></i>
+            </div>
+            <div class="p-4 align-self-end">
+              <strong class="text-success">Meetup delivery:</strong> Once you receive your order request, contact the buyer within 2 days, using Iyokus Messenger, to agree on a meeting point and time to deliver the item.
+            </div>
+          </div>
+
+          <div class="d-flex">
+            <div class="p-4 align-self-start">
+              <i class="fa fa-check fa-2x"></i>
+            </div>
+            <div class="p-4 align-self-end">
+              <strong class="text-success">Postal delivery<sup>1</sup>:</strong> Dispatch the order within 2 working days to an
+              address of the buyer's choosing. <b>Shipping costs<sup>2</sup> bear by the buyer</b>.
+            </div>
+          </div>
+
+          <p>
+            <small>
+              <sup>1</sup>You decide the shipping costs. We expect 3-5 days delivery time for a domestically (UK & EU) sourced product and 3-5 weeks delivery time for an internationally sourced product.
+            </small>
+          </p>
+        </div>
+      </div>
+
+      <div class="row pb-5">
+        <div class="col text-center">
+          <table class="table table-info">
+            <thead>
+              <tr>
+                <th scope="col" colspan="2">Meetup delivery</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Buyers will receive a <b>Payment Code</b> upon completing the payment and the order.</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Contact the buyer, via Iyokus Messenger, to arrange a Meetup location and time for delivery.</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Deliver the product and receive the <b>Payment Code</b> from the buyer.</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Enter the <b>Payment Code</b> in the order's page to complete the order and receive the payment.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col text-center">
+          <table class="table table-info">
+            <thead>
+              <tr>
+                <th scope="col" colspan="2">Postal delivery</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Receive email with order request and delivery details incl. name and address.</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Dispatch the order within 2 working days.</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>In the order's page, change the status of the order to "Dispatched" and enter the necessary details (i.e. delivery company and tracking code).</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Receive the payment within 15 days after delivery completion.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!--Delivery section header end-->
+
+  <!--Payment section header begin-->
+  <section id="fees-head-section" class="fees-section1 py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <h1 class="display-4">Payment</h1>
+          <p class="lead">Receive your payouts within 15 days after each completed delivery</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="create-section" class="fees-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <p >
+            <b>When will I get the money after selling a product?</b>
+            <br>
+            To save processing fees in case of refund, we'll deposit the payout due to you for each sale after the refund period expires, i.e. 14 days for new products and 24 hours for used products. In addition, it may take up from 1-3 days for the payout to appear on your account.
+            <br>
+            <br>
+            <b>Why Iyokus charges a fee?</b>
+            <br>
+            Iyokus charges fee to cover the payment processing charges by our payment provider <a
+              href="https://stripe.com/gb" target="_blank"><img id="icon-stripe"
+                src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Payment_Stripe.png"
+                alt="Iyokus-Stripe"></a>.
+            Additionally, we also charge a small fee to cover operational expenses and to improve our services.
+            <br>
+            <br>
+            <b><a href="javascript:void(0);" [routerLink]="['/help/center/220']" target="_blank">Please see here an
+                example of our fees structure</a></b>
+          </p>
+        </div>
+      </div>
+      <div class="container" id="pricing">
+        <div class="row">
+          <div class="col-lg-6 py-1">
+            <div class="card text-center">
+              <h3>3.0%</h3>
+              <h6>Iyokus fee</h6>
+            </div>
+          </div>
+          <div class="col-lg-6 py-1">
+            <div class="card text-center">
+              <h3>1.4% + £0.25</h3>
+              <h6>Payment fee<sup>1</sup></h6>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-12">
+            <div class="card text-center">
+              <h3>4.4% + £0.25 <small></small></h3>
+              <h6>Total fee</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container h-100 mb-3 mt-3">
+      <div class="row h-100 justify-content-center align-items-center">
+        <img id="icon" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Payment_SEPA.jpeg"
+          alt="iyokus-payment">
+      </div>
+    </div>
+
+    <div class="container h-100 mb-3 mt-3">
+      <div class="row h-100 justify-content-center align-items-center">
+        <br>
+        <small><sup>1</sup>For orders/payments below £5, we apply different payment fees since they are considered as
+          micro-transactions by our payment provider. See more information <a href="javascript:void(0);"
+            [routerLink]="['/help/center/220']" target="_blank">here</a>.</small>
+      </div>
+    </div>
+  </section>
+  <!--Payment section header end-->
+
+
+  <!--FAQ section header begin-->
+  <section id="faq">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-5">
+          <h1 class="display-4">Frequently Asked Questions</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="faq2" class="container">
+    <div class="row">
+      <div class="col-lg-5 mt-5 ">
+        <h5>How do I Sign up as a seller?</h5>
+
+        <p>
+          Open an account is quick and easy. Choose between a private or business account when filling in the sign up
+          form. For private accounts, you will have the account active within minutes.
+
+          For professional accounts, fill in the form and we will contact you to set up your account as soon as possible.
+          <br>
+          <br>
+          Sign up <a href="javascript:void(0);" [routerLink]="['/seller-signup']" target="_blank">here</a>.
+        </p>
+        <br>
+
+        <h5>What make Iyokus different from other e-commerce sites?</h5>
+        <p>
+          With Iyokus you are selling with range pricing rather than fixed pricing. This, together with Iyokus Automated Bidding System, give you more flexibility and personalisation when come to pricing. Giving you access to wider range of willing buyers with a single list price.
+        </p>
+        <br>
+
+        <h5>Where can I get additional information?</h5>
+        <p >You can contact us <a href="javascript:void(0);" [routerLink]="['/misc/contactus']"
+            target="_blank">here </a>
+          or refer to the following links:</p>
+        <div class="row pb-5">
+          <div class="col-lg-3">
+            <p>
+              <a href="javascript:void(0);" [routerLink]="['/misc/faq']" target="_blank">FAQ</a>
+            </p>
+          </div>
+          <div class="col-lg-9">
+            <p>
+              <a href="javascript:void(0);" [routerLink]="['/info/instruction-seller']" target="_blank">How to sell on Iyokus</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-2">
+
+      </div>
+
+      <div class="col-lg-5 mt-5">
+        <!-- <h5>¿Cómo gestionar devoluciónes de productos?</h5>
+        <p >
+          Si el producto vendido es <b>nuevo</b>, el comprador tiene el derecho a desistir de dicha compra en un
+          plazo de
+          <u>14 días naturales</u> sin necesidad de justificación. Este plazo de desistimiento expirará a los 14 días
+          naturales desde del día que adquire la posesión material del producto. Para ejercer este derecho de
+          desistimiento o devolución, el comprador notificará su decisión a ti y a Iyokus mediante nuestra plataforma.
+        </p>
+
+        <p >
+          Si el producto que vendes es <b>usado</b> y lo entregaste mediante "Entrega en Mano", una vez
+          confirmado<sup>1</sup> la venta, el comprador tendrá <u>24 horas</u> para presentar una reclamación en la cual
+          debe probar que el producto no corresponde a la calidad descrita en el anuncio cuando se le vendió para reclamar un
+          reembolso completo.
+        </p>
+
+        <p >
+          <small>
+            <sup>1</sup> Para confirmar la compra, deberás de recibir el codigo de pago de comprador como evidencia de
+            que el comprador esta de acuerdo y satisfecho con el producto e introducirlo en el portal del pedido. Solo
+            recibirás el pago una vez introducido el codigo.
+          </small>
+        </p>
+
+        <br><br> -->
+        <h5>How does Iyokus protect me?</h5>
+        <p >
+          In case of disputes, Iyokus will act as mediator to help settling the dispute and we're committed to find a solution that is fair to all parties involved.
+        </p>
+
+        <br>
+        <h5>What are Iyokus' term and conditions?</h5>
+        <p >Iyokus' term and conditions can be found in the following links:</p>
+        <p>
+          <a href="javascript:void(0);" [routerLink]="['/legal/useprivacy']" target="_blank">Privacy & Cookies Notice</a>
+        </p>
+        <p>
+          <a href="javascript:void(0);" [routerLink]="['/legal/policies']" target="_blank">Terms of Use & Sale</a>
+        </p>
+        <br><br>
+
+      </div>
+    </div>
+  </section>
+  <!--FAQ section header end-->
+</body>

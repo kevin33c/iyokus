@@ -1,0 +1,206 @@
+<app-header></app-header>
+
+<div class="alert alert-warning alert-dismissable">
+  <a class="panel-close close" data-dismiss="alert">×</a>
+  <i class="fa fa-exclamation-triangle"></i>
+  Remember to <b>Review <i class="fa fa-eye"></i></b> how your product page looks like before publishing it.
+</div>
+<div class="alert alert-info alert-dismissable">
+  <a class="panel-close close" data-dismiss="alert">×</a>
+  <i class="fa fa-exclamation-triangle"></i>
+  Remember to <b>Publish</b> your product once ready. You can only <b>Edit <i class="fa fa-pencil-square-o"></i></b> if
+  the product is inactivated.
+</div>
+
+<button href='' routerLink="/business/addproduct" type="button" class="btn btn-success btn-circle"><i class="fa fa-plus"
+    (click)='goTop()'></i></button>
+
+<div class="container mt-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <small>
+          <b>Status</b>
+          <select class="form-control form-control-sm" [(ngModel)]="view" name="view" (change)="renderData()">
+            <option value="All">All</option>
+            <option value="published">Published</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </small>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <small>
+          <b>Order by</b>
+          <select type="text" class="form-control form-control-sm" [(ngModel)]="sortLogic" name="sortLogic"
+            (change)="onChangeSort()">
+            <option value="2">Lowest Price</option>
+            <option value="3">Highest Price</option>
+            <option selected value="6">Newest</option>
+            <option value="7">Oldest</option>
+          </select>
+        </small>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <small>
+          <b>Item per Page</b>
+          <select type="text" class="form-control form-control-sm" [(ngModel)]="rowsOnPage">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </small>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div *ngIf="productFound == false" class="container">
+  <h2 class="text-center mt-5 mb-5" style="font-style: italic;">Looks like you haven't uploaded any product yet, upload
+    products <a routerLink="/business/addproduct">Here</a></h2>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="container py-3">
+
+      <div class="card mt-3" *ngFor="let product of products | paginate: { itemsPerPage: rowsOnPage, currentPage: p }">
+
+        <!-- MODAL -->
+        <div class="modal" [attr.id]="'deleteModal' + product._id">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Delete Product</h5>
+                <button class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                Are you sure to delete "{{product.name}}"?
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal"
+                  (click)="onDeleteRequest(product._id, product.name)">Delete</button>
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- MODAL -->
+
+
+        <div class="row">
+
+          <div class="col-md-3">
+
+            <div class="container Wcenter thumbnail p-2">
+              <img class="card-img-top p-2" [src]=product.image_Main alt="Card image cap">
+            </div>
+
+          </div>
+
+          <div class="col-md-9 px-2 mt-3">
+            <div class="card-block px-3">
+              <h6 class="card-title mb-0">
+                {{product?.name}}
+              </h6>
+
+              <div class="mt-1">
+                <button id="icon-button" *ngIf="product?.type === 0" type="button"
+                  class="btn btn-outline-primary">Used</button>
+                <button id="icon-button" *ngIf="product?.type === 1" type="button"
+                  class="btn btn-outline-info">New</button>
+                <img class="mr-2" *ngIf="product?.deliveryMethod === 0 || product?.deliveryMethod === 2" id="icon"
+                  src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                  alt="iyokus.es">
+                <img class="mr-2" *ngIf="product?.deliveryMethod === 1 || product?.deliveryMethod === 2" id="icon"
+                  src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png" alt="iyokus.es">
+                <div class="pull-right">
+                  <div class="mr-2" style="display: inline-block; vertical-align: middle;">
+                    <a [routerLink]="['/business/previewproduct', product._id]" (click)='goTop()'>
+                      <i class="fa fa-eye" style="font-size:30px; color: darkblue" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="mr-2" *ngIf="product.status == 'inactive'"
+                    style="display: inline-block; vertical-align: middle;">
+                    <a [routerLink]="['/business/editproduct', product._id]" (click)='newMessage(product)'>
+                      <i class="fa fa-pencil-square-o" style="font-size:30px" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div class="mr-2" style="display: inline-block; vertical-align: middle;">
+                    <a href="" data-toggle="modal" [attr.data-target]="'#deleteModal' + product._id">
+                      <i class="fa fa-close" style="font-size:30px;color: #B22222;" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="row mb-3">
+
+                <div class="col-md-4 px-3">
+                  <div class="mb-3">
+                    <span>List Price:</span>
+                    <span
+                      class="a-size-small a-color-secondary">{{product?.listed_price | currency: 'GBP': number }}</span>
+                  </div>
+                  <div class="mb-3">
+                    <span>Reserve Price:</span>
+                    <span
+                      class="a-size-small a-color-secondary">{{product?.reserve_price | currency: 'GBP': number }}</span>
+                  </div>
+                  <div class="mb-3">
+                    <span>Lock-out Period:</span>
+                    <span class="a-size-small a-color-secondary">{{product?.locked_period}} day(s)</span>
+                  </div>
+                  <div class="mb-3">
+                    <span>Quantity Available:</span>
+                    <span class="a-size-small a-color-secondary">{{product?.quantity}}</span>
+                  </div>
+                </div>
+
+                <div class="col-md-4 px-3">
+                  <div class="mb-3">
+                    <span>Views:</span>
+                    <span class="a-size-small a-color-secondary">{{product?.view_count}}</span>
+                  </div>
+                  <div class="mb-3">
+                    <span>Sales:</span>
+                    <span class="a-size-small a-color-secondary">{{product?.sales_count}}</span>
+                  </div>
+                </div>
+
+                <div class="col-md-4 px-3">
+                  <button *ngIf="product?.status != 'published'" type="button"
+                    class="btn btn-success btn-block pull-right" (click)="onClickPublish(product._id)">
+                    Publish
+                  </button>
+                  <button *ngIf="product?.status === 'published'" type="button"
+                    class="btn btn-danger btn-block pull-right" (click)="onClickTakeDown(product._id)">
+                    Inactivate
+                  </button>
+                  <small class="a-size-small a-color-secondary">Last edited on: {{product?.lastEditDate |
+                    date:'dd.MM.yyyy HH:mm'}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  <ngb-pagination class="d-flex justify-content-center mb-5 mt-2" [collectionSize]="119" [(page)]="page" [maxSize]="5" [pageSize]="20" [rotate]="true" [boundaryLinks]="true" (pageChange)="changePage($event)">
+  </ngb-pagination>
+-->
+
+<div class="container mt-3 text-center">
+  <pagination-controls (pageChange)="p = $event"
+                       previousLabel=""
+                       nextLabel="" 
+                       (click)="goTop()">
+</pagination-controls>
+</div>

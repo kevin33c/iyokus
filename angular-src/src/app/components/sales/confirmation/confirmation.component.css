@@ -1,0 +1,91 @@
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  border:none;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.a-size-small {
+  font-size: 15px!important;
+  line-height: 1.5!important;
+}
+
+.a-color-secondary {
+  color: #555!important;
+}
+
+
+
+#main-container{
+  margin-bottom: 100px;
+  border:1px solid #cecece;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 50px;
+}
+
+#header-container{
+  padding-left: 1px;
+  padding-right: 0;
+  margin-top: 30px;
+}
+
+.align-center{
+  text-align:center;
+}
+
+.img-fit{
+  width: 100%;
+  overflow: hidden;
+  margin-left: none !important;
+  margin-right: none !important;
+}
+
+.confirmation-font{
+  color: #8093AE;
+}
+
+
+.confirmation-section-header{
+  color: #8093AE;
+  margin-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#icon {
+  max-width: 30px; 
+  max-height: 30px;
+}
+
+#description {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#output{
+  color: black;
+}
+
+#verification-code{
+  color: red;
+}
+
+#table-title{
+  font-size: 15px!important;
+  font-weight: 300;
+}
+
+#table-total{
+  font-weight: 700;
+}
+
+#delivery-free{
+  color: green;
+}
+
+#address{
+  color: gray;
+}

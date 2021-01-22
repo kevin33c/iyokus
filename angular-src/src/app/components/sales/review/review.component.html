@@ -1,0 +1,33 @@
+<div class="page-background vertical-center">
+  <div class="container">
+
+    <div class="card card-body col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+      <h4>Rate the Seller</h4>
+      <small>Please take a moment to rate your seller with a calification between 1 and 5 starts taking into account factors such as accuracy of the advertised item, responsiveness, ease of interaction, etc. Select a rating below:</small>
+      
+      <label class="mt-3" for="rating">Rating</label>
+      <ngb-rating [(rate)]="rate" id="center-rating">
+        <ng-template let-fill="fill" let-index="index">
+          <span class="star" [class.filled]="fill === 100">&#9733;</span>
+        </ng-template>
+      </ngb-rating>
+      <small *ngIf="rate >= 0">You want to give the seller a rating of: {{rate}}</small>
+
+      <hr>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea [(ngModel)]="comment" name="comment" cols="40" rows="5"></textarea>
+      </div>
+
+
+
+      <button type="submit" class="btn woolime-btn-theme btn-lg btn-block"
+        (click)="onSubmit()">Send Rating</button>
+      <br>
+
+
+    </div>
+  </div>
+</div>

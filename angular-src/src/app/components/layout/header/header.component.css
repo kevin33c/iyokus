@@ -1,0 +1,189 @@
+
+/* Show the dropdown menu on hover */
+sup{
+  font-size: 5px;
+  color: white;
+}
+
+#searchbox.dropdown>.dropdown-menu {
+  display: block;
+  margin-top: 0;
+  background-color:white;
+  }
+
+  /*
+.dropdown:hover>.dropdown-menu {
+  display: block;
+  margin-top: 0;
+  }
+*/
+
+.nav-link{
+  color: white;
+  font-size: 90%;
+  font-weight: 500;
+}
+
+.dropdown-item{
+  font-weight:bold;
+  font-size: 15px;
+  margin-left: none;
+}
+
+.woolime-theme {
+  background-color:#2e2e36;
+  border-color: #030033;
+  }    
+
+.withline{
+  border-left: #2e2e36 5px solid;
+  }
+
+
+button.link { 
+  background:none;
+  border:none; 
+}
+
+.woolime-btn-theme{
+  background: linear-gradient(to right,#ff850b 0,#ff5945 100%);
+  color: white;
+}
+
+
+.search-box{
+  width: 250px;
+}
+
+.search-item{
+  border: none;
+}
+
+.dropdown-main{
+  font-weight: bold;
+}
+
+.dropdown-menu.columns-2 {
+	min-width: 400px;
+}
+
+.dropdown-menu li a {
+	padding: 5px 15px;
+	font-weight: 300;
+}
+.multi-column-dropdown {
+	list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.multi-column-dropdown li a {
+	display: block;
+	clear: both;
+	line-height: 1.428571429;
+	color: #333;
+	white-space: normal;
+}
+.multi-column-dropdown li a:hover {
+  text-decoration: none;
+  font-size:18px;
+  margin-left:5px;
+}
+ 
+@media (max-width: 767px) {
+	.dropdown-menu.multi-column {
+		min-width: 240px !important;
+		overflow-x: hidden;
+	}
+}
+
+.border-right {
+  border-right: 1px solid #333;
+}
+
+
+
+.modal-content{
+  max-width: 400px !important;
+
+}
+.modal-container{
+  max-width: 300px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+input{
+  border-width: 2px; 
+  border-style: solid;
+}
+
+label{
+  font-weight: 500;
+}
+
+.help-format{
+  text-align:center;
+  font-weight: 500;
+}
+
+#modal-footer{
+  background-color: #f8f9fd;
+}
+
+#modal-footer-text{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align:center;
+  
+}
+
+.btn-lg{
+  max-width: 300px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#iyokus-icon{
+  width: 70px; 
+  height: 30px;
+}
+
+.item {
+  position:relative;
+  display:inline-block;
+}
+.notify-badge{
+  position: absolute;
+  right: 10px;
+  top:5px;
+  line-height: 13px;
+  background:red;
+  text-align: center;  
+  height:14px;
+  width:14px;
+  font-size:8px;
+  font-weight:600;
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  color:white;
+}
+
+
+/*
+.nav-item::after{
+  content:'';
+  display:block;
+  width:0px;
+  height:2px;
+  background:linear-gradient(to right,#ff850b 0,#ff5945 100%);
+  transition: 0.2s;
+}
+.nav-item:hover::after{
+  width:100%;
+}
+*/
+
+.navbar-new-bottom{
+  background-color: #f7f7f7;
+}

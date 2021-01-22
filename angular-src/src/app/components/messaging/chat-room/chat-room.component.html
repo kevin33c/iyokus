@@ -1,0 +1,68 @@
+<div class="mb-1 ml-2 mr-2 mt-3">
+  <a href="javascript:void(0);" [routerLink]="['/messenger']">
+    <i class="fa fa-arrow-circle-o-left" style="font-size: 40px; color: black; float: left;"></i>
+  </a>
+  <br>
+</div>
+<div class="container">
+  <!--<h4 class="text-center">Iyokus Messenger</h4>-->
+  <h6 class="text-center">Order 
+                          <a *ngIf="myType == 'user'" href="javascript:void(0);" [routerLink]="['/user/yourorders', conversationId]">#{{conversationId}}</a> 
+                          <a *ngIf="myType == 'seller' || myType == 'business'" href="javascript:void(0);" [routerLink]="['/business/order', conversationId]">#{{conversationId}}</a> 
+  </h6>
+
+  <div class="messaging">
+    <div class="inbox_msg">
+      <p class="text-center">
+        <small>For your security and privacy remember to not share sensitive information. Iyokus do not use this conversation for other than facilitate delivery and mediation, the conversation will be deleted within 10 days upon the completion of the order, for more information see our Iyokus Messenger <a href="#" routerLink="/help/center/310">Conduct Policies</a>
+        </small>
+      </p>
+      <hr>
+      <div class="mesgs">
+        <div class="msg_history" style="overflow: scroll; height: xyz;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+          <div *ngFor="let message of messages">
+            <div *ngIf="message?.author.type != myType" class="incoming_msg">
+              <div *ngIf="myType == 'user'" class="incoming_msg_img"> <img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Messaging_Shop.png"
+                  >
+              </div>
+              <div *ngIf="myType == 'seller'" class="incoming_msg_img"> <img src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Messaging_Buyer.png"
+                >
+              </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>{{message?.body}}</p>
+                  <span class="time_date">{{message?.createdAt | date:'HH:mm'}} | {{formatDate(message?.createdAt)}}</span>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="message?.author.type == myType" class="outgoing_msg">
+              <div class="sent_msg">
+                <p>{{message?.body}}</p>
+                <!--<div [innerHTML]="message?.body"></div>-->
+                <span class="time_date">{{message?.createdAt | date:'HH:mm'}} | {{formatDate(message?.createdAt)}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <div class="row">
+              <div class="col-10">
+                <div class="form-group">
+                  <textarea class="form-control" placeholder="Escribe su mensaje" rows="2" [(ngModel)]="composedMessage"
+                    name="composedMessage"></textarea>
+                </div>
+              </div>
+              <div class="col-2">
+                <button class="msg_send_btn" type="button" (click)="sendMessage()"><i class="fa fa-paper-plane-o"
+                    aria-hidden="true"></i></button>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

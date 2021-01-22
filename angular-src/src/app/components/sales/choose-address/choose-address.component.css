@@ -1,0 +1,114 @@
+
+.card {
+  display: block;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    transition: box-shadow .25s;
+    height: 60mm;
+    width: 60mm;
+}
+.card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.card-content {
+  padding:15px;
+  text-align:left;
+}
+.card-title {
+  margin-top:0px;
+  font-weight: 700;
+  font-size: 1.10em;
+}
+.card-title a {
+  color: #000;
+  text-decoration: none !important;
+}
+
+.my-icon {
+  margin-left: 23mm;
+  margin-top: 23mm;
+  font-size: 60px;
+}
+
+.card-footer{
+  position:absolute;
+    bottom:0;
+    width:100%;
+  }
+
+.form-elegant .font-small {
+  font-size: 0.8rem; }
+
+.form-elegant .z-depth-1a {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+  box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25); }
+
+.form-elegant .z-depth-1-half,
+.form-elegant .btn:hover {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15); }
+
+.form-elegant .modal-header {
+  border-bottom: none; }
+
+.modal-dialog .form-elegant .btn .fa {
+  color: #2196f3!important; }
+
+.form-elegant .modal-body, .form-elegant .modal-footer {
+  font-weight: 400; }
+
+
+
+
+.bc-icons-2 .breadcrumb-item.active {
+    color: #455a64; } 
+
+.breadcrumb .breadcrumb-item::before {
+    content: "";}
+
+
+.sidenav {
+  height: auto;
+  width: 230px;
+  position: fixed;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-color: none;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 10px;
+  margin-right: 20px;
+  margin-top: 110px;
+}
+
+
+#numbered-icon {
+  max-width: 50px; 
+  max-height: 50px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-block;
+}
+
+#icon-button-del{
+  max-width: 30px; 
+  max-height: 30px;
+}
+
+#meeting-container{
+  max-width: 1000px;
+}
+
+.woolime-btn-theme{
+  background: linear-gradient(to right,#ff850b 0,#ff5945 100%);
+  color: white;
+}
+
+.deactivate{
+  color: grey;
+}

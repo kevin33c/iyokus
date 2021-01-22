@@ -1,0 +1,103 @@
+#heart:hover { 
+  color:red;
+}
+
+#heart { 
+  color:#555;
+}
+ 
+#diheart:hover { 
+  color:#555;
+}
+
+#diheart { 
+  color:red;
+}
+
+#info{
+  color:#2d75d9;
+}
+
+ .a-size-small {
+  line-height: 1.25!important;
+}
+
+.a-size-small {
+  font-size: 12px!important;
+  line-height: 1.5!important;
+}
+
+.a-color-secondary {
+  color: #555!important;
+}
+
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    0px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow:         0px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.btn-default:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-info:active,
+.btn-warning:active,
+.btn-danger:active {
+    margin-top: 3px;
+    margin-bottom: -3px;
+}
+
+.card {
+  max-width: 70rem;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+
+.thumbnail {
+  height: 100%;
+  display: table;
+  padding: 1px;
+  border: 0 none;
+  box-shadow: none;
+}
+
+.thumbnail img {
+  object-fit: scale-down;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.Wcenter {
+  max-width: 100%; 
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#icon {
+  max-width: 30px; 
+  max-height: 30px;
+}
+
+#icon-button {
+  width: 60px; 
+  height: 30px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-block;
+}
+
+select{
+  min-width: 150px;
+}

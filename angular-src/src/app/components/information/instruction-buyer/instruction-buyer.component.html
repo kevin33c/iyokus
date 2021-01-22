@@ -1,0 +1,516 @@
+<app-header></app-header>
+
+
+<div class="container" style="margin-top: 2cm; margin-bottom: 10cm;">
+  <h2 class="text-center">Coming Soon</h2>
+</div>
+
+<!--
+<body>
+  <section id="main-header" class="d-none d-lg-block">
+    <div class="box">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Registro</h5>
+                <p class="card-text">¿Como me uno a Iyokus explicado paso a paso?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#register-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-gavel fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Pujas</h5>
+                <p class="card-text">¿Como pujo en Iyokus explicado paso a paso?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#bid-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-credit-card fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Pagos</h5>
+                <p class="card-text">¿Como pago y completo el pedido?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#payment-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-ban fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Proceso de Reclamación</h5>
+                <p class="card-text">¿Como inicio una reclamación si no he recibido el producto?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#dispute-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-undo fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Política de Devolución</h5>
+                <p class="card-text">¿Como funciona la política de devolución de Iyokus?</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#refund-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="card">
+              <i id="index-icon" class="fa fa-envelope fa-3x" aria-hidden="true"></i>
+              <div class="card-body">
+                <h5 class="card-title">Contáctanos</h5>
+                <p class="card-text">¿Y si tengo más preguntas? Contáctanos!</p>
+                <div id="see-more-link">
+                  <a href="javascript:void(0);" [ngx-scroll-to]="'#contact-section'">Descubre más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="main-header" class="d-lg-none">
+    <div class="container mt-5 mb-5">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#register-section'">¿Como
+                me uno a
+                Iyokus explicado paso a paso?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#bid-section'">¿Como
+                pujo en Iyokus explicado paso a paso?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#payment-section'">¿Como
+                pago y completo el pedido?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#dispute-section'">¿Como
+                inicio una disputa si no he recibido el producto?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#refund-section'">¿Como
+                funciona la política de devolución de Iyokus?</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);" [ngx-scroll-to]="'#contact-section'">¿Y
+                si tengo más preguntas?</a>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <hr class="d-none d-lg-block">
+
+
+  <section id="register-section">
+    <div class="container">
+      <h3>Registrarse en Iyokus</h3>
+      <div class="how-section">
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <ol>
+              <h5 class="subheading">Sigue los pasos descritos abajo para abrir su cuenta como comprador. Le llevará
+                menos
+                de 3 minutos.</h5>
+
+              <li>
+                <p class="text-muted"> Para registrarte en iyokus solo necesitamos tres datos<sup>1</sup> tuyos:</p>
+                <ul class="text-muted">
+                  <li>Un nombre de usuario (no necesita ser tu nombre real)</li>
+                  <li>Un email válido</li>
+                  <li>Una contraseña (mínimo de 6 caracteres para su seguridad)</li>
+                </ul>
+
+                <p class="text-muted">Puedes registrarte yendo al portal de registro con el siguiente enlace:</p>
+
+                <div class="col-md-3 btn btn-dark btn-center btn-block m-2 center-block" [routerLink]="['/signup']">Regístrate
+                  aquí</div>
+
+              </li>
+
+              <li>
+                <p class="text-muted">Le enviaremos inmediatamente un email a la dirección de email que proporcionó
+                  para verificarlo. Haga clic en el enlace en el email para verificar.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">El proceso de registro se completará después de la verificación y podrá
+                  iniciar sesión con su email y contraseña <a href="javascript:void(0);" [routerLink]="['/login']">aquí</a>.</p>
+              </li>
+
+              <li>
+                <p class="text-muted">Es importante indicar, y cambiar cuando sea necesario, sus ciudad de interés en
+                  su <a href="javascript:void(0);" [routerLink]="['/user/editprofile']">perfil</a>.
+
+                  Como comprador podrá acceder a productos vendidos por en Iyokus de toda España si el vendedor ofrece
+                  <b>"Envío Postal"</b>. Sin embargo, para <b>"Entrega en Mano"</b> los vendedores solo pueden realizar
+                  entregas en la ciudad en la que viven.
+                  <br>
+                  <b> Iyokus utilizará la información relativa a su ciudad para mostrarle productos de todas las
+                    empresas
+                    de España vendiendo en Iyokus y
+                    también todos los productos vendidos por particulares localizados en su ciudad.
+                  </b> <br>
+                  De esta manera, productos vendidos por un particular en Madrid, no serán mostrados a una persona
+                  viviendo
+                  en Barcelona. </p>
+              </li>
+            </ol>
+
+            <p>
+              <small>
+                <sup>1</sup>Nos preocupamos por la seguridad y privacidad de sus datos. Sus datos nunca serán
+                utilizados con fines comerciales o de marketing. <b>Solo utilizaremos sus datos para facilitar las
+                  ventas y transacciones.</b>
+              </small>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="bid-section">
+    <div class="container">
+      <h3>Como pujar por un producto</h3>
+      <div class="how-section">
+        <div class="row">
+          <div class="col-md-12">
+            <ol>
+              <li>
+                <p class="text-muted">Para poder comprar o hacer una oferta en Iyokus, primero debe iniciar sesión <a
+                    href="javascript:void(0);" [routerLink]="['/login']">aquí</a>.</p>
+
+              </li>
+              <li>
+                <p class="text-muted">Busque el producto que desee utilizando el buscador o desde la categoría de los
+                  productos y seleccione el producto en el que este interesado.</p>
+              </li>
+
+              <li>
+                <p class="text-muted"> A la hora de pujar deberá tener en cuenta las siguientes informaciones:
+                </p>
+                <ul class="text-muted">
+                  <li><b>Estado del producto:</b> el producto puedes ser "Usado" <button id="icon-button" type="button"
+                      class="btn btn-outline-primary">Usado</button>
+                    o "Nuevo" <button id="icon-button" type="button" class="btn btn-outline-info">Nuevo</button></li>
+                  <li class="mt-2"><b>Modo de entrega:</b> los vendedores en Iyokus pueden entregar por "Envío Postal"
+                    <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                      alt="iyokus.es">
+                    o "Entrega en Mano" <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                      alt="iyokus.es"></li>
+                  <li><b>Periodo de bloqueo:</b> el periodo, en días, en que no podrá pujar nuevamente por el mismo
+                    producto si su puja es rechazada o si rechaza la contraoferta</li>
+                </ul>
+
+              <li class="mt-2">
+                <p class="text-muted">Puedes comprar un producto en Iyokus con dos métodos:</p>
+                <ul class="text-muted">
+                  <li><b>Si estás de acuerdo con el precio</b>, puedes pagar el precio listado (siempre puedes comprar
+                    por el precio listado, incluso dentro del periodo de bloqueo).</li>
+                  <li><b>Si no estás de acuerdo con el precio</b>, siempre puedes pujar por menos (solo una vez por
+                    periodo de bloqueo).</li>
+                </ul>
+              </li>
+              <li class="mt-2">
+                <p class="text-muted">Una vez que haya mandado la puja, pueden ocurrir 3 escenarios:
+                </p>
+                <ul class="text-muted">
+                  <li><b>Puja aceptada</b>: puede proceder al pago.</li>
+                  <li><b>Puja rechazada</b>: se aplicará el periodo de bloqueo.</li>
+                  <li><b>Contraoferta</b>: puede decidir si aceptar o rechazar la contraoferta, si aceptas, puede
+                    proceder al pago, y si rechazas, se aplicará el periodo de bloqueo.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <hr>
+
+
+  <section id="payment-section">
+    <div class="container">
+      <h3>Como completar una compra</h3>
+      <div class="how-section ">
+        <div class="row">
+          <div class="col-md-12">
+            <ol>
+              <li>
+                <p class="text-muted">En Iyokus tenemos dos modos de entregas, <b>"Entrega en Mano"</b> <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png" alt="iyokus.es">
+                  y <b>"Envío
+                    Postal"</b> <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es">:</p>
+                <ul class="text-muted"><b>"Entrega en Mano"</b> <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es"> : El vendedor le contactará para determinar el dia y punto de
+                  entrega
+                  a través del <a href="javascript:void(0);" [routerLink]="['/messenger']">Iyokus Messenger</a>.
+                  <br>
+                  <br>
+                  <b>"Envío
+                    Postal"</b> <img id="icon-button-del" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es"> : El vendedor le enviará el producto a la dirección indicada.
+                </ul>
+              </li>
+
+              <li class="mt-2">
+                <p class="text-muted">
+                  Pague su pedido con cualquier <b>tarjeta de crédito o débito</b>. Recuerde que deberá pagar
+                  además el costo de envío si el producto se entrega con "Envío Postal".
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">
+                  Una vez pagado, recibirá un email confirmando el pago y el pedido. <b>Si el pedido es "Entrega en
+                    Mano"</b>, también recibirá un <b>código de pago (Código de 6 dígitos)</b> que deberá entregar al
+                  vendedor cuando reciba el producto para completar la compra y pagar<sup>1</sup> al vendedor.
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">
+                  <b>Si el pedido es "Envío Postal"</b>, Le enviaremos un email de confirmación una vez que el vendedor
+                  haya enviado el producto.
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">En caso de que no reciba el producto o el producto recibido sea defectuoso, podrá
+                  abrir una disputa en la sección <a href="javascript:void(0);" [routerLink]="['/user/yourorders']">"Mis
+                    Pedidos"</a>. Una vez se resuelva la disputa, el dinero le será
+                  devuelto a su cuenta bancaria.</p>
+              </li>
+
+            </ol>
+            <p>
+              <small>
+                <sup>1</sup>Con "Entrega en Mano", el vendedor recibirá el pago solo cuando Iyokus reciba la
+                confirmación por parte del comprador de que esta satisfecho con el producto o en caso de envío postal
+                cuando el producto ha sido enviado teniendo el comprador 14 dias para devolver el producto en caso de
+                productos nuevos.
+                El código de confirmación le será enviado a su email cuando complete el pago.
+              </small>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="dispute-section">
+    <div class="container">
+      <h3>Proceso de Reclamación</h3>
+      <div class="how-section">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <h5 class="subheading">En caso de que no reciba el producto o el producto recibido sea defectuoso, Iyokus
+              le ofrece la opción de crear una disputa por ese producto. Esto bloqueará el pago del dinero al vendedor,
+              y Iyokus se lo devolverá si la disputa se resuelve a su favor. Para abrir una disputa, siga
+              los siguientes pasos:
+            </h5>
+            <ol>
+              <li>
+                <p class="text-muted">
+                  En su perfil, vaya a <a href="javascript:void(0);" [routerLink]="['/user/yourorders']">"Mis
+                    Pedidos"</a>.
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">
+                  Eliga el pedido por el cual quiere abrir una reclamación.
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">
+                  Click en la opción <b>"Reclamación"</b>.
+                </p>
+              </li>
+
+              <li>
+                <p class="text-muted">
+                  Eliga la razon de la reclamación y nos pondremos en contacto contigo lo antes posible para resolver
+                  la reclamación.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section id="refund-section">
+    <div class="container">
+      <h3>Política de devolución</h3>
+      <div class="how-section mb-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="subheading">Siempre puede solicitar una devolución y reembolso de su pedido dentro de <b>14 días
+                para artículos nuevos</b> y <b>24 horas para artículos usados</b> si los artículos devueltos son
+              exactamente como fueron entregados.</h5>
+            <ol>
+              <li>
+                <p class="text-muted">
+                  En su perfil, vaya a <a href="javascript:void(0);" [routerLink]="['/user/yourorders']">"Mis
+                    Pedidos"</a>.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">
+                  Click en la opción <b>"Devolución"</b>.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">
+                  Eliga la razon de devolución y comenzaremos inmediatamente a tramitar el reembolso.
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">
+                  Devuelva el artículo al vendedor (puede organizar una "Entrega en Mano" si fue entregado asi o por
+                  "Envío Postal", recuerda que tendrá que pagar los gastos de envío).
+                </p>
+              </li>
+              <li>
+                <p class="text-muted">
+                  El vendedor confirma la recepción del artículo y le reembolsaremos su dinero en un plazo de 2 a 4
+                  días hábiles.
+                </p>
+              </li>
+            </ol>
+            <p>
+              <b>El comprador asume los gastos de envíos (tanto los gastos incurridos para enviarle el artículo como la
+                devolución del artículo al vendedor) y una pequeña comisión de transacción debidas al pago con tarjetas.</b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-section">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center py-3">
+          <h1 class="display-4 ">Contacta con Iyokus</h1>
+          <p class="lead"></p>
+          <a href="#" class="text-white"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-light py-5 mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3>Contacta con Nosotros</h3>
+          <p>¿Tiene alguna pregunta?<br> Contacta con nosotros <a href="javascript:void(0);" [routerLink]="['/misc/contactus']">Aqui</a>
+            y le responderemos lo mas rápidamente posible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+-->
+
+<app-footer></app-footer>

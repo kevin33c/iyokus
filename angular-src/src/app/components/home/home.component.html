@@ -1,0 +1,265 @@
+<app-header></app-header>
+
+<section id="info" class="py-5">
+  <div class="container">
+    <app-product-advertisement [adCategoryNr]="201"></app-product-advertisement>
+  </div>
+</section>
+
+<!--
+<section id="info" class="py-1">
+  <div class="container">
+    <app-product-advertisement [adCategoryNr]="107"></app-product-advertisement>
+  </div>
+</section>
+-->
+
+<body>
+  <!--Slider Section-->
+  <section id="showcase">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <div class="carousel-inner">
+        <div class="carousel-item carousel-image-1 active">
+          <div class="container">
+            <div class="carousel-caption d-block text-right mb-5" id="caption-header">
+              <h3 class="display-4">What is Iyokus?</h3>
+              <p class="lead">
+                <i>Bid the price you want, decide and pay. A new online shopping experience made easy and fast.</i>
+              </p>
+              <a routerLink="/misc/aboutus" class="btn btn-primary">Read more</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-2">
+          <div class="container">
+            <div class="carousel-caption d-block mb-5" id="caption-header">
+              <h3 class="display-4">Buy with Iyokus</h3>
+              <p class="lead">
+                <i>Register an account and find out how easy and advantageous is to buy with Iyokus.</i>
+              </p>
+              <a routerLink="/info/getstarted" class="btn btn-danger">Read more</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item carousel-image-3">
+          <div class="container">
+            <div class="carousel-caption d-block text-right mb-5" id="caption-header">
+              <h3 class="display-4">Sell with Iyokus</h3>
+              <p class="lead">
+                <i>Start a new way of selling online and access to more customers than ever.</i>
+              </p>
+              <a routerLink="/info/getstarted-Business" class="btn btn-success">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#myCarousel" data-slide="prev" class="carousel-control-prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+
+      <a href="#myCarousel" data-slide="next" class="carousel-control-next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+  </section>
+  <!--Slider Section-->
+
+  <!-- Information -->
+  <section id="information" class="my-5 text-center d-none d-lg-block">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="info-header mb-5">
+            <h1 class="text pb-3">
+              A New Online Shopping Experience
+            </h1>
+            <p class="lead">
+              4 simple steps to receive great prices. Remember to pay only what you are willing to pay!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/icon/search_icon.png"
+                class="img-fluid rounded-circle w-50 mb-3">
+              <h3>Find</h3>
+              <h5>Unique offers</h5>
+              <p>Search our catalogue of excellent offers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/icon/bid_icon.png"
+                class="img-fluid rounded-circle w-50 mb-3">
+              <h3>Bid</h3>
+              <h5>You name the price</h5>
+              <p>Bid the price you want and receive unique offers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/icon/decide_icon.png"
+                class="img-fluid rounded-circle w-50 mb-3">
+              <h3>Decide</h3>
+              <h5>Instant reply</h5>
+              <p>Know the outcome of your bid in a second.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/icon/pay_icon.png"
+                class="img-fluid rounded-circle w-50 mb-3">
+              <h3>Pay</h3>
+              <h5>Simple and secured</h5>
+              <p>Pay with credit/debit card and receive the order.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Information -->
+
+
+  <!-- Category SECTION -->
+  <section id="home-icons" class="py-5">
+
+    <div class="container">
+      <h2 class="hl-card-header__headline">Explore our product categories</h2>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <a [routerLink]="['/view/category/Electronics']">
+            <img class='img-fluid-spec img-thumbnail'
+              src="https://s3.eu-west-3.amazonaws.com/woolime/home/home/mainCategory_Electronics.jpeg"
+              alt="Responsive image">
+            <div class="carousel-caption">
+              Electronics
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <a [routerLink]="['/view/category/Home']">
+            <img class='img-fluid-spec img-thumbnail'
+              src="https://s3.eu-west-3.amazonaws.com/woolime/home/home/mainCategory_Home.jpeg" alt="Responsive image">
+            <div class="carousel-caption">
+              Home
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <a [routerLink]="['/view/category/Fashion']">
+            <img class='img-fluid-spec img-thumbnail'
+              src="https://s3.eu-west-3.amazonaws.com/woolime/home/home/mainCategory_Fashion.jpeg"
+              alt="Responsive image">
+            <div class="carousel-caption">
+              Fashion
+            </div>
+          </a>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <a [routerLink]="['/view/category/Sport']">
+            <img class='img-fluid-spec img-thumbnail'
+              src="https://s3.eu-west-3.amazonaws.com/woolime/home/home/mainCategory_Sport.jpeg" alt="Responsive image">
+            <div class="carousel-caption">
+              Sport
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <a [routerLink]="['/view/category/Leisure']">
+            <img class='img-fluid-spec img-thumbnail'
+              src="https://s3.eu-west-3.amazonaws.com/woolime/home/home/mainCategory_Events.jpeg"
+              alt="Responsive image">
+            <div class="carousel-caption">
+              Leisure
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+          <a [routerLink]="['/view/category/Tools']">
+            <img class='img-fluid-spec img-thumbnail'
+              src="https://s3.eu-west-3.amazonaws.com/woolime/home/home/mainCategory_Others.jpeg"
+              alt="Responsive image">
+            <div class="carousel-caption">
+              Tools
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Category SECTION -->
+
+  <!-- SPLITTER 1 -->
+  <section id="home-heading" class="p-5">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container pt-5">
+            <h1><a routerLink="/seller-signup">Start Selling with Iyokus</a></h1>
+            <h5 class="d-none d-md-block"><a routerLink="/seller-signup">Register an Individual or Professional account
+                in minutes</a></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SPLITTER 1   -->
+
+  <!-- MOST VIEWED -->
+  <section id="info" class="py-5">
+    <div class="container">
+      <app-product-top-viewed></app-product-top-viewed>
+    </div>
+  </section>
+  <!-- MOST VIEWED -->
+
+  <!-- SPLITTER 2 -->
+  <section id="video-play">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container p-5">
+            <h1><a routerLink="/misc/aboutus">Know more about Iyokus</a></h1>
+            <h5 class="d-none d-md-block">
+              <a routerLink="/misc/aboutus">Read more about us, what we do, what we offer and more</a>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SPLITTER 2 -->
+
+  <!-- RECOMMENDATION -->
+  <section id="gallery" class="py-5">
+    <div class="container">
+      <app-product-recommendation></app-product-recommendation>
+    </div>
+  </section>
+</body>
+
+<app-footer></app-footer>

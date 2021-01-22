@@ -1,0 +1,21 @@
+<div *ngIf='carouselTileItems?.length > 0'>
+  <h1 class="hl-card-header__headline">Our Recommendation</h1>
+  <div class="mt-3 mb-3">
+    <ngu-carousel [inputs]="carouselTile" (initData)="initDataFn($event)">
+
+      <ngu-tile NguCarouselItem *ngFor="let Tile of carouselTileItems" class="text-center">
+        <div class="card">
+          <a [routerLink]="['/product', productNameToUrl(Tile.name), Tile._id]" class="thumbnail">
+            <img class="card-img-top" [src]=Tile.image_Main alt="Card image cap">
+          </a>
+          <b>
+            <p class="card-text">{{Tile?.listed_price | currency: 'GBP': number }}</p>
+          </b>
+        </div>
+      </ngu-tile>
+
+      <button NguCarouselPrev class='leftRs'>&lt;</button>
+      <button NguCarouselNext class='rightRs'>&gt;</button>
+    </ngu-carousel>
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<app-header></app-header>
+
+<div class="container mt-3">
+  <h3>My Orders</h3>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <small>
+          <b>Status</b>
+          <select class="form-control form-control-sm" [(ngModel)]="view" name="view" (change)="onChangeFilter(view)">
+            <option value="All">All</option>
+            <option value="0">Open</option>
+            <option value="1">Dispatched</option>
+            <option value="2">Completed</option>
+            <option value="3">Cancelled</option>
+          </select>
+        </small>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <small>
+          <b>Item per Page</b>
+          <select type="text" class="form-control form-control-sm" [(ngModel)]="rowsOnPage">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </small>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+<div class="container">
+  <h2 *ngIf="products?.length ===0" class="text-center mt-5 mb-5" style="font-style: italic;">You don't have any orders.
+  </h2>
+  <div class="card mt-3"
+    *ngFor="let product of filteredProducts | paginate: { itemsPerPage: rowsOnPage, currentPage: p }">
+    <div class="row">
+      <div class="col-md-2">
+        <img [src]=product?.image_Main class="Wimg">
+      </div>
+      <div class="col-md-10 px-3 mt-3">
+        <div class="card-block px-3">
+          <h6 class="card-title mb-0">
+            <a class="card-text" [routerLink]="['/product', productNameToUrl(product.productName), product.productID]" target="_blank"
+              style="color: #0066c0;">{{product?.productName}}</a>
+            <br>
+            <span class="card-text">
+              {{product?.variant1}} {{product?.variant2}}
+            </span>
+            <br>
+            <small>
+              <b>x {{product?.quantity}}</b>
+            </small>
+          </h6>
+
+          <small class="a-size-small">Order Date: {{product?.date | date:'dd.MM.yyyy HH:MM'}} | Order Number <a
+              href="javascript:void(0);" [routerLink]="['/business/order', product?.offerID]">#{{product?.offerID}}</a>
+            | Status:
+            <b *ngIf="product?.orderStatus === 0">Open</b>
+            <b *ngIf="product?.orderStatus === 1">Dispatched</b>
+            <b *ngIf="product?.orderStatus === 2">Completed</b>
+            <b *ngIf="product?.orderStatus === 3">Cancelled</b>
+          </small>
+          <br>
+
+
+          <a href="javascript:void(0);" [routerLink]="['/business/order', product?.offerID]"> <button type="button"
+              class="btn btn-outline-dark mt-2">Manage Order</button>
+          </a>
+
+          <hr>
+          <div class="row px-2">
+            <div class="col-md-4">
+              <span class="a-size-small">
+                <b>{{product?.price | currency: 'GBP': number }} </b>
+                <span style="color: gray">per Unit</span>
+              </span>
+              <span *ngIf="product?.deliveryMethod === 1" class="a-size-small">
+                <span style="color: gray">+ delivery cost</span>
+              </span>
+              <p class="a-size-small">
+                <br> Total:
+                <b>{{product?.totalPrice | currency: 'GBP': number }}</b>
+              </p>
+            </div>
+            <div class="col-md-8">
+              <p class="a-size-small">
+                <span style="color: gray">Delivery Method:</span>
+                <br>
+                <span *ngIf="product?.deliveryMethod === 0">
+                  <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es">
+                  Meetup Delivery
+                </span>
+
+                <span *ngIf="product?.deliveryMethod === 1">
+                  <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es">
+                  Postal Delivery
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container mt-3 text-center">
+  <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" (click)="goTop()">
+  </pagination-controls>
+</div>

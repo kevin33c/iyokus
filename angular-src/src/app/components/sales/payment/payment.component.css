@@ -1,0 +1,97 @@
+.bc-icons-2 .breadcrumb-item.active {
+  color: #455a64; } 
+
+.breadcrumb .breadcrumb-item::before {
+  content: "";}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+
+.input {
+	font-size: 22px;
+	padding-left: 10px;
+}
+
+.amount {
+	text-align: center;
+	width: 200px;
+	margin: 30px auto;
+	display: inline-block;
+}
+
+.dollar {
+	display: inline-block;
+	padding: 12px 10px 7px 10px;
+	background-color: #EFEFEF;
+	border-radius: 5px;
+}
+
+.amountArea {
+	text-align: center;
+}
+
+.submitArea {
+	margin-top: 30px;
+}
+
+.buttonArea {
+	text-align: center;
+}
+
+
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    0px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow:         0px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.btn-default:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-info:active,
+.btn-warning:active,
+.btn-danger:active {
+    margin-top: 3px;
+    margin-bottom: -3px;
+}
+
+#icon {
+  max-width: 70px; 
+  max-height: 70px;
+}
+
+#icon-stripe{
+	max-width: 50px; 
+  max-height: 50px;
+}
+
+.help-format{
+  text-align:center;
+  font-weight: 500;
+}
+
+.woolime-btn-theme{
+  background: linear-gradient(to right,#ff850b 0,#ff5945 100%);
+	color: white;
+	border-radius: 25px;
+	width: 300px;
+}
+
+.crypto-btn-theme{
+  background: linear-gradient(to right,#203A43 0,#2C5364 100%);
+	color: white;
+	border-radius: 25px;
+	width: 300px;
+}
+
+.deactivate{
+  color: grey;
+}

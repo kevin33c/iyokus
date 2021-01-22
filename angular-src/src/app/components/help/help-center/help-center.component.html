@@ -1,0 +1,1504 @@
+<body data-spy="scroll" data-target="#main-nav" id="background">
+  <div *ngIf="centerView">
+    <!--NAV BAR begin-->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" id="main-nav">
+      <div class="container">
+        <a routerLink="/" class="navbar-brand"><img
+            src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Iyokus_Transparent.png" id="iyokus-icon"
+            alt="iyokus.es" />
+        </a>
+        <a routerLink="/help/center" class="navbar-brand"><span style="color: white; font-weight: 500;">
+            Help Center
+          </span>
+        </a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3">
+              <a href="javascript:void(0);" [ngx-scroll-to]="'#buyer'" class="nav-link">Buying</a>
+            </li>
+            <li class="nav-item mr-3">
+              <a href="javascript:void(0);" [ngx-scroll-to]="'#seller'" class="nav-link">Selling</a>
+            </li>
+            <li class="nav-item mr-3">
+              <a href="javascript:void(0);" [ngx-scroll-to]="'#account'" class="nav-link">Account</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--NAV BAR end-->
+    <div class="container" id="help">
+      <h4 class="display-4 text-center">How can we help you?</h4>
+
+      <!--BUYER SECTION-->
+      <section id="buyer">
+        <h3>Buying</h3>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);"
+                [routerLink]="['/help/center', '103']">Buyer guidelines</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);"
+                [routerLink]="['/help/center', '104']">Buyer protection</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-2">
+              <i id="question-icon" class="fa fa-question-circle"></i>
+            </div>
+            <div class="col-10" id="index-question">
+              <a id="index-questions-description" href="javascript:void(0);"
+                [routerLink]="['/help/center', '120']">Safety guidelines</a>
+            </div>
+          </div>
+        </li>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);" [routerLink]="['/help/center', '101']">In
+                  which cases I can't return an item?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '102']">Can I cancel an order before delivery?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '105']">How does delivery work with Iyokus?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);" [routerLink]="['/help/center', '107']">To
+                  where sellers on Iyokus can deliver?</a>
+              </div>
+            </div>
+          </li>
+
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '108']">Can I rate a seller when the order has been
+                  refunded/cancelled?</a>
+              </div>
+            </div>
+          </li>
+
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '109']">Are the products on Iyokus always new?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '111']">Refund policies</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '112']">How long does it take to get a refund?</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+
+
+
+
+      <!--SELLER SECTION-->
+      <section id="seller">
+        <h3>Selling</h3>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '201']">Seller protections</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '202']">Seller guidelines</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '203']">Prohibited Items</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '221']">What kind of products are best sold with Iyokus?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '204']">How does the delivery process work for a seller?</a>
+              </div>
+            </div>
+          </li>
+
+
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '207']">How to set selling prices on Iyokus?</a>
+              </div>
+            </div>
+          </li>
+
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '222']">Lock-out period guide</a>
+              </div>
+            </div>
+          </li>
+
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '220']">What fees does Iyokus charge when a product is
+                  sold?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '210']">Product listing tips & guidelines</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '211']">Why do I need to verify my mobile phone number?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '212']">What is the main difference between a private/individual and a
+                  business/professional
+                  seller?</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+      <!--ACCOUNT SECTION-->
+      <section id="account">
+        <h3>Account</h3>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '301']">How to change your username or password?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '303']">How to sign out?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '304']">How to delete my Iyokus account?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '306']">Can I have more than one account with Iyokus?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '307']">After deleting my account, can I sign up again?</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '310']">Iyokus messenger codes of conduct</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-2">
+                <i id="question-icon" class="fa fa-question-circle"></i>
+              </div>
+              <div class="col-10" id="index-question">
+                <a id="index-questions-description" href="javascript:void(0);"
+                  [routerLink]="['/help/center', '309']">Why was my account disabled?</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div *ngIf="!centerView">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" id="main-nav">
+      <div class="container">
+        <a routerLink="/" class="navbar-brand"><img
+            src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Iyokus_Transparent.png" id="iyokus-icon"
+            alt="iyokus.es" />
+        </a>
+        <a routerLink="/help/center" class="navbar-brand" style="color: white; font-weight: 500;">
+          Help Center
+        </a>
+      </div>
+    </nav>
+
+    <div class="container mt-5 mb-5" id="article-section">
+
+      <div *ngIf="article=='101'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">In
+              which cases I can't return an item?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  An item is not elegible for refund if any of below criteria apply:
+                </p>
+                <ul>
+                  <li class="list-header">
+                    You already rated the seller.
+                  </li>
+                  <li class="list-header">
+                    The item is on transit to you.
+                  </li>
+                  <li class="list-header">
+                    For an <b>used</b> item, the delivery of the order took place more than 24 hours ago.
+                  </li>
+                  <li class="list-header">
+                    For a <b>new</b> item, the delivery of the order took place more than 14 days ago.
+                  </li>
+                  <li class="list-header">
+                    The item is not in the same condition as when it was delivered.
+                  </li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='102'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Can I cancel an order before delivery?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  No, on Iyokus, once the product is paid and dispatched, is no longer possible to cancel the order.
+                  However, in special cases you can send us an email to <a
+                    href="mailto:client@iyokus.com">client@iyokus.com</a>.
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='203'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Prohibited Items</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Below products or services cannot be sold on Iyokus:
+                  <br>
+                </p>
+                <ul>
+                  <li class="list-header">Anything illegal</li>
+                  <li class="list-header">Stolen items</li>
+                  <ul>
+                    <li>Note: If a purchased item is reported as stolen, a demand for refund will be issued and we will
+                      report the case to the relevant authorities</li>
+                  </ul>
+                  <li class="list-header">Items that require a legal approval or licenses to be sold</li>
+                  <li class="list-header">Drugs, including:</li>
+                  <ul>
+                    <li>Prescription medicines or devices, pharmaceuticals, or behind the counter drugs</li>
+                    <li>Grow ingredients for drugs</li>
+                  </ul>
+                  <li class="list-header">Items restricted by the government</li>
+                  <li class="list-header">Counterfeit goods or goods infringing on a third party's intellectual property
+                    rights</li>
+                  <li><b>Digital items</b> - any items where the order is fulfilled electronically or requires a
+                    download</li>
+                  <li class="list-header">Any kind of weapons such as:</li>
+                  <ul>
+                    <li>Firearms, toy guns and related items</li>
+
+                    <li>Explosives</li>
+                    <li>Explosives or military ordinance</li>
+                    <li>Self defense weapons</li>
+                  </ul>
+                  <li class="list-header">Alcohol</li>
+                  <li class="list-header">Tobacco and tobacco related products including e-cigarettes</li>
+
+                  <li class="list-header">Hazardous or dangerous items</li>
+                  <li class="list-header">Live Animals</li>
+                  <li class="list-header">Any item that contains a computer virus, malware, or spyware</li>
+                  <li class="list-header">Humans, human body parts, organs, cells, blood, body fluids, and items that
+                    are soiled with human materials such as used underwear</li>
+                </ul>
+                <p>
+                  <i>Note: Iyokus reserves the right to remove any listing from our platform without any formal
+                    notice.</i>
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='103'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Buyer guidelines</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  We work hard to make Iyokus an easy to use and safe platform. We proctect our buyers from frauds and
+                  guarantee refunds. But we can’t do it alone.
+                </p>
+                <p>
+                  When buying, please keep in mind the following:
+                </p>
+                <ul>
+                  <li class="list-header">Do not buy any products from the <a href="javascript:void(0);"
+                      [routerLink]="['/help/center/203']">Prohibited Items</a> list (we'll periodically take down
+                    prohibited items on our site but we, nonetheless, advice basic common sense to our buyers)</li>
+                  <li class="list-header">
+                    Read the product description carefully, and pay special attention to the product's
+                    delivery time and conditions</li>
+                  <li class="list-header">Upon receiving the item, examine it immediately and do not rate the seller
+                    until
+                    you are satisfied with the item</li>
+                  <li class="list-header">
+                    For Meetup Delivery, do not give the Payment Code to the seller without examining the item first and
+                    follow the <a href="javascript:void(0);" [routerLink]="['/help/center/120']">Safety Guidelines</a>
+                  </li>
+                  <li class="list-header">For new items, make sure to claim your refund within 14 days</li>
+                  <li class="list-header">For used items, make sure to claim your refund within 24 hours</li>
+                  <li class="list-header">Do not use or damage the item and keep, where applicable, the original
+                    packaging
+                    if you plan to ask for a refund</li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='120'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Safety guidelines</h2>
+            <hr>
+            <div class="card-description">
+              <p>
+                <small>
+                  We aim to provide a safe, secure, and fun marketplace for buyers and sellers. If someone is attempting
+                  to deceive others, or if you notice any <a href="javascript:void(0);"
+                    [routerLink]="['/help/center/203']">Prohibited Items</a>, please contact us and we’d be happy to
+                  help.
+                </small>
+              </p>
+              <br>
+              <h5>Financial Safety</h5>
+              <ul>
+                <small>
+                  <li>Never give out your personal financial (payment) information. All transactions must be done
+                    through our site. We do not support or protect transactions where payment is transmitted outside of
+                    Iyokus' systems.</li>
+                  <li>Regularly check your financial statements for questionable activity.</li>
+                  <li>Thoroughly inspect the item upon delivery, especially for expensive items or electronics.</li>
+                </small>
+              </ul>
+              <br>
+              <h5>Online Safety</h5>
+              <ul>
+                <small>
+                  <li>Come up with a great password and change it frequently. Passwords that are phrases and include
+                    numbers or special characters are the strongest. Do not use the same password for more than one
+                    account or repeat passwords.</li>
+                  <li>Never share your Iyokus account or password with anyone, including third-party websites. We will
+                    never ask you for your password.</li>
+                </small>
+              </ul>
+              <br>
+              <h5>Meetup Safety</h5>
+              <ul>
+                <small>
+                  <li>Always agree upon a meetup at a reasonable time (e.g. 9am to 5pm) and in a public space.</li>
+                  <li>Check the received item before giving the Payment Code to the seller.</li>
+                  <li>Be aware of suspicious activities and simply leave if you are not fully comfortable with the
+                    situation. Nothing is more important than your safety, we'll refund you if an order does not
+                    complete.</li>
+                </small>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='107'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">To where sellers on Iyokus can deliver?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Currently our sellers only deliver within the United Kingdom, however, we aim to expand this to the EU
+                  and eventually beyond.
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='108'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Can I rate a seller when the order has been refunded/cancelled?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Not by system design. It is not possible to rate the seller if the order has not been completed.
+                  <br>
+                  <br>
+                  <b>However</b>, If you have any claims against the seller, please raise your claim or contact us.
+                  We'll take these into consideration, resulting in either banning the seller in serious cases or
+                  inputting your rating manually from our side.
+                </p>
+              </small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='104'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Buyer protection</h2>
+            <hr>
+            <div class="card-description">
+              <h5>Iyokus offers you a safe place to buy online</h5>
+              <small>
+                <p>
+                  If the received product does not meet the conditions described by the seller, you are entitled to a
+                  full
+                  refund.
+                </p>
+              </small>
+              <br>
+              <h5>How does the return process work?</h5>
+              <small>
+                <p>
+                  The refund request should be raised within 14 days after an order has been delivered. Within 24 hours
+                  after the delivery in the case of an used item. You'll receive the refund back to your originak paying
+                  credit/debit card within 3-5 working days as soon as we receive confirmation the item has been
+                  returned
+                  (note that this may taken longer depending on your bank/card provider).
+                </p>
+                <br>
+                <h5>What if the received item does not meet the description provided by the seller?</h5>
+                <p>
+                  Do not rate the seller since when you rate the seller the order is marked as completed in our system.
+                  <br>Request a refund in your order page and provide description of your claim. We'll take it up from
+                  here and start processing your refund.
+                </p>
+              </small>
+              <br>
+              <h5>Risk of fraud</h5>
+              <small>
+                <p>
+                  While we'll do our best to keep fraudulent sellers away from our platform, our buyers are advised
+                  to apply common sense against possible scams. Read the description of the products carefully and
+                  contact us if you have any
+                  doubts.
+                  If you believe that you have been scammed, please contact us as soon as possible and we will help you,
+                  including legal actions.
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='105'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">How does delivery work with Iyokus?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Iyokus operates two delivery methods, <b>"Meetup delivery"</b>
+                  <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es">
+                  and <b>"Postal Delivery"</b> <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es">
+                </p>
+                <p>
+                  <b>"Meetup Delivery"</b> <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es"> : The seller will get in touch with you using our internal messenger in order to
+                  agree on the delivery time and location. This delivery method is free of charge and often used for
+                  used items that aren't worth to pay additional shipping expenses.
+                </p>
+                <ol class="text-muted">
+                  <li>The seller contact you to agree on the delivery time and location</li>
+                  <li>Meet the seller and receive your product</li>
+                  <li>Give the <b>Payment Code</b> to the seller</li>
+                  <li>Rate the seller</li>
+                </ol>
+                <br>
+                <p>
+                  <b>"Postal Delivery"</b> <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es">
+                  : The order will be delivered to an address of your choosing.
+                </p>
+                <ol class="text-muted">
+                  <li>You'll receive an email confirmation upon completing the order and another email with the dispatch
+                    confirmation</li>
+                  <li>You will receive the order in the provided address usually within 5 working days. <b>Note! With
+                      international items, the delivery time can be considerably longer (3-5 weeks). Please read the
+                      delivery conditions carefully before placing an order.</b></li>
+                  <li>Rate the seller</li>
+                </ol>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='301'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">How to change my username or password?</h2>
+            <hr>
+            <div class="card-description">
+              <p>
+                <small>
+                  The password or username can be changed at anytime in your <a href="javascript:void(0);"
+                    [routerLink]="['/user/editprofile']">Profile</a> section. Just following the instructions to enter
+                  the new information.
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='303'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">How to sign out?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  On the top navigation bar (appears outside of the help center), select "My Account", and nagivate down
+                  the list and click on "Sign Out".
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='304'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">How to delete my account?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  You can request to delete your account at any time under your Iyokus <a href="javascript:void(0);"
+                    [routerLink]="['/user/editprofile']">Profile</a> section.
+                  <br>
+                  <br>
+                  <b>Note</b>, once the account has been deleted, it will be set to inactive right away and
+                  all your linked data will be permanently deleted within one day. There is no possibility to recover
+                  your data again.
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='306'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Can I have more than one account with Iyokus</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  No, only one account per person is possible. If we find out that an user has multiple accounts, Iyokus
+                  reserves the right to delete these accounts.
+                  <br>
+                  <br>
+                  <b>However, note that is possible to open simultaneously a buyer and a seller account.</b>
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='307'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">After deleting my account, can I sign up again?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Of course! You are more than welcome to come back to Iyokus. Just follow the normal sign up process.
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='220'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">What fees does Iyokus charge when a product is sold?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <ol>
+                  <li><b>Credit/debit card processing</b>: our payment provider, Stripe, charges a small fee per
+                    transaction
+                  </li>
+                  <ul>
+                    <li>Normal (order higher than £5): 1.4% of the order amount + £0.25</li>
+                    <li>Micro (order below £5): 5.0% of the order amount + £0.05</li>
+                  </ul>
+                  <li><b>Iyokus fee:</b> our selling fee to keep the platform running: <b> 3% of the selling price.</b>
+                  </li>
+                </ol>
+                <p>
+                  Please see below examples of our fees with different amounts (assuming no additional delivery cost and
+                  order consists of only selling price, i.e. order amount equal selling price):
+                </p>
+                <img class="img-fluid" src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Help_Pricing_Calc.png"
+                  alt="iyokus.es">
+                <br>
+                <br>
+                <!--
+                <p>
+                  Below formulas can be used to calculate the fee to be paid.
+                  <br>
+                  Normal: (P * 0.044) + 0.25
+                  <br>
+                  Micro: (P * 0.08) + 0.05 </p>
+                -->
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='109'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Are the products on Iyokus always new?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  No, on Iyokus you could find both new and used items.
+                  <br>
+                  <br>
+                  You can easily identify the condition of an item in the item's header or description:
+                </p>
+                <ul>
+                  <li><button id="icon-button" type="button" class="btn btn-outline-info">New</button></li>
+                  <li><button id="icon-button" type="button" class="btn btn-outline-primary">Used</button></li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='111'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Refund policies</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  A buyer can request a return within a <b>period of time</b> of confirmed delivery if one or more of
+                  the following apply:
+                </p>
+                <ul>
+                  <li>The item is not as it was described in the listing</li>
+                  <li>The item is Prohibited</li>
+                  <li>The item is damaged</li>
+                  <li>The item is defective</li>
+                  <li>The wrong item was received</li>
+                </ul>
+
+                <p>
+                  The <b>period of time</b> in which a refund can be requested depends on the product condition <button
+                    id="icon-button" type="button" class="btn btn-outline-info">New</button> or
+                  <button id="icon-button" type="button" class="btn btn-outline-primary">Used</button>
+                  <br>
+                  <br>
+                  For <button id="icon-button" type="button" class="btn btn-outline-info">New</button>
+                  products a buyer has <b>14 days</b> to request a refund upon receiving the item.
+                  <br>
+                  <br>
+                  For <button id="icon-button" type="button" class="btn btn-outline-primary">Used</button> products
+                  a buyer has <b>24 hours</b> to request a refund upon receiving the item.
+                  <br>
+                  <br>
+                  <b>
+                    Note that to be eligible for a full refund, the item must be returned in the same condition as it
+                    was delivered, including the original package (if applicable) and the buyer is responsible to return
+                    the item and pay for any delivery costs.
+                  </b>
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='112'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">How long does it take to get a refund?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  It usually takes 3-5 working days to reach your account once the seller has confirmed that the item
+                  was sent back. Note that this time may vary depending on your bank/card provider, however, we'll
+                  process the refund within 1 working day.
+                </p>
+                <p>
+                  <b>For security purposes, the refund is always issued back to your original payment method (i.e.
+                    credit/debit card)</b>. If that card has been canceled or replaced, you will need to first contact
+                  your card issuer for further assistance in tracking the refund. Typically, your card issuer will
+                  accept the refund on your behalf and either process it into your current account or wait for you to
+                  contact them to collect the funds.
+                  <br>
+                  <br>
+                  In the unlikely case that this is not possible, please contact us as soon as possible and we'll look
+                  into it for you or advice you on how to proceed.
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='211'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Why do I need to verify my mobile phone number?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  In Iyokus we try hard to attract serious sellers and one screening mechanism we have in place is to
+                  require sellers to at least verify their mobile phone number, as these can be more dificult to fake
+                  than emails.
+                  <br>
+                  <br>
+                  We hope for your understanding that all we aim for is to provider our users, including yourself, a
+                  save and trustworthy platform to trade.
+                  <br>
+                  <br>
+                  <b>We'll keep your information safe and will never be shared with a 3rd party or used for advertising
+                    purposes under any circumstances.</b>
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='204'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">How does the delivery process work for a seller?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Iyokus offers two delivery methods, <b>"Meetup Delivery"</b>
+                  <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es">
+                  and <b>"Postal Delivery"</b> <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es">
+                  <br>
+                  <br>
+                  <i>Remember, if you are a private seller, you are only able to deliver via "Meetup Delivery".</i>
+                </p>
+                <br>
+                <p>
+                  <b>"Meetup Delivery"</b> <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_MeetingDelivery.png"
+                    alt="iyokus.es"> : Contact the buyer to agree on a delivery time and location. You can
+                  contact
+                  the buyer from your order page in <a href="javascript:void(0);" [routerLink]="['/business/orders']">My
+                    Orders</a> section.
+                </p>
+
+                <ol class="text-muted">
+                  <li>Organize the meeting point for the delivery with the buyer</li>
+                  <li>Meet the buyer and deliver the product</li>
+                  <li>Receive the <b>6 digits Payment Code</b> from the buyer.</li>
+                  <li>In your account, go to the order page and <b>enter the Payment Code</b> received.
+                  <li>Upon fulfilment confirmation and if we don't receive a claim/refund request witin 24 hours, we
+                    will transfer the money to your account in <b>24 hours</b>. Note, depending on your banking provider
+                    it may takes 1-3 working days to appear on your account.</li>
+                </ol>
+                <br>
+                <p>
+                  <b>"Postal Delivery"</b> <img id="icon-button-del"
+                    src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Logo_Product_PostDelivery.png"
+                    alt="iyokus.es">
+                  : send the product to the provided address. You can manage your orders in <a
+                    href="javascript:void(0);" [routerLink]="['/business/orders']">My Orders</a> section.
+                </p>
+                <ol class="text-muted">
+                  <li>Send the order to the provided address within 2 working day. <b>Remember to include an invoice and
+                      a the return address in case
+                      the buyer wish to request a refund</b>.</li>
+                  <li>Once dispatched, go to the order page in <a href="javascript:void(0);"
+                      [routerLink]="['/business/orders']">My Orders</a> section to change the status to
+                    <b>"Dispatched"</b>.
+                    Please indicate the delivery company and the tracking number.</li>
+                  <li>We'll send a dispatch confirmation to the buyer.</li>
+                  <li>The payment will be transferred to your account in <b>14 days</b>
+                    if the buyer does not request a refund. Note, depending on your banking provider it may takes 1-3
+                    working days to appear on your account.</li>
+                </ol>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='212'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h4 class="card-title">
+              What is the main difference between a private/individual and a business/professional
+              seller?</h4>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  <i>
+                    Generally speaking, a private account is for someone who sells occasionally.
+                    And a business account is for online shops, businesses or someone who sells frequently.
+                  </i>
+                  <br>
+                  <br>
+                  The main operational difference between a business seller and a private seller is that the <b>private
+                    seller can only deliver products using "Meetup Delivery".</b> Therefore, a private
+                  seller is limited to sell only to users living within the same city/region.
+                  <br>
+                  <br>
+                  A business seller does not have this limitation and is able to choose between "Postal Delivery" and
+                  "Meetup Delivery". Therefore, a business seller is able to sell anywhere within Iyokus operational
+                  range (i.e. currently is within the United Kingdom but we are looking to expand further).
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='210'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Product listing tips & guidelines</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Uploading a product listing is relatively easy. We recommend to follow these steps before uploading a
+                  product:
+                </p>
+                <ol>
+                  <li>Familiar yourself with the uploading platform and the information required (e.g. understand what
+                    are lock-out period, reserve price, delivery methods, etc.)</li>
+                  <li>Have at least 1 up to date picture of your product ready</li>
+                  <li>Fill out the uploading form <b>even with just dummy information</b> for the moment to complete the
+                    upload, don't worry it'll not be visible yet and you can always edit it</li>
+                  <li>Complete all the information required truthfully and correctly. Remember that the buyers reserve
+                    the right to refunds if the item isn't as advertised</li>
+                  <li>Always preview the listing before publishing it</li>
+                  <li>Publish the item and update periodically (e.g. quantity available, prices, etc.) as required</li>
+                </ol>
+                <p>
+                  <b>Remember to publish the item once you have added and reviewed it. Otherwise, it will not be visible
+                    to the buyers.</b>
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div *ngIf="article=='309'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Why was my account disabled?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  Your account may be disabled if we find out that our conditions of sale & use are not followed or any
+                  of the follosing reasons:
+                </p>
+                <ul>
+                  <li>Selling prohibited items</li>
+                  <li>Have multiple account without a reasonable motive</li>
+                  <li>Suspicious fraudulent activities, either raised by users or identified through our regular checks
+                  </li>
+                  <li>Failed to comply with our code of conduct</li>
+                  <li>Any other activities that we consider damaging to our reputation</li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="article=='207'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">How to set selling prices on Iyokus?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                Under Development
+              </small>
+              <!--
+              <p>Remember, Iyokus is a platform with the idea to use price ranges and sell the product for a price
+                within this range. Un recordatorio de que Iyokus es una plataforma que usa rango de precios y vende
+                mediantes pujas entre
+                este rango. Es decir para vender con Iyokus, debes decidir sobre 2 precios en relación con el precio
+                real <i id="price-icon" class="fa fa-caret-up" style="color: rgb(129, 185, 79);"></i> del producto (el
+                precio de verdad que vendes): </p>
+              <ul>
+                <small>
+
+                  <li><i id="price-icon" class="fa fa-caret-up" style="color: rgb(70, 164, 219);"></i> Precio listado:
+                    el precio que mostrarás a los compradores en Iyokus.</li>
+                  <li><i id="price-icon" class="fa fa-caret-up" style="color: rgb(229, 88, 58);"></i> Precio de
+                    reserva: el precio mínimo que está dispuesto a vender en Iyokus.</li>
+                </small>
+              </ul>
+
+              <p><i>Recuerde que ganancia no es solo el margen de beneficio de cada artículo vendido, sino también la
+                  cantidad de artículo vendido. En Iyokus queremos maximizar su ganancia maximizando la cantidad
+                  vendida. Por ejemplo, imagina que vendes camisetas, ganarás más si vendes 2 camisetas por 2EUR de
+                  margen de beneficio por venta que si vendes 1 camiseta por 3EUR de margen (2x2=4 > 1x3=3).
+                </i></p>
+
+              <p>Generalmente hay 3 opciones de decidir sobre el precio listado y el precio de
+                reserva:</p>
+
+              <h5 class="mt-4">Opción 1: venderás pocos y arriesgarás a dañar nuestra reputación y la tuya</h5>
+              <img id="pricing-option" class="img-fluid"
+                src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Help_Pricing_Option1.png" alt="iyokus.es">
+              <p>Opción 1 conlleva fijar el precio listado por encima del precio real y el precio de reserva igual o
+                mayor
+                que el precio de real. Con esta opción venderás siempre por encima del precio real pero venderás
+                mucho menos ya que el precio listado esta muy por encima del precio que el producto debería tener.
+                <br>
+                <br>
+                Advertimos que de ninguna manera aprobamos el uso abusivo esta opción. Ya que puede dañar nuestra
+                reputación y la suya una vez que los compradores se enteren, además de que reducirá significativamente
+                las ventas. Si encontramos uso abusivo de esta opción, reservamos el derecho de eliminar su producto de
+                la plataforma.
+                <br>
+                <br>
+                <i>Por ejemplo, vendes una camiseta que el precio real es 10EUR, sin embargo en Iyokus fijas el precio
+                  listado a 20EUR y el precio de reserva a 10EUR. Es verdad que venderás siempre por encima de 10EUR,
+                  eso si vendes alguno, pero los compradores se darán cuenta y dañara su reputación y el de la
+                  plataforma.</i>
+              </p>
+
+
+              <h5 class="mt-5">Opción 2: venderás más y en promedio a precio real</h5>
+              <img id="pricing-option" class="img-fluid"
+                src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Help_Pricing_Option2.png" alt="iyokus.es">
+              <p>Opción 2 conlleva fijar el precio listado por encima del precio real y el precio de reserva por debajo
+                del precio real. Con esta opción venderás tanto por encima como por debajo del precio real y venderás
+                tanto como vendes ahora, ya que, a media, estas vendiendo con el precio real.
+                <br>
+                <br>
+                No creemos que esta sea la mejor opción para vender con Iyokus, ya que todavía no mostramos el precio
+                real del artículo a los compradores. Sin embargo, entendemos a los vendedores que no quieren vender
+                mucho por menos del precio real y desean usar esta opción.
+                <br>
+                <br>
+                <i>Por ejemplo, vendes una camiseta que el precio real es 10EUR, en Iyokus fijas el precio listado a
+                  12EUR y el precio de reserva a 8EUR. Venderás entre el rango de 8EUR a 12EUR y a media el precio real
+                  de 10EUR. De esta forma podrás vender también a compradores que solo estan dispuesta pagar menos de
+                  10EUR, ayudándole a vender más, y podrás compensar la perdida de margen con los compradores que estan
+                  dispuesto pagar mas de 10EUR.</i>
+              </p>
+
+
+              <h5 class="mt-5">Opción 3: venderás mucho más y más rapido</h5>
+              <img id="pricing-option" class="img-fluid"
+                src="https://s3.eu-west-3.amazonaws.com/woolime/assets/Help_Pricing_Option3.png" alt="iyokus.es">
+              <p>Opción 3 conlleva fijar el precio listado igual que el precio real y el precio de reserva por debajo
+                del precio real. Con esta opción venderás siempre por debajo del precio real y pero venderá mucho más,
+                ya que es como si estas ofreciendo un % de descuento constantemente pero sin mostrar cual es esta % y
+                con esta opción podrás acceder a compradores que esten dispuesto a pagar el rango entre el precio real
+                y el precio real menos el %.
+                <br>
+                <br>
+                En Iyokus creemos que esta es la mejor opción para vender en nuestos plataforma, ya que estas mostrando
+                honestamente el precio real a los compradores y al mismo tiempo te da acceso a mucho más compradores
+                que estan dispuesto pagar entre el precio real y el precio precio mínimo que decidiste.
+                <br>
+                <br>
+                <i>Por ejemplo, vendes una camiseta que el precio real es 10EUR, en Iyokus fijas el precio listado al
+                  nivel del precio real, 10EUR, y el precio de reserva a 8EUR. Este metódo es como si ofrecierás un
+                  descuento permanente de 20% pero oculto. Tendrás acceso a todos los compradores que estan dispuesto a
+                  comprar por 10EUR y menos, hasta el precio de reserva, ayudándole vender a más y más rapido ya que
+                  tienes acceso a más compradores sin cambiar el precio listado. Le recordamos que siempre puedes
+                  cambiar el precio de reserva en privado, subir si deseas vender por más o bajar si prefiere ofrecer
+                  aún más descuento.</i>
+              </p>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='221'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">What kind of products are best sold with Iyokus?</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  With our bids and offers system, it is understandable that no all kind of products are best suited to
+                  be sold on Iyokus.
+                  <br>
+                  <br>
+                  However, there are some general characteristics for products to have that we consider ideal to be sold
+                  on Iyokus:
+                </p>
+                <ul>
+                  <li>Those that you want to sell at large quantity and fast</li>
+                  <li>Those that you want to discount considerably but also recovering as much as possible (i.e.
+                    returned or unsold goods)</li>
+                  <li>Those used or unique goods that you know how much you want for it and want to sell without
+                    spending time bargaining</li>
+                </ul>
+                <p>
+                  Please read and take the <a href="javascript:void(0);" [routerLink]="['/help/center/203']">Prohibited
+                    Items</a> list into account when deciding what products to list on Iyokus.
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div *ngIf="article=='222'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Lock-out period guide</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <p>
+                  The lockout period is the period, measured in number of <b> days</b>, where a buyer will not be able
+                  to bid again for a particular product. The lock-out period is applied, and specific to the affected
+                  product only, when the initial bid sent by a buyer is rejected or if the buyer reject the
+                  counter-offer.
+                  <br><br>
+                  <b>The lock-out period is required to ensure that a buyer does not bid incrementally low prices until
+                    the bid is accepted.</b>
+                  Sellers are able to determine the duration of the lock-out period each time they upload a product and
+                  can be changed thereafter by editing the listing.
+                  <br>
+                  <br>
+                  The lock-out period has the effect that positively encourage serious bids from buyers. <b>A longer
+                    lock-out period should attract more serious bids but lower the total number of bids received, and
+                    vice versa. A seller should tailor a lock-period to his/her needs and wants, we, however, generally
+                    recommend a minimum lock-period of 5 days.</b>
+                </p>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='201'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Seller protections</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <ul>
+                  <li>In case of a dispute between a seller and a buyer, Iyokus will act as a mediator to help to reach
+                    a
+                    settlement.</li>
+                  <li>Safe and fast online payments.</li>
+                  <li><b>Note</b>, to protect youself, <b>please provide delivery information such as tracking number,
+                      invoices and return address.</b></li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='202'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Seller guidelines</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <ul>
+                  <li>Do not sell anything in <a href="#" routerLink="/help/center/203">Prohibited Items</a> list</li>
+
+                  <li>To avoid misunderstandings and refunds, please provide accurate description of the product listed,
+                    including:</li>
+                  <ul>
+                    <li>Brand</li>
+                    <li>Detailed product description and technical specification where applicable</li>
+                    <li>Condition of the item (new or used)</li>
+                    <li>Accurate delivery costs and condition</li>
+                  </ul>
+                  <li>Provide real and up to date photos of the listed item</li>
+                  <li>If delivery is by "Meetup Deliery":</li>
+                  <ul>
+                    <li>Contact the buyer to arrange a delivery time and locatin within 2 days</li>
+                    <li>Arrange a delivery within 5 days</li>
+                  </ul>
+                  <li>If delivery is by "Postal Deliery":</li>
+                  <ul>
+                    <li>Dispatch the order within 3 days after receiving the order request.</li>
+                    <li>Provide a delivery tracking number</li>
+                    <li>Include an invoice</li>
+                    <li>Include a return address</li>
+                  </ul>
+                  <li><b>Iyokus will not be responsible of the products delivered without a tracking number.</b></li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="article=='310'">
+        <div class="card help-font">
+          <div class="card-body">
+            <h2 class="card-title">Iyokus
+              Messenger codes of conduct</h2>
+            <hr>
+            <div class="card-description">
+              <small>
+                <ul>
+                  <li>Always be respectful of other users</li>
+                  <li>Use the chat only to agree on the delivery meeting location and time</li>
+                  <li>Do not share private information such as payment information, passwords, etc. </li>
+                  <li>If you identify any suspicious activities, please contact us as soon as possible</li>
+                </ul>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="article=='XXX'">
+                  <div class="card help-font">
+                    <div class="card-body">
+                      <h2 class="card-title">QUESTION TITLE</h2>
+                      <hr>
+                      <div class="card-description">
+                        <p>
+                          ANSWER DESCRIPTION
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            -->
+    </div>
+
+
+
+
+  </div>
+
+</body>
+
+<app-footer></app-footer>

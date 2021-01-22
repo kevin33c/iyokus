@@ -1,0 +1,99 @@
+
+.navbar {
+  border-bottom: #663399 3px solid;
+  opacity: 0.8;
+}
+
+#iyokus-icon{
+  width: 70px; 
+  height: 30px;
+}
+
+.display-4{
+  margin-top: 20px;
+}
+
+section{
+  margin-top: 40px;
+}
+
+#help{
+  max-width: 700px;
+  margin-bottom: 100px;
+}
+
+
+#article-section{
+  max-width: 600px;
+  min-height: 500px;
+}
+
+.list-group-item{
+  border-left: none !important;
+  border-right: none !important;
+}
+
+#question-icon{
+  font-size: 40px;
+  color: grey;
+}
+
+#index-question{
+  -ms-flex-align: center!important;
+  align-items: center!important;
+  display: flex;
+  justify-content: left;
+}
+
+#index-questions-description{
+  color: #2e2e36;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.card{
+  max-width: 40rem;
+  background-color: #f8f9fd;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.help-font{
+  font-weight: 400;
+  font-size: 18px;
+  color: #4c4c4c;
+}
+
+li{
+  margin-top: 10px;
+}
+
+.list-header{
+  font-weight: 500;
+}
+
+#icon-button-del{
+  max-width: 30px; 
+  max-height: 30px;
+}
+
+#icon-button {
+  width: 60px; 
+  height: 30px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-block;
+}
+
+#pricing-legend{
+  max-width: 150px;
+  max-height: 150px;
+}
+
+#pricing-option{
+  margin-bottom: 30px;
+}
+
+#price-icon{
+  font-size: 25px;
+}

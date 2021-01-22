@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<div class="container mt-3">
+  <div *ngIf="user">
+    <h2 class="page-header text-uppercase">{{user.name}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item">ID : {{user._id}}</li>
+      <li class="list-group-item">Email : {{user.email}}</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ICON BOXES -->
+<section id="icon-boxes" class="p-5">
+  <div class="container">
+    <h2 class="page-header">My Profile</h2>
+    <div class="row mb-4 mt-4">
+      <div class="col-md-4">
+        <div class="card">
+          <a class="img-card" routerLink="/business/orders">
+            <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/profile/profileCategory_Orders.png" />
+          </a>
+          <br />
+          <div class="card-content">
+            <h5 class="card-title">
+              <a routerLink="/orders">
+                My Orders
+              </a>
+            </h5>
+            <small>
+              View and manage your orders and returns
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a class="img-card" routerLink="/business/editprofile">
+            <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/profile/profileCategory_Security.png" />
+          </a>
+          <br />
+          <div class="card-content">
+            <h4 class="card-title">
+              <a routerLink="/edit-security">
+                Profile Information
+              </a>
+            </h4>
+            <small>
+              Change password, payout account and more
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <a class="img-card" routerLink="/business/finance">
+            <img src="https://s3.eu-west-3.amazonaws.com/woolime/home/profile/profileCategory_Payment.png" />
+          </a>
+          <br />
+          <div class="card-content">
+            <h4 class="card-title">
+              <a routerLink="#">
+                My Finance
+              </a>
+            </h4>
+            <small>
+              Search and review sales and payouts history
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

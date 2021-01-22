@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<div class="container mt-3">
+  <h3>My Offers</h3>
+  <h2 *ngIf="offers?.length ===0" class="text-center mt-5 mb-5" style="font-style: italic;">We have not found any offers, this could either be that you have no received any offers or your offers have expired.</h2>
+  <div class="row">
+    <div class="card mt-3 Wcard" *ngFor="let product of offers">
+      <div class="row">
+        <div class="col-md-2">
+          <img [src]=product.image_Main class="Wimg">
+        </div>
+        <div class="col-md-9 ml-2">
+          <span>
+            <a class="card-text" [routerLink]="['/product', productNameToUrl(product.name), product.productID]" style="color: #0066c0;">{{product?.name}} <b>{{product?.variant1}} {{product?.variant2}}</b></a>
+          </span>
+          <br>
+          <small class="card-text">
+            <b>List Price:</b> {{product?.listed_price | currency: 'GBP': number }} per Unit
+            <span *ngIf="product?.deliveryMethod === 1" class="a-size-small a-color-secondary">+ Delivery</span>
+          </small>
+          <br>
+          <div *ngIf="product?.status ==='User Accept'">
+            <small class="card-text">You have
+              <b>accepted</b> the counter-offer
+              <sup>*</sup> of
+              <b>{{product?.value * product?.offer_quantity | currency: 'GBP': number }} for 
+                {{product?.offer_quantity}}</b>, a discount of {{(product?.listed_price -
+              product?.value)/product?.listed_price | percent}} per unit from the list price.
+            </small>
+            <br>
+            <span class="a-size-small a-color-secondary">
+              <sup>*</sup>This offer is valid until {{product?.expireDate | date:'dd.MM.yyyy HH:mm'}} or until it is sold out.
+            </span>
+            <br>
+            <button class="btn btn-success btn-sm mb-3" type="button" [routerLink]="['/purchase/selectaddress']"
+              [queryParams]="{ord_id: product?.uuID, prod_id: product?.productID}">Continue</button>
+          </div>
+          <div *ngIf="product?.status ==='System Accept'">
+            <small class="card-text">Your bid of
+              <b>{{product?.bid * product?.offer_quantity | currency: 'GBP': number }} for {{product?.offer_quantity}}</b>, a discount of {{(product?.listed_price - product?.value)/product?.listed_price | percent}}
+                  per unit of the list price, has been
+              <b>accepted</b>
+              <sup>*</sup>.
+            </small>
+            <br>
+            <span class="a-size-small a-color-secondary">
+              <sup>*</sup>This offer is valid until {{product?.expireDate | date:'dd.MM.yyyy HH:mm'}} or until it is sold out.
+            </span>
+            <br>
+            <button class="btn btn-success btn-sm mb-3" type="button" [routerLink]="['/purchase/selectaddress']"
+              [queryParams]="{ord_id: product?.uuID, prod_id: product?.productID}">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

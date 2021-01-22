@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="container mt-3">
+  <h3>My Favourites</h3>
+  <h2 *ngIf="favourites?.length ===0" class="text-center mt-5 mb-5" style="font-style: italic;">We have not found any items marked as favourites by you.</h2>
+  <div class="row">
+    <div class="card mt-3 Wcard" *ngFor="let product of favourites">
+      <div class="row">
+        <div class="col-md-2">
+          <img [src]=product.image_Main class="Wimg" >
+        </div>
+        <div class="col-md-10">
+          <span>
+            <a class="card-text" [routerLink]="['/product', productNameToUrl(product.name), product.productID]" style="color: #0066c0;">{{product?.name}}</a>
+          </span>
+          <br>
+          <a href="javascript:void(0);" (click)="onClickRemoveFavourite(product.productID)">
+            <i class="fa fa-heart ml-3" id="diheart" aria-hidden="true" style="font-size: 23px;"></i>
+          </a>
+          <hr>
+          <span>
+            <button class="btn btn-success btn-sm mb-3" type="button" [routerLink]="['/product', productNameToUrl(product.name), product.productID]">Go to Product</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

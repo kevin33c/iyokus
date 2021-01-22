@@ -1,0 +1,12 @@
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+label{
+  font-weight: 500;
+}
+
+.large-margin-bottom{
+  margin-bottom: 3cm;
+}
